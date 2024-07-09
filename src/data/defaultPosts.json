@@ -1,0 +1,24 @@
+[
+  {
+    "postId": "1",
+    "postTitle": "This is a test post.",
+    "postSlug": "this-is-a-test-post",
+    "postContent": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
+    "featuredImage": "https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg",
+    "isPublished": true,
+    "postCategory": "Uncategorized",
+    "createdAt": "2024-07-09",
+    "author": "Aeliyadevs"
+  },
+  {
+    "postId": "2",
+    "postTitle": "Another test post for you!",
+    "postSlug": "another-test-post-for-you",
+    "postContent": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
+    "featuredImage": "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg",
+    "isPublished": true,
+    "postCategory": "Uncategorized",
+    "createdAt": "2024-07-09",
+    "author": "Aeliyadevs"
+  }
+]
