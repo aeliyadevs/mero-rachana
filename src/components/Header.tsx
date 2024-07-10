@@ -4,9 +4,13 @@ const Header = () => {
   return (
     <header className="w-full bg-gray-900 flex justify-between text-white py-6">
       <div className="w-9/12 mx-auto flex justify-between">
-        <div className="logo">
-          <h1 className="text-4xl font-bold">Mero Rachana</h1>
-        </div>
+        <Link to="/">
+          <div className="logo">
+            <h1 className="text-4xl font-bold">
+              Mero <span className="font-light">Rachana</span>
+            </h1>
+          </div>
+        </Link>
         <nav className="flex items-center">
           <ul className="flex gap-8">
             <Link to="/">Home</Link>

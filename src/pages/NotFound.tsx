@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const NotFound = () => {
   return (
     <section className="w-9/12 flex justify-center mx-auto p-10">
-      <div className="w-2/3 text-slate-800 bg-blue-100 text-center my-10 p-10 rounded-md shadow-lg">
+      <div className="w-2/3 text-slate-800 text-center my-10 p-10 rounded-md shadow-lg">
         <p className="text-9xl">404</p>
         <h2 className="text-4xl mb-4">Oops! Page Not Found</h2>
         <p className="mb-4">
