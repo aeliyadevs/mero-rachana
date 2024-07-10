@@ -4,7 +4,7 @@ interface ComponentProps {
 }
 const HeadingOne: React.FC<ComponentProps> = ({ type, postId }) => {
   return (
-    <h1 className="font-bold text-4xl capitalize mb-6">
+    <h1 className="font-bold text-4xl capitalize mb-3">
       Single {type} : {postId}
     </h1>
   );
