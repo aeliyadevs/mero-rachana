@@ -1,3 +1,5 @@
+import Author from "../components/Author";
+import Meta from "../components/Meta";
 import HeadingOne from "../components/ul/HeadingOne";
 
 interface ComponentProps {
@@ -13,6 +15,10 @@ const Single: React.FC<ComponentProps> = ({ type, postId }) => {
         src="https://st.depositphotos.com/1005563/4941/i/450/depositphotos_49418809-stock-photo-frog-on-the-leaf.jpg"
         alt=""
       />
+      <div className="flex justify-between items-center px-4 mb-4 border-l-4 border-lime-200">
+        <Author />
+        <Meta />
+      </div>
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque, eaque
         illo! Repellat quisquam vero laborum, non exercitationem optio. Sunt
