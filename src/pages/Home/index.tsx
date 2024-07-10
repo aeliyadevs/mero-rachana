@@ -1,6 +1,4 @@
-import { Link } from "react-router-dom";
-import PrimaryButton from "../../components/PrimaryButton";
-import NotFound from "../NotFound";
+import PrimaryButton from "../../components/ul/PrimaryButton";
 
 const Home = () => {
   return (
