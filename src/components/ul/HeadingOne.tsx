@@ -1,12 +1,7 @@
 interface ComponentProps {
-  type: string;
-  postId: string | undefined;
+  heading: string;
 }
-const HeadingOne: React.FC<ComponentProps> = ({ type, postId }) => {
-  return (
-    <h1 className="font-bold text-4xl capitalize mb-3">
-      Single {type} : {postId}
-    </h1>
-  );
+const HeadingOne: React.FC<ComponentProps> = ({ heading }) => {
+  return <h1 className="font-bold text-4xl mb-3">{heading}</h1>;
 };
 export default HeadingOne;

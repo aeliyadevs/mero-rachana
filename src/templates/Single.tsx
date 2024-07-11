@@ -1,53 +1,36 @@
+import { useParams } from "react-router-dom";
 import Author from "../components/Author";
 import Meta from "../components/Meta";
 import SocialShare from "../components/SocialShare";
 import HeadingOne from "../components/ul/HeadingOne";
 import HeadingTwo from "../components/ul/HeadingTwo";
+import { posts } from "../data/defaultPosts.json";
 
-interface ComponentProps {
-  type: string;
-  postId: string | undefined;
-}
-const Single: React.FC<ComponentProps> = ({ type, postId }) => {
+const Single = () => {
+  let { id } = useParams();
+  console.log(id);
+
+  const findPostById = (id: string | undefined) => {
+    return posts.find((post) => post.postId === id);
+  };
+  const thePost = findPostById(id);
+  if (!thePost) {
+    return <p>Post not found!</p>;
+  }
+
   return (
     <article className="w-6/12 mx-auto my-20 flex flex-col">
-      <img
-        className="rounded-md mb-6"
-        src="https://st.depositphotos.com/1005563/4941/i/450/depositphotos_49418809-stock-photo-frog-on-the-leaf.jpg"
-        alt=""
-      />
-      <div className="flex justify-between items-center px-4 mb-10 border-l-4 border-lime-200">
-        <Author />
+      <img className="rounded-md mb-6" src={thePost.featuredImage} alt="" />
+      <div className="flex justify-between items-center px-4 mb-10 border-l-4 border-lime-300">
+        <Author authorId={thePost.author} />
         <Meta />
       </div>
-      <HeadingOne type={type} postId={postId} />
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque, eaque
-        illo! Repellat quisquam vero laborum, non exercitationem optio. Sunt
-        voluptas repellat tempora dolor dolorum ipsam veniam minima culpa magni,
-        soluta ex illum at. Placeat.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-        expedita dignissimos placeat quam necessitatibus. Saepe nemo unde odio
-        commodi veniam distinctio delectus voluptas quos mollitia aliquam
-        voluptatum omnis explicabo eos, dolor odit sint eum placeat sed quaerat
-        cumque a. Similique minus modi laudantium delectus velit!
-      </p>
-      <HeadingTwo heading="Lorem ipsum dolor sit amet" />
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Atque, eaque
-        illo! Repellat quisquam vero laborum, non exercitationem optio. Sunt
-        voluptas repellat tempora dolor dolorum ipsam veniam minima culpa magni,
-        soluta ex illum at. Placeat.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-        expedita dignissimos placeat quam necessitatibus. Saepe nemo unde odio
-        commodi veniam distinctio delectus voluptas quos mollitia aliquam
-        voluptatum omnis explicabo eos, dolor odit sint eum placeat sed quaerat
-        cumque a. Similique minus modi laudantium delectus velit!
-      </p>
+      <HeadingOne heading={thePost.postTitle} postId={thePost.postId} />
+      <p>{thePost.postContent}</p>
+      <p>{thePost.postContent}</p>
+      <HeadingTwo heading={thePost.postSlug} />
+      <p>{thePost.postContent}</p>
+      <p>{thePost.postContent}</p>
       <SocialShare />
     </article>
   );

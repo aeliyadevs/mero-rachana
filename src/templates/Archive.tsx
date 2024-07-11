@@ -1,5 +1,6 @@
 import Card from "../components/Card";
 import HeadingTwo from "../components/ul/HeadingTwo";
+import { posts } from "../data/defaultPosts.json";
 
 interface ComponentProps {
   type: string;
@@ -10,9 +11,9 @@ const Archive: React.FC<ComponentProps> = ({ type }) => {
     <section className="w-9/12 mx-auto my-20">
       <HeadingTwo heading={"All " + type + "s"} />
       <div className="grid grid-cols-3 gap-6">
-        <Card id="test-1" />
-        <Card id="test-2" />
-        <Card id="test-3" />
+        {posts.map((post, index) => (
+          <Card key={index} id={post.postId} />
+        ))}
       </div>
     </section>
   );
