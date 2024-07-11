@@ -10,7 +10,7 @@ const Archive: React.FC<ComponentProps> = ({ type }) => {
   return (
     <section className="w-9/12 mx-auto my-20">
       <HeadingTwo heading={"All " + type + "s"} />
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid grid-cols-2 gap-6">
         {posts.map((post, index) => (
           <Card key={index} id={post.postId} />
         ))}
