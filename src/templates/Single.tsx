@@ -5,32 +5,48 @@ import SocialShare from "../components/SocialShare";
 import HeadingOne from "../components/ul/HeadingOne";
 import HeadingTwo from "../components/ul/HeadingTwo";
 import { posts } from "../data/defaultPosts.json";
+import { useEffect, useState } from "react";
 
+interface Post {
+  postId: number;
+  postTitle: string;
+  postSlug: string;
+  postContent: string;
+  featuredImage: string;
+  author: number;
+}
 const Single = () => {
   let { id } = useParams();
-  console.log(id);
 
-  const findPostById = (id: string | undefined) => {
-    return posts.find((post) => post.postId === id);
+  const [post, setPost] = useState<Post>();
+
+  const findPostById = (id: string) => {
+    return posts.find((post) => post.postId === parseInt(id));
   };
-  const thePost = findPostById(id);
-  if (!thePost) {
+
+  useEffect(() => {
+    if (id) {
+      setPost(findPostById(id));
+    }
+  }, []);
+
+  if (!post) {
     return <p>Post not found!</p>;
   }
 
   return (
-    <article className="w-6/12 mx-auto my-20 flex flex-col">
-      <img className="rounded-md mb-6" src={thePost.featuredImage} alt="" />
+    <article className="w-6/12 mx-auto mt-10 mb-20 flex flex-col">
+      <img className="rounded-md mb-6" src={post.featuredImage} alt="" />
       <div className="flex justify-between items-center px-4 mb-10 border-l-4 border-lime-300">
-        <Author authorId={thePost.author} />
+        <Author authorId={post.author} />
         <Meta />
       </div>
-      <HeadingOne heading={thePost.postTitle} postId={thePost.postId} />
-      <p>{thePost.postContent}</p>
-      <p>{thePost.postContent}</p>
-      <HeadingTwo heading={thePost.postSlug} />
-      <p>{thePost.postContent}</p>
-      <p>{thePost.postContent}</p>
+      <HeadingOne heading={post.postTitle} />
+      <p>{post.postContent}</p>
+      <p>{post.postContent}</p>
+      <HeadingTwo heading={post.postSlug} />
+      <p>{post.postContent}</p>
+      <p>{post.postContent}</p>
       <SocialShare />
     </article>
   );
