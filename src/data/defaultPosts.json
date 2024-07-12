@@ -58,5 +58,28 @@
       "profileImage": "https://scontent.fktm17-1.fna.fbcdn.net/v/t39.30808-1/416899588_3340576866089178_2550363166453687906_n.jpg?stp=c0.4.200.200a_dst-jpg_p200x200&_nc_cat=102&ccb=1-7&_nc_sid=0ecb9b&_nc_eui2=AeHBgB06PliXqFs_bmx0H2mbXYUVsGfwxOldhRWwZ_DE6ajXIYaZ8CXaIMPTbN2Wlx4IbdTj2til8rt_scyzIYGk&_nc_ohc=4e26mT20GQEQ7kNvgE5FWBP&_nc_ht=scontent.fktm17-1.fna&oh=00_AYDDaiTwkCl3mJfdYvC8BscZ4n3Jla2zox9eTmkzlTdTBA&oe=66954489",
       "category": "admin"
     }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "author": "Bikram Baral",
+      "comment": "Nice work! Keep writing! You are super talented!",
+      "commentedOn": "Fri, 12-07-2024",
+      "profile": "https://avatars.githubusercontent.com/u/25717458?v=4"
+    },
+    {
+      "id": 2,
+      "author": "Ramesh Pokhrel",
+      "comment": "I agree on your thoughts on this matter.",
+      "commentedOn": "Fri, 11-07-2024",
+      "profile": "https://avatars.githubusercontent.com/u/25717458?v=4"
+    },
+    {
+      "id": 3,
+      "author": "Sabin Tamang",
+      "comment": "Amazing! You deserve more likes and shares!",
+      "commentedOn": "Fri, 09-07-2024",
+      "profile": "https://avatars.githubusercontent.com/u/25717458?v=4"
+    }
   ]
 }

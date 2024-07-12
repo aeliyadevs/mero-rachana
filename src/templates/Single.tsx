@@ -6,6 +6,7 @@ import HeadingOne from "../components/ul/HeadingOne";
 import HeadingTwo from "../components/ul/HeadingTwo";
 import { posts } from "../data/defaultPosts.json";
 import { useEffect, useState } from "react";
+import Comment from "../components/Comment";
 
 interface Post {
   postId: number;
@@ -48,6 +49,7 @@ const Single = () => {
       <p>{post.postContent}</p>
       <p>{post.postContent}</p>
       <SocialShare />
+      <Comment />
     </article>
   );
 };
