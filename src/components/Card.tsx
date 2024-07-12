@@ -24,36 +24,38 @@ const Card: React.FC<ComponentProps> = ({ id }) => {
     return <>Missing post</>;
   }
   return (
-    <div className="shadow-lg shadow-slate-400 flex">
-      <img
-        className="w-52 h-52 object-cover rounded-md"
-        src={thePost.featuredImage}
-        alt=""
-      />
+    <div className="bg-slate-100 rounded-md border-l-4 border-blue-300 shadow-lg shadow-slate-200 flex">
       <div className="relative p-4 pb-4">
-        <HeadingThree heading={thePost.postTitle} />
+        <Link to={"/posts/" + thePost.postId}>
+          <HeadingThree heading={thePost.postTitle} />
+        </Link>
         <p className="mb-3">
           {thePost.postContent.substring(0, 100) + " ....."}
         </p>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <img
             src={thePost.featuredImage}
             alt=""
-            className="w-12 h-12 object-cover rounded-full border-4 border-white shadow-lg"
+            className="w-6 h-6 object-cover rounded-full border-white shadow-lg"
           />
           <p>
             <strong>Aeliyadevs</strong>
             <br />
-            <span>Fri, {thePost.createdAt}</span>
+            {/* <span>Fri, {thePost.createdAt}</span> */}
           </p>
         </div>
-        <Link
+        {/* <Link
           to={"/posts/" + thePost.postId}
-          className="text-blue-400 absolute right-4 bottom-4 block underline underline-offset-8"
+          className="text-sm text-blue-400 underline-offset-8"
         >
           View Details <i className="fa-solid fa-arrow-right-long ml-2"></i>
-        </Link>
+        </Link> */}
       </div>
+      <img
+        className="w-44 h-full object-cover rounded-md"
+        src={thePost.featuredImage}
+        alt=""
+      />
     </div>
   );
 };
