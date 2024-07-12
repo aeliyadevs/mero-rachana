@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import HeadingThree from "./ul/HeadingThree";
-import { posts } from "../data/defaultPosts.json";
-import Author from "./Author";
+import { posts, authors } from "../data/defaultPosts.json";
 
 interface ComponentProps {
   id: number;
@@ -14,11 +13,24 @@ interface Post {
   author: number;
   createdAt: string;
 }
+interface Author {
+  id: number;
+  name: string;
+  profileImage: string;
+  category: string;
+}
 const Card: React.FC<ComponentProps> = ({ id }) => {
   const getPostById = (id: number): Post | undefined => {
     return posts.find((post) => post.postId === id);
   };
+  const getAuthorById = (id: number): Author | undefined => {
+    return authors.find((author) => author.id === id);
+  };
   const thePost = getPostById(id);
+  let theAuthor = undefined;
+  if (thePost) {
+    theAuthor = getAuthorById(thePost.author);
+  }
 
   if (!thePost) {
     return <>Missing post</>;
@@ -34,14 +46,14 @@ const Card: React.FC<ComponentProps> = ({ id }) => {
         </p>
         <div className="flex items-center gap-2">
           <img
-            src={thePost.featuredImage}
+            src={theAuthor?.profileImage}
             alt=""
-            className="w-6 h-6 object-cover rounded-full border-white shadow-lg"
+            className="w-8 h-8 object-cover rounded-full border-white shadow-lg"
           />
           <p>
-            <strong>Aeliyadevs</strong>
-            <br />
-            {/* <span>Fri, {thePost.createdAt}</span> */}
+            <strong>{theAuthor?.name}</strong>
+            {" / "}
+            <span className="text-sm">{thePost.createdAt}</span>
           </p>
         </div>
         {/* <Link
