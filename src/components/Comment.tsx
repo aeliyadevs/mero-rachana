@@ -1,4 +1,5 @@
 import HeadingThree from "./ul/HeadingThree";
+import { comments } from "../data/defaultPosts.json";
 
 const Comment = () => {
   return (
@@ -6,36 +7,24 @@ const Comment = () => {
       <HeadingThree heading="Leave a comment." />
       <p className="pb-3">2 comments</p>
       <div>
-        <div className="flex mb-4">
-          <img
-            src="https://avatars.githubusercontent.com/u/25717458?v=4"
-            alt=""
-            className="w-10 h-10 rounded-full mt-2 mr-2"
-          />
-          <div>
-            <h4 className="font-bold">Aeliyadevs</h4>
-            <p>Lorem ipsum dolor sit amet consec tetur adipisicing elit.</p>
-            <div className="flex gap-4 text-sm font-semibold">
-              <p>30 Likes</p>
-              <p>Reply</p>
+        {comments.map((comment) => (
+          <div className="flex mb-4">
+            <img
+              src={comment.profile}
+              alt=""
+              className="w-10 h-10 rounded-full mt-2 mr-2"
+            />
+            <div>
+              <h4 className="font-bold">{comment.author}</h4>
+              <p className="mb-1">{comment.comment}</p>
+              <div className="flex gap-4 text-sm font-bold">
+                {/* <p>{comment.commentedOn}</p> */}
+                <p>30 Likes</p>
+                <p>Reply</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="flex mb-4">
-          <img
-            src="https://avatars.githubusercontent.com/u/25717458?v=4"
-            alt=""
-            className="w-10 h-10 rounded-full mt-2 mr-2"
-          />
-          <div>
-            <h4 className="font-bold">Aeliyadevs</h4>
-            <p>Lorem ipsum dolor sit amet consec tetur adipisicing elit.</p>
-            <div className="flex gap-4 text-sm font-semibold">
-              <p>30 Likes</p>
-              <p>Reply</p>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
       <form action="">
         <textarea
