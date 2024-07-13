@@ -21,13 +21,13 @@ const Single = () => {
 
   const [post, setPost] = useState<Post>();
 
-  const findPostById = (id: string) => {
+  const getPostById = (id: string) => {
     return posts.find((post) => post.postId === parseInt(id));
   };
 
   useEffect(() => {
     if (id) {
-      setPost(findPostById(id));
+      setPost(getPostById(id));
     }
   }, []);
 
