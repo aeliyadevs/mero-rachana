@@ -5,11 +5,11 @@ const Home = () => {
   const featuredPost = getFeaturedPost();
   return (
     <>
-      <section className="w-9/12 mx-auto my-8 flex gap-6">
+      <section className="w-9/12 mx-auto my-16 flex gap-6">
         <div className="pt-8">
           <span className="text-green-500">Featured article</span>
           <Link to={"/posts/" + featuredPost?.postId}>
-            <h2 className="text-5xl font-semibold  mb-4 hover:text-sky-700 hover:translate-x-2 duration-300">
+            <h2 className="text-5xl font-semibold  mb-4 hover:text-sky-700 duration-300">
               {featuredPost?.postTitle}
             </h2>
           </Link>
@@ -28,7 +28,7 @@ const Home = () => {
         <img
           src={featuredPost?.featuredImage}
           alt=""
-          className="w-6/12 rounded-md"
+          className="w-6/12 object-cover rounded-md"
         />
       </section>
     </>
