@@ -49,7 +49,7 @@ const Single = () => {
       <p>{post.postContent}</p>
       <p>{post.postContent}</p>
       <SocialShare />
-      <Comment />
+      <Comment postId={post.postId} />
     </article>
   );
 };

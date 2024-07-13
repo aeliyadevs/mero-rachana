@@ -1,14 +1,25 @@
 import HeadingThree from "./ul/HeadingThree";
-import { comments } from "../data/defaultPosts.json";
+// import { comments } from "../data/defaultPosts.json";
+import { GetPostComments } from "../utils/GetData";
 
-const Comment = () => {
+interface ComponentProps {
+  postId: number;
+}
+
+const Comment: React.FC<ComponentProps> = ({ postId }) => {
+  const comments = GetPostComments(postId);
+  console.log(comments);
   return (
     <>
       <HeadingThree heading="Leave a comment." />
-      <p className="pb-3">2 comments</p>
+      <p className="pb-3">
+        {comments.length === 1
+          ? comments.length + " comment"
+          : comments.length + " comments"}
+      </p>
       <div>
-        {comments.map((comment) => (
-          <div className="flex mb-4">
+        {comments.map((comment, index) => (
+          <div key={index} className="flex mb-4">
             <img
               src={comment.profile}
               alt=""

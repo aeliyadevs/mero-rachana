@@ -66,6 +66,7 @@
   "comments": [
     {
       "id": 1,
+      "postId": 1,
       "author": "Bikram Baral",
       "comment": "Nice work! Keep writing! You are super talented!",
       "commentedOn": "Fri, 12-07-2024",
@@ -73,6 +74,7 @@
     },
     {
       "id": 2,
+      "postId": 3,
       "author": "Ramesh Pokhrel",
       "comment": "I agree on your thoughts on this matter.",
       "commentedOn": "Fri, 11-07-2024",
@@ -80,6 +82,7 @@
     },
     {
       "id": 3,
+      "postId": 3,
       "author": "Sabin Tamang",
       "comment": "Amazing! You deserve more likes and shares!",
       "commentedOn": "Fri, 09-07-2024",

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import HeadingTwo from "../../components/ul/HeadingTwo";
 import PrimaryButton from "../../components/ul/PrimaryButton";
 import { posts } from "../../data/defaultPosts.json";
+import HeadingThree from "../../components/ul/HeadingThree";
 
 const Home = () => {
   let featuredPost = undefined;
@@ -13,9 +14,11 @@ const Home = () => {
     <>
       <section className="w-9/12 mx-auto my-8 flex items-center">
         <div className="bg-slate-100 rounded-md -mr-32 relative border-l-2 border-b-2 border-blue-200 p-10">
-          <h2 className="text-4xl font-semibold mb-4">
-            {featuredPost?.postTitle}
-          </h2>
+          <Link to={"/posts/" + featuredPost?.postId}>
+            <h2 className="text-4xl font-semibold  mb-4 hover:text-sky-700 hover:translate-x-2 duration-300">
+              {featuredPost?.postTitle}
+            </h2>
+          </Link>
           <p className="font-semibold mb-2">
             Aeliyadevs | {featuredPost?.createdAt} |{" "}
             {featuredPost?.postCategory}
