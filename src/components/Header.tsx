@@ -7,7 +7,7 @@ const Header = () => {
         <Link to="/">
           <div className="logo">
             <h1 className="text-4xl font-bold">
-              Mero <span className="font-light">Rachana</span>
+              Mero<span className="font-light">Rachana</span>
             </h1>
           </div>
         </Link>

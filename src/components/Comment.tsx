@@ -1,5 +1,4 @@
 import HeadingThree from "./ul/HeadingThree";
-// import { comments } from "../data/defaultPosts.json";
 import { GetPostComments } from "../utils/GetData";
 
 interface ComponentProps {
@@ -8,7 +7,6 @@ interface ComponentProps {
 
 const Comment: React.FC<ComponentProps> = ({ postId }) => {
   const comments = GetPostComments(postId);
-  console.log(comments);
   return (
     <>
       <HeadingThree heading="Leave a comment." />
