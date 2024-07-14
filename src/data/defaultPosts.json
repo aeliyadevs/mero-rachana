@@ -5,81 +5,88 @@
       "postTitle": "This is a test post",
       "postSlug": "this-is-a-test-post",
       "postContent": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
-      "featuredImage": "https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg",
+      "featuredImage": "../images/fox.jpg",
       "isPublished": true,
       "postCategory": "Uncategorized",
       "createdAt": "2024-07-09",
-      "author": 1
+      "author": 1,
+      "featured": false
     },
     {
       "postId": 2,
       "postTitle": "Another test post for you!",
       "postSlug": "another-test-post-for-you",
       "postContent": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
-      "featuredImage": "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg",
+      "featuredImage": "../images/tiger.jpg",
       "isPublished": true,
       "postCategory": "Uncategorized",
       "createdAt": "2024-07-09",
-      "author": 2
+      "author": 2,
+      "featured": false
     },
     {
       "postId": 3,
       "postTitle": "A platform for all the nepali readers and writers",
       "postSlug": "this-is-a-test-post",
       "postContent": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
-      "featuredImage": "https://cdn.pixabay.com/photo/2024/05/26/10/15/bird-8788491_1280.jpg",
+      "featuredImage": "../images/leopard.jpg",
       "isPublished": true,
-      "postCategory": "Uncategorized",
+      "postCategory": "Blog",
       "createdAt": "2024-07-09",
-      "author": 1
+      "author": 1,
+      "featured": true
     },
     {
       "postId": 4,
       "postTitle": "Merorachana - your way of sharing your creation",
       "postSlug": "another-test-post-for-you",
       "postContent": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
-      "featuredImage": "https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg",
+      "featuredImage": "../images/bird.jpg",
       "isPublished": true,
       "postCategory": "Uncategorized",
       "createdAt": "2024-07-09",
-      "author": 2
+      "author": 2,
+      "featured": false
     }
   ],
   "authors": [
     {
       "id": 1,
       "name": "Aeliyadevs",
-      "profileImage": "https://avatars.githubusercontent.com/u/25717458?v=4",
+      "profileImage": "../images/bird.jpg",
       "category": "writer"
     },
     {
       "id": 2,
       "name": "Aeliya Tamang",
-      "profileImage": "https://scontent.fktm17-1.fna.fbcdn.net/v/t39.30808-1/416899588_3340576866089178_2550363166453687906_n.jpg?stp=c0.4.200.200a_dst-jpg_p200x200&_nc_cat=102&ccb=1-7&_nc_sid=0ecb9b&_nc_eui2=AeHBgB06PliXqFs_bmx0H2mbXYUVsGfwxOldhRWwZ_DE6ajXIYaZ8CXaIMPTbN2Wlx4IbdTj2til8rt_scyzIYGk&_nc_ohc=4e26mT20GQEQ7kNvgE5FWBP&_nc_ht=scontent.fktm17-1.fna&oh=00_AYDDaiTwkCl3mJfdYvC8BscZ4n3Jla2zox9eTmkzlTdTBA&oe=66954489",
+      "profileImage": "../images/fox.jpg",
       "category": "admin"
     }
   ],
   "comments": [
     {
       "id": 1,
+      "postId": 1,
       "author": "Bikram Baral",
       "comment": "Nice work! Keep writing! You are super talented!",
       "commentedOn": "Fri, 12-07-2024",
-      "profile": "https://avatars.githubusercontent.com/u/25717458?v=4"
+      "profile": "../images/bird.jpg"
     },
     {
       "id": 2,
+      "postId": 3,
       "author": "Ramesh Pokhrel",
       "comment": "I agree on your thoughts on this matter.",
       "commentedOn": "Fri, 11-07-2024",
-      "profile": "https://avatars.githubusercontent.com/u/25717458?v=4"
+      "profile": "../images/bird.jpg"
     },
     {
       "id": 3,
+      "postId": 3,
       "author": "Sabin Tamang",
       "comment": "Amazing! You deserve more likes and shares!",
       "commentedOn": "Fri, 09-07-2024",
-      "profile": "https://avatars.githubusercontent.com/u/25717458?v=4"
+      "profile": "../images/bird.jpg"
     }
   ]
 }

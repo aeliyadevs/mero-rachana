@@ -4,32 +4,13 @@ import Meta from "../components/Meta";
 import SocialShare from "../components/SocialShare";
 import HeadingOne from "../components/ul/HeadingOne";
 import HeadingTwo from "../components/ul/HeadingTwo";
-import { posts } from "../data/defaultPosts.json";
-import { useEffect, useState } from "react";
 import Comment from "../components/Comment";
+import { getPostById } from "../utils/GetData";
 
-interface Post {
-  postId: number;
-  postTitle: string;
-  postSlug: string;
-  postContent: string;
-  featuredImage: string;
-  author: number;
-}
 const Single = () => {
-  let { id } = useParams();
+  const { id } = useParams();
 
-  const [post, setPost] = useState<Post>();
-
-  const findPostById = (id: string) => {
-    return posts.find((post) => post.postId === parseInt(id));
-  };
-
-  useEffect(() => {
-    if (id) {
-      setPost(findPostById(id));
-    }
-  }, []);
+  const post = getPostById(parseInt(id ? id : "0"));
 
   if (!post) {
     return <p>Post not found!</p>;
@@ -49,7 +30,7 @@ const Single = () => {
       <p>{post.postContent}</p>
       <p>{post.postContent}</p>
       <SocialShare />
-      <Comment />
+      <Comment postId={post.postId} />
     </article>
   );
 };
