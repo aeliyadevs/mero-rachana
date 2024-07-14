@@ -6,8 +6,8 @@ const Header = () => {
       <div className="w-9/12 mx-auto flex justify-between">
         <Link to="/">
           <div className="logo">
-            <h1 className="text-4xl font-bold">
-              Mero<span className="font-light">Rachana</span>
+            <h1 className="text-4xl font-bold text-teal-400">
+              Mero<span className="font-light text-white">Rachana</span>
             </h1>
           </div>
         </Link>

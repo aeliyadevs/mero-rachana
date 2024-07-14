@@ -18,11 +18,11 @@ const FeaturedCard: React.FC<ComponentProps> = ({ id }) => {
   return (
     <div className="rounded-md shadow-lg shadow-slate-200">
       <img
-        className="w-full h-40 object-cover rounded-md"
+        className="w-full h-60 object-cover rounded-md"
         src={thePost.featuredImage}
         alt=""
       />
-      <div className="p-4">
+      <div className="p-4 pb-10">
         <Link to={"/posts/" + thePost.postId}>
           <HeadingThree heading={thePost.postTitle} />
         </Link>

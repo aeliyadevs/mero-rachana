@@ -3,7 +3,7 @@ interface ComponentProps {
 }
 const HeadingTwo: React.FC<ComponentProps> = ({ heading }) => {
   return (
-    <h2 className="text-slate-900 text-2xl font-bold capitalize mt-6 mb-3">
+    <h2 className="text-slate-900 text-3xl font-bold capitalize mt-6 mb-3">
       {heading}
     </h2>
   );
