@@ -2,7 +2,7 @@
   "posts": [
     {
       "postId": 1,
-      "postTitle": "This is a test post",
+      "postTitle": "Lorem ipsum dolor sit amet consec tetur adi pisicing elit.",
       "postSlug": "this-is-a-test-post",
       "postContent": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
       "featuredImage": "../images/fox.jpg",
@@ -14,7 +14,7 @@
     },
     {
       "postId": 2,
-      "postTitle": "Another test post for you!",
+      "postTitle": "What's on your mind? Write it down and share it now!",
       "postSlug": "another-test-post-for-you",
       "postContent": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
       "featuredImage": "../images/tiger.jpg",

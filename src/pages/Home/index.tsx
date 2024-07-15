@@ -13,10 +13,10 @@ const Home = () => {
           alt=""
           className="w-5/12 object-cover rounded-md"
         />
-        <div className="p-6">
+        <div className="flex flex-col justify-center">
           <span className="text-green-500">Featured article</span>
           <Link to={"/posts/" + featuredPost?.postId}>
-            <h2 className="text-5xl font-semibold  mt-2 mb-4 hover:text-sky-700 duration-300">
+            <h2 className="text-5xl font-semibold  mt-2 mb-4 hover:text-cyan-500 duration-300">
               {featuredPost?.postTitle}
             </h2>
           </Link>
@@ -27,7 +27,7 @@ const Home = () => {
           <p className="mb-4">{featuredPost?.postContent}</p>
           <Link
             to={"/posts/" + featuredPost?.postId}
-            className="text-sm text-blue-400 underline underline-offset-8"
+            className="text-sm text-blue-400"
           >
             View Details <i className="fa-solid fa-arrow-right-long ml-2"></i>
           </Link>

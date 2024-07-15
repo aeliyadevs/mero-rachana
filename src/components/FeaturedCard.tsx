@@ -22,17 +22,14 @@ const FeaturedCard: React.FC<ComponentProps> = ({ id }) => {
         src={thePost.featuredImage}
         alt=""
       />
-      <div className="p-4 pb-10">
+      <div className="p-4 pb-6">
         <Link to={"/posts/" + thePost.postId}>
           <HeadingThree heading={thePost.postTitle} />
         </Link>
         <p className="mb-3">
           {thePost.postContent.substring(0, 100) + " ....."}
         </p>
-        <Link
-          to={"/posts/" + thePost.postId}
-          className="text-sm text-blue-400 underline underline-offset-8"
-        >
+        <Link to={"/posts/" + thePost.postId} className="text-sm text-blue-400">
           View Details <i className="fa-solid fa-arrow-right-long ml-2"></i>
         </Link>
       </div>
