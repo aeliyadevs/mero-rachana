@@ -61,6 +61,18 @@
       "name": "Aeliya Tamang",
       "profileImage": "../images/fox.jpg",
       "category": "admin"
+    },
+    {
+      "id": 3,
+      "name": "Aeliyadevs",
+      "profileImage": "../images/bird.jpg",
+      "category": "writer"
+    },
+    {
+      "id": 4,
+      "name": "Aeliya Tamang",
+      "profileImage": "../images/fox.jpg",
+      "category": "admin"
     }
   ],
   "comments": [

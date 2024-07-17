@@ -2,8 +2,8 @@ const Footer = () => {
   return (
     <footer className="w-full bg-gray-800 text-white">
       <div className="w-9/12 mx-auto mb-4 pt-12">
-        <p className="text-5xl mb-4 font-bold">
-          Mero<span className="font-light">Rachana</span>
+        <p className="text-5xl text-primary mb-4 font-bold">
+          Mero<span className="font-light text-white">Rachana</span>
         </p>
         <p className="pb-4">A common platform for Nepali writers and readers</p>
       </div>

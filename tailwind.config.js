@@ -7,6 +7,9 @@ export default {
         nepaliFont: ["Noto Sans Devanagari", "sans-serif"],
         primaryFont: ["Open Sans", "sans-serif"],
       },
+      colors: {
+        primary: "#06a16c",
+      },
     },
   },
   plugins: [],

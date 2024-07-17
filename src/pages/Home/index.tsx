@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { getFeaturedPost } from "../../utils/GetData";
 import FeaturedCard from "../../components/FeaturedCard";
 import HeadingTwo from "../../components/ul/HeadingTwo";
+import CardAlt from "../../components/CardAlt";
+import AuthorCard from "../../components/AuthorCard";
 
 const Home = () => {
   const featuredPost = getFeaturedPost();
@@ -16,11 +18,11 @@ const Home = () => {
         <div className="flex flex-col justify-center">
           <span className="text-green-500">Featured article</span>
           <Link to={"/posts/" + featuredPost?.postId}>
-            <h2 className="text-5xl font-semibold  mt-2 mb-4 hover:text-cyan-500 duration-300">
+            <h2 className="text-5xl font-semibold mt-2 mb-4 hover:text-primary duration-300">
               {featuredPost?.postTitle}
             </h2>
           </Link>
-          <p className="font-semibold mb-2">
+          <p className="font-semibold text-black/50 mb-2">
             Aeliyadevs / {featuredPost?.postCategory} /{" "}
             {featuredPost?.createdAt}
           </p>
@@ -34,11 +36,34 @@ const Home = () => {
         </div>
       </section>
       <section className="w-9/12 mx-auto my-16">
-        <HeadingTwo heading="Latest posts" />
+        <HeadingTwo heading="Popular this month" />
         <div className="flex gap-6">
           <FeaturedCard id={1} />
           <FeaturedCard id={2} />
           <FeaturedCard id={4} />
+        </div>
+      </section>
+      <section className="w-9/12 mx-auto my-16">
+        <div className="grid grid-cols-3 gap-6">
+          <div className="bg-gray-200 rounded-md p-4"></div>
+          <div className="grid gap-6 grid-cols-2 col-span-2">
+            <div className="col-span-2">
+              <HeadingTwo heading="Latest posts" />
+            </div>
+            <CardAlt id={1} />
+            <CardAlt id={2} />
+            <CardAlt id={3} />
+
+            <CardAlt id={1} />
+            <CardAlt id={2} />
+            <CardAlt id={3} />
+          </div>
+        </div>
+      </section>
+      <section className="w-9/12 mx-auto my-16">
+        <HeadingTwo heading="Top Writers" />
+        <div className="grid grid-cols-4 gap-6">
+          <AuthorCard />
         </div>
       </section>
     </>
