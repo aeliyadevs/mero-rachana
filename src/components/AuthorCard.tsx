@@ -8,7 +8,7 @@ const AuthorCard = () => {
   return (
     <>
       {authors.map((author, index) => (
-        <Link to="authors/2">
+        <Link to={"authors/" + author.id}>
           <div
             key={index}
             className="flex flex-col justify-center bg-gray-100 rounded-lg overflow-hidden shadow-md shadow-gray-200"
