@@ -23,7 +23,7 @@ const Single = () => {
         <Author authorId={post.author} />
         <Meta />
       </div>
-      <HeadingOne heading={post.postTitle} />
+      <HeadingOne heading={post.postTitle} center={false} />
       <p>{post.postContent}</p>
       <p>{post.postContent}</p>
       <HeadingTwo heading={post.postSlug} />

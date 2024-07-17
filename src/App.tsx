@@ -6,6 +6,7 @@ import NotFound from "./pages/NotFound";
 import Posts from "./pages/Posts";
 import Single from "./templates/Single";
 import Contact from "./pages/Contact";
+import Profile from "./pages/Authors/Profile";
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +15,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/posts" element={<Posts />} />
           <Route path="/posts/:id" element={<Single />} />
+          <Route path="/authors/:id" element={<Profile />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Route>
