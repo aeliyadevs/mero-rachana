@@ -16,25 +16,33 @@ const CardAlt: React.FC<ComponentProps> = ({ id }) => {
     return <>Missing post</>;
   }
   return (
-    <div className="rounded-md shadow-lg shadow-slate-200">
+    <div className="rounded-md overflow-hidden border-b-2 border-b-sky-400 shadow-lg shadow-slate-200">
       <img
-        className="w-full h-56 object-cover rounded-md"
+        className="w-full h-60 object-cover"
         src={thePost.featuredImage}
         alt=""
       />
-      <div className="p-4 pb-8">
+      <div className="flex gap-6 w-full bg-sky-400 text-white px-4 py-2">
+        <p>
+          <i className="fa-regular fa-heart"></i> 999k likes
+        </p>
+        <p>
+          <i className="fa-regular fa-comment"></i> 999k comments
+        </p>
+        <p>
+          <i className="fa-regular fa-share-from-square"></i> 999 shares
+        </p>
+      </div>
+      <div className="p-4 pb-6">
         <Link to={"/posts/" + thePost.postId}>
           <HeadingThree heading={thePost.postTitle} />
         </Link>
-        <div className="flex gap-6">
-          <p className="text-sm">Aeliyadevs | July 16, 2024</p>
-        </div>
-        {/* <p className="mb-3">
+        <p className="mb-3">
           {thePost.postContent.substring(0, 100) + " ....."}
-        </p> */}
-        {/* <Link to={"/posts/" + thePost.postId} className="text-sm text-blue-400">
+        </p>
+        <Link to={"/posts/" + thePost.postId} className="text-sm text-blue-400">
           View Details <i className="fa-solid fa-arrow-right-long ml-2"></i>
-        </Link> */}
+        </Link>
       </div>
     </div>
   );

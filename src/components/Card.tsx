@@ -16,7 +16,12 @@ const Card: React.FC<ComponentProps> = ({ id }) => {
     return <>Missing post</>;
   }
   return (
-    <div className="bg-slate-100 rounded-md border-l-4 border-blue-300 shadow-lg shadow-slate-200 flex">
+    <div className="bg-slate-100 rounded-md shadow-lg shadow-slate-200 flex">
+      <img
+        className="w-44 h-full object-cover rounded-md"
+        src={thePost.featuredImage}
+        alt=""
+      />
       <div className="relative p-4 pb-4">
         <Link to={"/posts/" + thePost.postId}>
           <HeadingThree heading={thePost.postTitle} />
@@ -37,11 +42,6 @@ const Card: React.FC<ComponentProps> = ({ id }) => {
           </p>
         </div>
       </div>
-      <img
-        className="w-44 h-full object-cover rounded-md"
-        src={thePost.featuredImage}
-        alt=""
-      />
     </div>
   );
 };

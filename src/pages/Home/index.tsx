@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 import { getFeaturedPost } from "../../utils/GetData";
-import FeaturedCard from "../../components/FeaturedCard";
 import HeadingTwo from "../../components/ul/HeadingTwo";
-import CardAlt from "../../components/CardAlt";
 import AuthorCard from "../../components/AuthorCard";
 
 import { authors } from "../../data/defaultPosts.json";
+import CardSM from "../../components/CardSM";
+import CardAlt from "../../components/CardAlt";
 
 const Home = () => {
   const featuredPost = getFeaturedPost();
   return (
     <>
-      <section className="w-9/12 mx-auto my-16 rounded-md flex gap-6">
+      <section className="w-9/12 mx-auto my-12 rounded-md flex gap-6">
         <img
           src={featuredPost?.featuredImage}
           alt=""
@@ -37,15 +37,15 @@ const Home = () => {
           </Link>
         </div>
       </section>
-      <section className="w-9/12 mx-auto my-16">
+      <section className="w-9/12 mx-auto my-24">
         <HeadingTwo heading="Popular this month" />
-        <div className="flex gap-6">
-          <FeaturedCard id={1} />
-          <FeaturedCard id={2} />
-          <FeaturedCard id={4} />
+        <div className="grid grid-cols-3 gap-6">
+          <CardAlt id={1} />
+          <CardAlt id={2} />
+          <CardAlt id={3} />
         </div>
       </section>
-      <section className="w-9/12 mx-auto my-16">
+      <section className="w-9/12 mx-auto my-24">
         <HeadingTwo heading="Top Writers" />
         <div className="grid grid-cols-5 gap-6">
           {authors.map((author, index) => (
@@ -53,20 +53,55 @@ const Home = () => {
           ))}
         </div>
       </section>
-      <section className="w-9/12 mx-auto my-16">
+      <section className="w-9/12 mx-auto my-24">
         <div className="grid grid-cols-3 gap-6">
-          <div className="bg-gray-200 rounded-md p-4"></div>
-          <div className="grid gap-6 grid-cols-3 col-span-2">
-            <div className="col-span-3">
-              <HeadingTwo heading="Latest posts" />
+          <div className="col-span-2">
+            <div className="mb-16">
+              <div className="col-span-3">
+                <HeadingTwo heading="Latest poems" />
+              </div>
+              <div className="grid grid-cols-3 gap-6">
+                <CardSM id={1} />
+                <CardSM id={2} />
+                <CardSM id={3} />
+                <CardSM id={1} />
+                <CardSM id={2} />
+                <CardSM id={3} />
+              </div>
             </div>
-            <CardAlt id={1} />
-            <CardAlt id={2} />
-            <CardAlt id={3} />
-
-            <CardAlt id={1} />
-            <CardAlt id={2} />
-            <CardAlt id={3} />
+            <div className="mb-16">
+              <div className="col-span-3">
+                <HeadingTwo heading="Latest thoughts" />
+              </div>
+              <div className="grid grid-cols-3 gap-6">
+                <CardSM id={1} />
+                <CardSM id={2} />
+                <CardSM id={3} />
+                <CardSM id={1} />
+                <CardSM id={2} />
+                <CardSM id={3} />
+              </div>
+            </div>
+            <div className="mb-16">
+              <div className="col-span-3">
+                <HeadingTwo heading="Latest stories" />
+              </div>
+              <div className="grid grid-cols-3 gap-6">
+                <CardSM id={1} />
+                <CardSM id={2} />
+                <CardSM id={3} />
+                <CardSM id={1} />
+                <CardSM id={2} />
+                <CardSM id={3} />
+              </div>
+            </div>
+          </div>
+          <div className="px-4">
+            <HeadingTwo heading="Advertisements" />
+            <img
+              src="https://venngage-wordpress.s3.amazonaws.com/uploads/2019/12/Digital-Marketing-Meet-Up-Event-Poster-DesignTemplate.jpg"
+              alt=""
+            />
           </div>
         </div>
       </section>

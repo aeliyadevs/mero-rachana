@@ -14,7 +14,7 @@ const AuthorCard: React.FC<ComponentProps> = ({ author }) => {
   return (
     <>
       <Link to={"authors/" + author.id}>
-        <div className="flex flex-col justify-center rounded-md overflow-hidden shadow-md shadow-gray-200">
+        <div className="flex flex-col justify-center rounded-md overflow-hidden shadow-md border-b-2 border-b-sky-400 shadow-gray-200">
           <img
             src={author.profileImage}
             alt=""
@@ -24,11 +24,11 @@ const AuthorCard: React.FC<ComponentProps> = ({ author }) => {
             <img
               src={author.profileImage}
               alt={author.name}
-              className="w-28 h-28 object-cover rounded-full border-4 border-gray-100"
+              className="w-28 h-28 object-cover rounded-full border-4 border-sky-400"
             />
             <h3 className="font-bold text-lg">{author.name}</h3>
             <p>{author.category}</p>
-            <div className="flex justify-center gap-6 w-full bg-gray-100 p-4 mt-4">
+            <div className="flex justify-center gap-6 w-full border-t-[1px] px-4 py-2 mt-4">
               <p>
                 <strong>3k</strong> followers
               </p>
