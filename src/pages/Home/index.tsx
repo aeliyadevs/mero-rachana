@@ -54,53 +54,58 @@ const Home = () => {
         </div>
       </section>
       <section className="w-9/12 mx-auto my-24">
+        <HeadingTwo heading="Latest poems" />
         <div className="grid grid-cols-3 gap-6">
-          <div className="col-span-2">
-            <div className="mb-16">
-              <div className="col-span-3">
-                <HeadingTwo heading="Latest poems" />
-              </div>
-              <div className="grid grid-cols-3 gap-6">
-                <CardSM id={1} />
-                <CardSM id={2} />
-                <CardSM id={3} />
-                <CardSM id={1} />
-                <CardSM id={2} />
-                <CardSM id={3} />
-              </div>
-            </div>
-            <div className="mb-16">
-              <div className="col-span-3">
-                <HeadingTwo heading="Latest thoughts" />
-              </div>
-              <div className="grid grid-cols-3 gap-6">
-                <CardSM id={1} />
-                <CardSM id={2} />
-                <CardSM id={3} />
-                <CardSM id={1} />
-                <CardSM id={2} />
-                <CardSM id={3} />
-              </div>
-            </div>
-            <div className="mb-16">
-              <div className="col-span-3">
-                <HeadingTwo heading="Latest stories" />
-              </div>
-              <div className="grid grid-cols-3 gap-6">
-                <CardSM id={1} />
-                <CardSM id={2} />
-                <CardSM id={3} />
-                <CardSM id={1} />
-                <CardSM id={2} />
-                <CardSM id={3} />
-              </div>
-            </div>
-          </div>
-          <div className="px-4">
-            <HeadingTwo heading="Advertisements" />
+          <CardAlt id={1} />
+          <CardAlt id={2} />
+          <CardAlt id={3} />
+        </div>
+      </section>
+      <section className="w-9/12 mx-auto my-24">
+        <HeadingTwo heading="Latest thoughts" />
+        <div className="grid grid-cols-3 gap-6">
+          <CardAlt id={1} />
+          <CardAlt id={2} />
+          <CardAlt id={3} />
+        </div>
+      </section>
+      <section className="w-9/12 mx-auto my-24">
+        <HeadingTwo heading="Latest stories" />
+        <div className="grid grid-cols-3 gap-6">
+          <CardAlt id={1} />
+          <CardAlt id={2} />
+          <CardAlt id={3} />
+        </div>
+      </section>
+      <section className="w-9/12 mx-auto my-24 gap-6">
+        <HeadingTwo heading="Book Reviews" />
+        <div className="grid grid-cols-4 gap-6">
+          <div className="bg-gray-200">
             <img
               src="https://venngage-wordpress.s3.amazonaws.com/uploads/2019/12/Digital-Marketing-Meet-Up-Event-Poster-DesignTemplate.jpg"
               alt=""
+              className="w-full"
+            />
+          </div>
+          <div className="bg-gray-200">
+            <img
+              src="https://venngage-wordpress.s3.amazonaws.com/uploads/2019/12/Digital-Marketing-Meet-Up-Event-Poster-DesignTemplate.jpg"
+              alt=""
+              className="w-full"
+            />
+          </div>
+          <div className="bg-gray-200">
+            <img
+              src="https://venngage-wordpress.s3.amazonaws.com/uploads/2019/12/Digital-Marketing-Meet-Up-Event-Poster-DesignTemplate.jpg"
+              alt=""
+              className="w-full"
+            />
+          </div>
+          <div className="bg-gray-200">
+            <img
+              src="https://venngage-wordpress.s3.amazonaws.com/uploads/2019/12/Digital-Marketing-Meet-Up-Event-Poster-DesignTemplate.jpg"
+              alt=""
+              className="w-full"
             />
           </div>
         </div>
