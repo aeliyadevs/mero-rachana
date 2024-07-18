@@ -4,14 +4,14 @@ import HeadingTwo from "../../components/ul/HeadingTwo";
 import AuthorCard from "../../components/AuthorCard";
 
 import { authors } from "../../data/defaultPosts.json";
-import CardSM from "../../components/CardSM";
 import CardAlt from "../../components/CardAlt";
+import FeaturedCardAlt from "../../components/FeaturedCardAlt";
 
 const Home = () => {
   const featuredPost = getFeaturedPost();
   return (
     <>
-      <section className="w-9/12 mx-auto my-12 rounded-md flex gap-6">
+      {/* <section className="w-9/12 mx-auto my-12 rounded-md flex gap-6">
         <img
           src={featuredPost?.featuredImage}
           alt=""
@@ -36,6 +36,10 @@ const Home = () => {
             View Details <i className="fa-solid fa-arrow-right-long ml-2"></i>
           </Link>
         </div>
+      </section> */}
+      <section className="w-9/12 mx-auto my-8 flex gap-6">
+        <FeaturedCardAlt id={2} />
+        <FeaturedCardAlt id={3} />
       </section>
       <section className="w-9/12 mx-auto my-24">
         <HeadingTwo heading="Popular this month" />

@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
-    <footer className="w-full bg-gray-800 text-white">
+    <footer className="w-full bg-gray-900 text-white">
       <div className="w-9/12 mx-auto mb-4 pt-12">
         <p className="text-5xl text-primary mb-4 font-bold">
           Mero<span className="font-light text-white">Rachana</span>
@@ -31,13 +33,13 @@ const Footer = () => {
         </nav>
         <nav className="w-2/4">
           <h2 className="mb-3 text-2xl underline underline-offset-8">
-            Quick Links
+            Categories
           </h2>
           <ul>
-            <li>Home</li>
-            <li>Posts</li>
-            <li>Contact</li>
-            <li>Login</li>
+            <li>Poems</li>
+            <li>Stories</li>
+            <li>Thoughts</li>
+            <li>Book Reviews</li>
           </ul>
         </nav>
         <nav className="w-2/4">
@@ -52,8 +54,17 @@ const Footer = () => {
           </ul>
         </nav>
       </div>
-      <div className="w-full bg-gray-900 py-3">
-        <div className="w-9/12 mx-auto">Copyright © 2024 MeroRachana.</div>
+      <div className="w-full bg-gray-800 py-3">
+        <div className="w-9/12 mx-auto">
+          Copyright © 2024 MeroRachana. Designed & Developed by{" "}
+          <Link
+            to="https://cli.aeliya.com.np"
+            target="_blank"
+            className="text-primary underline"
+          >
+            Aeliyadevs
+          </Link>
+        </div>
       </div>
     </footer>
   );

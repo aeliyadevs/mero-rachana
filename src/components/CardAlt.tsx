@@ -22,7 +22,7 @@ const CardAlt: React.FC<ComponentProps> = ({ id }) => {
         src={thePost.featuredImage}
         alt=""
       />
-      <div className="flex gap-6 w-full bg-sky-400 text-white px-4 py-2">
+      <div className="flex gap-6 w-full bg-sky-500 text-white px-4 py-2">
         <p>
           <i className="fa-regular fa-heart"></i> 999k likes
         </p>
