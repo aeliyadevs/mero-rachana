@@ -85,6 +85,12 @@
       "name": "Sunita Kayastha",
       "profileImage": "../images/fox.jpg",
       "category": "admin"
+    },
+    {
+      "id": 5,
+      "name": "Santi Rai",
+      "profileImage": "../images/bird.jpg",
+      "category": "writer"
     }
   ],
   "comments": [

@@ -11,7 +11,7 @@ const Profile = () => {
     (post) => post.author === parseInt(id ? id : "0")
   );
   return (
-    <div className="w-6/12 mx-auto my-16">
+    <div className="w-7/12 mx-auto my-16">
       <div className="w-full">
         <img
           src={author?.profileImage}
