@@ -6,6 +6,7 @@ import AuthorCard from "../../components/AuthorCard";
 import { authors } from "../../data/defaultPosts.json";
 import CardAlt from "../../components/CardAlt";
 import FeaturedCardAlt from "../../components/FeaturedCardAlt";
+import PrimaryButton from "../../components/ul/PrimaryButton";
 
 const Home = () => {
   const featuredPost = getFeaturedPost();
@@ -37,11 +38,11 @@ const Home = () => {
           </Link>
         </div>
       </section> */}
-      <section className="w-9/12 mx-auto my-8 flex gap-6">
+      <section className="w-9/12 mx-auto my-16 grid grid-cols-2 gap-6">
         <FeaturedCardAlt id={2} />
         <FeaturedCardAlt id={3} />
       </section>
-      <section className="w-9/12 mx-auto my-24">
+      <section className="w-9/12 mx-auto my-16">
         <HeadingTwo heading="Popular this month" />
         <div className="grid grid-cols-3 gap-6">
           <CardAlt id={1} />
@@ -49,7 +50,7 @@ const Home = () => {
           <CardAlt id={3} />
         </div>
       </section>
-      <section className="w-9/12 mx-auto my-24">
+      <section className="w-9/12 mx-auto my-16">
         <HeadingTwo heading="Top Writers" />
         <div className="grid grid-cols-5 gap-6">
           {authors.map((author, index) => (
@@ -57,7 +58,7 @@ const Home = () => {
           ))}
         </div>
       </section>
-      <section className="w-9/12 mx-auto my-24">
+      <section className="w-9/12 mx-auto my-16">
         <HeadingTwo heading="Latest poems" />
         <div className="grid grid-cols-3 gap-6">
           <CardAlt id={1} />
@@ -65,7 +66,7 @@ const Home = () => {
           <CardAlt id={3} />
         </div>
       </section>
-      <section className="w-9/12 mx-auto my-24">
+      <section className="w-9/12 mx-auto my-16">
         <HeadingTwo heading="Latest thoughts" />
         <div className="grid grid-cols-3 gap-6">
           <CardAlt id={1} />
@@ -73,7 +74,7 @@ const Home = () => {
           <CardAlt id={3} />
         </div>
       </section>
-      <section className="w-9/12 mx-auto my-24">
+      <section className="w-9/12 mx-auto my-16">
         <HeadingTwo heading="Latest stories" />
         <div className="grid grid-cols-3 gap-6">
           <CardAlt id={1} />
@@ -81,7 +82,7 @@ const Home = () => {
           <CardAlt id={3} />
         </div>
       </section>
-      <section className="w-9/12 mx-auto my-24 gap-6">
+      <section className="w-9/12 mx-auto my-16 gap-6">
         <HeadingTwo heading="Book Reviews" />
         <div className="grid grid-cols-4 gap-6">
           <div className="bg-gray-200">
@@ -111,6 +112,23 @@ const Home = () => {
               alt=""
               className="w-full"
             />
+          </div>
+        </div>
+      </section>
+      <section className="bg-sky-500 w-full">
+        <div className="w-9/12 mx-auto p-12 text-white text-center flex flex-col items-center">
+          <h2 className="text-6xl font-bold mb-6">
+            Discover a World of Stories
+          </h2>
+          <p className="mb-6">
+            Start your literary journey today. Join thousands of readers who are
+            passionate about storytelling and creativity. <br />
+            Together, let's celebrate the power of words. Click below to get
+            started!
+          </p>
+          <div className="flex gap-6">
+            <PrimaryButton value="Join Now" />
+            <PrimaryButton value="Learn More" />
           </div>
         </div>
       </section>

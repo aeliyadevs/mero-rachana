@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
-
-const PrimaryButton = () => {
+interface ComponentProps {
+  value: string;
+}
+const PrimaryButton: React.FC<ComponentProps> = ({ value }) => {
   return (
     <Link to="/posts/3">
-      <button className="bg-amber-400 text-white px-9 py-2 rounded-full">
-        Click Me
+      <button className="bg-slate-900 text-white px-16 py-4 rounded-full">
+        {value}
       </button>
     </Link>
   );
