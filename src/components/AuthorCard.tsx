@@ -17,7 +17,7 @@ const AuthorCard: React.FC<ComponentProps> = ({ author }) => {
           <img
             src={author.profileImage}
             alt=""
-            className="w-full h-32 object-cover"
+            className="w-full h-40 object-cover"
           />
           <div className="flex flex-col items-center -mt-16">
             <img

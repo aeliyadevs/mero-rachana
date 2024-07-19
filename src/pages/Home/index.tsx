@@ -37,22 +37,23 @@ const Home = () => {
           </Link>
         </div>
       </section> */}
-      <section className="sm:w-9/12 mx-auto my-3 sm:my-16 grid md:grid-cols-2 gap-4 sm:gap-6 px-3">
+      <section className="sm:w-9/12 mx-auto my-6 sm:my-16 grid md:grid-cols-2 gap-6 px-3">
         {featuredPosts.map((featuredPost, index) => (
           <FeaturedCardAlt key={index} id={featuredPost.postId} />
         ))}
       </section>
-      <section className="sm:w-9/12 mx-auto my-3 sm:my-16 px-3">
+      <section className="sm:w-9/12 mx-auto my-16 px-3">
         <HeadingTwo heading="Popular this month" />
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
           <CardAlt id={1} />
           <CardAlt id={2} />
           <CardAlt id={3} />
+          {/* <CardAlt id={4} /> */}
         </div>
       </section>
-      <section className="w-9/12 mx-auto my-16">
+      <section className="sm:w-9/12 mx-auto my-16 px-3">
         <HeadingTwo heading="Top Writers" />
-        <div className="grid grid-cols-5 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {authors.map((author, index) => (
             <AuthorCard key={index} author={author} />
           ))}
