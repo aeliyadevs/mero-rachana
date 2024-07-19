@@ -67,25 +67,25 @@ const Home = () => {
           <CardAlt id={3} />
         </div>
       </section>
-      <section className="w-9/12 mx-auto my-16">
+      <section className="sm:w-11/12 lg:w-9/12 mx-auto my-16 px-3">
         <HeadingTwo heading="Latest thoughts" />
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
           <CardAlt id={1} />
           <CardAlt id={2} />
           <CardAlt id={3} />
         </div>
       </section>
-      <section className="w-9/12 mx-auto my-16">
+      <section className="sm:w-11/12 lg:w-9/12 mx-auto my-16 px-3">
         <HeadingTwo heading="Latest stories" />
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
           <CardAlt id={1} />
           <CardAlt id={2} />
           <CardAlt id={3} />
         </div>
       </section>
-      <section className="w-9/12 mx-auto my-16 gap-6">
+      <section className="sm:w-11/12 lg:w-9/12 mx-auto my-16 px-3">
         <HeadingTwo heading="Book Reviews" />
-        <div className="grid grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 xl:grid-cols-4 gap-6">
           <div className="bg-gray-200">
             <img
               src="https://venngage-wordpress.s3.amazonaws.com/uploads/2019/12/Digital-Marketing-Meet-Up-Event-Poster-DesignTemplate.jpg"
@@ -117,17 +117,16 @@ const Home = () => {
         </div>
       </section>
       <section className="bg-sky-500 w-full">
-        <div className="w-9/12 mx-auto p-12 text-white text-center flex flex-col items-center">
-          <h2 className="text-6xl font-bold mb-6">
-            Discover a World of Stories
+        <div className="sm:w-11/12 lg:w-9/12 mx-auto p-6 lg:p-12 text-white text-center flex flex-col items-center">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+            Discover A World Of Stories
           </h2>
           <p className="mb-6">
             Start your literary journey today. Join thousands of readers who are
-            passionate about storytelling and creativity. <br />
-            Together, let's celebrate the power of words. Click below to get
-            started!
+            passionate about storytelling and creativity. Together, let's
+            celebrate the power of words. Click below to get started!
           </p>
-          <div className="flex gap-6">
+          <div className="flex flex-col sm:flex-row gap-2">
             <PrimaryButton value="Join Now" />
             <PrimaryButton value="Learn More" />
           </div>
