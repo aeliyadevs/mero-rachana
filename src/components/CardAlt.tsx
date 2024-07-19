@@ -24,20 +24,23 @@ const CardAlt: React.FC<ComponentProps> = ({ id }) => {
       />
       <div className="flex gap-6 w-full bg-sky-500 text-white px-4 py-2">
         <p>
-          <i className="fa-regular fa-heart"></i> 999k likes
+          <i className="fa-regular fa-heart"></i> 999k{" "}
+          {/* <span className="hidden lg:block">likes</span> */}
         </p>
         <p>
-          <i className="fa-regular fa-comment"></i> 999k comments
+          <i className="fa-regular fa-comment"></i> 999k{" "}
+          {/* <span className="hidden lg:block">comments</span> */}
         </p>
         <p>
-          <i className="fa-regular fa-share-from-square"></i> 999 shares
+          <i className="fa-regular fa-share-from-square"></i> 999{" "}
+          {/* <span className="hidden lg:block">shares</span> */}
         </p>
       </div>
       <div className="p-4 pb-6">
         <Link to={"/posts/" + thePost.postId}>
           <HeadingThree heading={thePost.postTitle} />
         </Link>
-        <p className="mb-3">
+        <p className="mb-3 hidden lg:block">
           {thePost.postContent.substring(0, 100) + " ....."}
         </p>
         <Link to={"/posts/" + thePost.postId} className="text-sm text-blue-400">

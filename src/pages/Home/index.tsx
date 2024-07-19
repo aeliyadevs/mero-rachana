@@ -37,14 +37,14 @@ const Home = () => {
           </Link>
         </div>
       </section> */}
-      <section className="sm:w-9/12 mx-auto my-4 sm:my-16 grid md:grid-cols-2 gap-4 px-4 sm:gap-6">
+      <section className="sm:w-9/12 mx-auto my-3 sm:my-16 grid md:grid-cols-2 gap-4 sm:gap-6 px-3">
         {featuredPosts.map((featuredPost, index) => (
           <FeaturedCardAlt key={index} id={featuredPost.postId} />
         ))}
       </section>
-      <section className="w-9/12 mx-auto my-16">
+      <section className="sm:w-9/12 mx-auto my-3 sm:my-16 px-3">
         <HeadingTwo heading="Popular this month" />
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
           <CardAlt id={1} />
           <CardAlt id={2} />
           <CardAlt id={3} />
