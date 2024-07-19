@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { getFeaturedPost } from "../../utils/GetData";
 import HeadingTwo from "../../components/ul/HeadingTwo";
 import AuthorCard from "../../components/AuthorCard";
@@ -9,7 +8,7 @@ import FeaturedCardAlt from "../../components/FeaturedCardAlt";
 import PrimaryButton from "../../components/ul/PrimaryButton";
 
 const Home = () => {
-  const featuredPost = getFeaturedPost();
+  const featuredPosts = getFeaturedPost();
   return (
     <>
       {/* <section className="w-9/12 mx-auto my-12 rounded-md flex gap-6">
@@ -38,9 +37,10 @@ const Home = () => {
           </Link>
         </div>
       </section> */}
-      <section className="w-9/12 mx-auto my-16 grid grid-cols-2 gap-6">
-        <FeaturedCardAlt id={2} />
-        <FeaturedCardAlt id={3} />
+      <section className="sm:w-9/12 mx-auto my-4 sm:my-16 grid md:grid-cols-2 gap-4 px-4 sm:gap-6">
+        {featuredPosts.map((featuredPost, index) => (
+          <FeaturedCardAlt key={index} id={featuredPost.postId} />
+        ))}
       </section>
       <section className="w-9/12 mx-auto my-16">
         <HeadingTwo heading="Popular this month" />

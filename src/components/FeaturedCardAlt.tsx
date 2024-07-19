@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import HeadingThree from "./ul/HeadingThree";
 import { getAuthorById, getPostById } from "../utils/GetData";
 
 interface ComponentProps {
@@ -19,7 +18,7 @@ const FeaturedCardAlt: React.FC<ComponentProps> = ({ id }) => {
     <div className="rounded-lg shadow-lg shadow-slate-200 relative overflow-hidden">
       <div className="absolute h-[450px]">
         <img
-          className="w-full object-cover"
+          className="w-full h-full object-cover"
           src={thePost.featuredImage}
           alt=""
         />
@@ -33,7 +32,7 @@ const FeaturedCardAlt: React.FC<ComponentProps> = ({ id }) => {
             {thePost.postTitle}
           </h3>
         </Link>
-        <p className="mb-3">
+        <p className="mb-3 hidden lg:block">
           {thePost.postContent.substring(0, 160) + " ....."}
         </p>
         <Link to={"/posts/" + thePost.postId} className="text-sm text-blue-400">

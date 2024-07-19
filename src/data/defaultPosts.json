@@ -46,7 +46,7 @@
       "postCategory": "Uncategorized",
       "createdAt": "2024-07-09",
       "author": 2,
-      "featured": false
+      "featured": true
     },
     {
       "postId": 5,
@@ -58,7 +58,7 @@
       "postCategory": "Uncategorized",
       "createdAt": "2024-07-09",
       "author": 1,
-      "featured": false
+      "featured": true
     }
   ],
   "authors": [

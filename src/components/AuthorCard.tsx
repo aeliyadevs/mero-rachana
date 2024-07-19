@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-// import { authors } from "../data/defaultPosts.json";
 
 interface ComponentProps {
   author: {

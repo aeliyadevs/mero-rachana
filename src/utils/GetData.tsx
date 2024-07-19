@@ -14,5 +14,5 @@ export const getAuthorById = (id: number) => {
 };
 
 export const getFeaturedPost = () => {
-  return posts.find((post) => post.featured === true);
+  return posts.filter((post) => post.featured === true);
 };
