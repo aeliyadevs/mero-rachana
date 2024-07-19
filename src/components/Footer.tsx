@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="w-full bg-gray-900 text-white">
-      <div className="w-9/12 mx-auto mb-4 pt-12">
-        <p className="text-5xl text-primary mb-4 font-bold">
+      <div className="w-full sm:w-11/12 lg:w-9/12 px-3 mx-auto mb-4 pt-12">
+        <p className="text-4xl sm:text-5xl text-primary mb-2 font-bold">
           Mero<span className="font-light text-white">Rachana</span>
         </p>
         <p className="pb-4">A common platform for Nepali writers and readers</p>
       </div>
-      <div className="w-9/12 mx-auto flex mb-4 pb-12">
+      <div className="w-full sm:w-11/12 lg:w-9/12 px-3 mx-auto grid grid-cols-2 lg:grid-cols-4 gap-10 pb-12">
         <div className="contact-info w-2/4">
-          <h2 className="mb-3 text-2xl underline underline-offset-8">
+          <h2 className="text-nowrap mb-3 text-2xl underline underline-offset-8">
             Contact Info
           </h2>
           <ul>
@@ -21,7 +21,7 @@ const Footer = () => {
           </ul>
         </div>
         <nav className="w-2/4">
-          <h2 className="mb-3 text-2xl underline underline-offset-8">
+          <h2 className="text-nowrap mb-3 text-2xl underline underline-offset-8">
             Quick Links
           </h2>
           <ul>
@@ -32,7 +32,7 @@ const Footer = () => {
           </ul>
         </nav>
         <nav className="w-2/4">
-          <h2 className="mb-3 text-2xl underline underline-offset-8">
+          <h2 className="text-nowrap mb-3 text-2xl underline underline-offset-8">
             Categories
           </h2>
           <ul>
@@ -43,7 +43,7 @@ const Footer = () => {
           </ul>
         </nav>
         <nav className="w-2/4">
-          <h2 className="mb-3 text-2xl underline underline-offset-8">
+          <h2 className="text-nowrap mb-3 text-2xl underline underline-offset-8">
             Quick Links
           </h2>
           <ul>
@@ -55,8 +55,9 @@ const Footer = () => {
         </nav>
       </div>
       <div className="w-full bg-gray-800 py-3">
-        <div className="w-9/12 mx-auto">
-          Copyright © 2024 MeroRachana. Designed & Developed by{" "}
+        <div className="w-full sm:w-11/12 lg:w-9/12 px-3 mx-auto">
+          Copyright © 2024 MeroRachana. <br />
+          Designed & Developed by{" "}
           <Link
             to="https://cli.aeliya.com.np"
             target="_blank"
