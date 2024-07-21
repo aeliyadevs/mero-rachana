@@ -23,7 +23,7 @@ const Single = () => {
         src={post.featuredImage}
         alt=""
       />
-      <div className="flex justify-between items-center px-4 mb-10 border-l-4 border-lime-300">
+      <div className="flex justify-between items-center px-4 mb-10 border-l-4 border-sky-300">
         <Author authorId={post.author} />
         <Meta />
       </div>

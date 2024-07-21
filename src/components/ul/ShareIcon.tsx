@@ -5,7 +5,7 @@ interface ComponentProps {
 }
 const ShareIcon: React.FC<ComponentProps> = ({ icon }) => {
   return (
-    <div className="w-10 h-10 grid place-items-center rounded-md bg-blue-200 text-slate-900 duration-300 ease-linear hover:bg-blue-400 hover:text-slate-100">
+    <div className="w-10 h-10 grid place-items-center rounded-full bg-sky-400 text-white duration-300 ease-linear hover:bg-sky-500">
       {icon}
     </div>
   );
