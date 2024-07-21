@@ -7,6 +7,8 @@ import Posts from "./pages/Posts";
 import Single from "./templates/Single";
 import Contact from "./pages/Contact";
 import Profile from "./pages/Authors/Profile";
+import Reviews from "./pages/Reviews/Index";
+import Review from "./pages/Reviews/Review";
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +18,8 @@ function App() {
           <Route path="/posts" element={<Posts />} />
           <Route path="/posts/:id" element={<Single />} />
           <Route path="/authors/:id" element={<Profile />} />
+          <Route path="/book-reviews" element={<Reviews />} />
+          <Route path="/book-reviews/:id" element={<Review />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Route>

@@ -52,7 +52,7 @@ const Profile = () => {
       </div>
       <div className="grid grid-cols-3 gap-6">
         <div className="col-span-3">
-          <HeadingTwo heading="All posts" />
+          <HeadingTwo heading={"All posts by " + author?.name} />
         </div>
         {postsByAuthorId.map((post) => (
           <FeaturedCard id={post.postId} />

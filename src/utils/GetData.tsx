@@ -1,4 +1,9 @@
-import { posts, authors, comments } from "../data/defaultPosts.json";
+import {
+  posts,
+  authors,
+  comments,
+  bookReviews,
+} from "../data/defaultPosts.json";
 
 export const GetPostComments = (postId: number) => {
   let postComments = comments.filter((comment) => comment.postId === postId);
@@ -15,4 +20,8 @@ export const getAuthorById = (id: number) => {
 
 export const getFeaturedPost = () => {
   return posts.filter((post) => post.featured === true);
+};
+
+export const getBookReviewById = (id: number) => {
+  return bookReviews.find((review) => review.id === id);
 };
