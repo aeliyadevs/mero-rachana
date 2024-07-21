@@ -1,7 +1,7 @@
 import { getFeaturedPost } from "../../utils/GetData";
 import HeadingTwo from "../../components/ul/HeadingTwo";
 import AuthorCard from "../../components/AuthorCard";
-import { authors } from "../../data/defaultPosts.json";
+import { authors, bookReviews } from "../../data/defaultPosts.json";
 import CardAlt from "../../components/CardAlt";
 import FeaturedCardAlt from "../../components/FeaturedCardAlt";
 import PrimaryButton from "../../components/ul/PrimaryButton";
@@ -23,7 +23,32 @@ const Home = () => {
           slidesToShow: 1,
           slidesToScroll: 1,
           infinite: true,
-          bots: true,
+        },
+      },
+    ],
+  };
+  var reviewSliderOptions = {
+    dots: false,
+    Infinite: true,
+    autoplay: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          infinite: true,
         },
       },
     ],
@@ -56,7 +81,7 @@ const Home = () => {
           </Link>
         </div>
       </section> */}
-      <section className="sm:w-11/12 lg:w-9/12 m-4 sm:mx-auto rounded-lg overflow-hidden">
+      <section className="sm:w-11/12 lg:w-9/12 m-4 sm:mx-auto">
         <Slider {...settings}>
           {featuredPosts.map((featuredPost, index) => (
             <FeaturedCardAlt key={index} id={featuredPost.postId} />
@@ -106,35 +131,18 @@ const Home = () => {
       </section>
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Book Reviews" />
-        <div className="grid grid-cols-2 xl:grid-cols-4 gap-6">
-          <div className="rounded-md overflow-hidden">
-            <img
-              src="https://venngage-wordpress.s3.amazonaws.com/uploads/2019/12/Digital-Marketing-Meet-Up-Event-Poster-DesignTemplate.jpg"
-              alt=""
-              className="w-full"
-            />
-          </div>
-          <div className="rounded-md overflow-hidden">
-            <img
-              src="https://venngage-wordpress.s3.amazonaws.com/uploads/2019/12/Digital-Marketing-Meet-Up-Event-Poster-DesignTemplate.jpg"
-              alt=""
-              className="w-full"
-            />
-          </div>
-          <div className="rounded-md overflow-hidden">
-            <img
-              src="https://venngage-wordpress.s3.amazonaws.com/uploads/2019/12/Digital-Marketing-Meet-Up-Event-Poster-DesignTemplate.jpg"
-              alt=""
-              className="w-full"
-            />
-          </div>
-          <div className="rounded-md overflow-hidden">
-            <img
-              src="https://venngage-wordpress.s3.amazonaws.com/uploads/2019/12/Digital-Marketing-Meet-Up-Event-Poster-DesignTemplate.jpg"
-              alt=""
-              className="w-full"
-            />
-          </div>
+        <div className="">
+          <Slider {...reviewSliderOptions}>
+            {bookReviews.map((book, index) => (
+              <div key={index} className="rounded-md overflow-hidden">
+                <img
+                  src={book.bookCover}
+                  alt={book.bookName}
+                  className="h-[380px] mx-auto sm:h-[450px] object-contain"
+                />
+              </div>
+            ))}
+          </Slider>
         </div>
       </section>
       <section className="bg-sky-500 w-full">

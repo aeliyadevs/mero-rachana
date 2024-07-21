@@ -56,8 +56,7 @@ const Footer = () => {
       </div>
       <div className="w-full bg-gray-800 py-3">
         <div className="w-full sm:w-11/12 lg:w-9/12 px-3 mx-auto">
-          Copyright © 2024 MeroRachana. <br />
-          Designed & Developed by{" "}
+          Copyright © 2024 MeroRachana. Designed & Developed by{" "}
           <Link
             to="https://cli.aeliya.com.np"
             target="_blank"

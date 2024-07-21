@@ -15,7 +15,7 @@ const FeaturedCardAlt: React.FC<ComponentProps> = ({ id }) => {
     return <>Missing post</>;
   }
   return (
-    <div className="h-[450px] sm:h-[600px] relative overflow-hidden">
+    <div className="h-[450px] sm:h-[600px] relative rounded-md overflow-hidden">
       <div className="w-full h-full absolute">
         <img
           className="w-full h-full object-cover"

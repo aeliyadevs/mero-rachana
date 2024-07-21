@@ -112,5 +112,39 @@
       "commentedOn": "Fri, 09-07-2024",
       "profile": "../images/bird.jpg"
     }
+  ],
+  "bookReviews": [
+    {
+      "id": 1,
+      "bookName": "Maha ko Ma",
+      "author": "Madan Krishna Shrestha",
+      "publishedYear": "November 12, 2019",
+      "bookCover": "../images/book-reviews/maha-ko-ma.png",
+      "review": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio."
+    },
+    {
+      "id": 2,
+      "bookName": "Munamadan",
+      "author": "Laxmi Prasad Devkota",
+      "publishedYear": "November 12, 2019",
+      "bookCover": "../images/book-reviews/munamadan.png",
+      "review": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio."
+    },
+    {
+      "id": 3,
+      "bookName": "Mahabir Pun",
+      "author": "Mahabir Pun",
+      "publishedYear": "November 12, 2019",
+      "bookCover": "../images/book-reviews/mahabir-pun.jpg",
+      "review": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio."
+    },
+    {
+      "id": 4,
+      "bookName": "Jeevan Kanda Ki Phul",
+      "author": "Jhamak Ghimire",
+      "publishedYear": "November 12, 2019",
+      "bookCover": "../images/book-reviews/jeevan-kanda-ki-phul.jpg",
+      "review": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio."
+    }
   ]
 }
