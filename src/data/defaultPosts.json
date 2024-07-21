@@ -7,7 +7,7 @@
       "postContent": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
       "featuredImage": "../images/fox.jpg",
       "isPublished": true,
-      "postCategory": "Uncategorized",
+      "postCategory": "poem",
       "createdAt": "2024-07-09",
       "author": 1,
       "featured": false
@@ -19,7 +19,7 @@
       "postContent": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
       "featuredImage": "../images/tiger.jpg",
       "isPublished": true,
-      "postCategory": "Uncategorized",
+      "postCategory": "thought",
       "createdAt": "2024-07-09",
       "author": 2,
       "featured": true
@@ -31,10 +31,10 @@
       "postContent": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
       "featuredImage": "../images/leopard.jpg",
       "isPublished": true,
-      "postCategory": "Blog",
+      "postCategory": "story",
       "createdAt": "2024-07-09",
       "author": 1,
-      "featured": true
+      "featured": false
     },
     {
       "postId": 4,
@@ -43,7 +43,7 @@
       "postContent": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
       "featuredImage": "../images/bird.jpg",
       "isPublished": true,
-      "postCategory": "Uncategorized",
+      "postCategory": "uncategorized",
       "createdAt": "2024-07-09",
       "author": 2,
       "featured": true
@@ -55,10 +55,94 @@
       "postContent": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
       "featuredImage": "../images/fox.jpg",
       "isPublished": true,
-      "postCategory": "Uncategorized",
+      "postCategory": "poem",
+      "createdAt": "2024-07-09",
+      "author": 1,
+      "featured": false
+    },
+    {
+      "postId": 6,
+      "postTitle": "What's on your mind? Write it down and share it now!",
+      "postSlug": "another-test-post-for-you",
+      "postContent": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
+      "featuredImage": "../images/tiger.jpg",
+      "isPublished": true,
+      "postCategory": "thought",
+      "createdAt": "2024-07-09",
+      "author": 2,
+      "featured": false
+    },
+    {
+      "postId": 7,
+      "postTitle": "A platform for all the nepali readers and writers",
+      "postSlug": "this-is-a-test-post",
+      "postContent": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
+      "featuredImage": "../images/leopard.jpg",
+      "isPublished": true,
+      "postCategory": "story",
       "createdAt": "2024-07-09",
       "author": 1,
       "featured": true
+    },
+    {
+      "postId": 8,
+      "postTitle": "Merorachana - your way of sharing your creation",
+      "postSlug": "another-test-post-for-you",
+      "postContent": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
+      "featuredImage": "../images/bird.jpg",
+      "isPublished": true,
+      "postCategory": "uncategorized",
+      "createdAt": "2024-07-09",
+      "author": 2,
+      "featured": false
+    },
+    {
+      "postId": 9,
+      "postTitle": "Lorem ipsum dolor sit amet consec tetur adi pisicing elit.",
+      "postSlug": "this-is-a-test-post",
+      "postContent": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
+      "featuredImage": "../images/fox.jpg",
+      "isPublished": true,
+      "postCategory": "poem",
+      "createdAt": "2024-07-09",
+      "author": 1,
+      "featured": false
+    },
+    {
+      "postId": 10,
+      "postTitle": "What's on your mind? Write it down and share it now!",
+      "postSlug": "another-test-post-for-you",
+      "postContent": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
+      "featuredImage": "../images/tiger.jpg",
+      "isPublished": true,
+      "postCategory": "thought",
+      "createdAt": "2024-07-09",
+      "author": 2,
+      "featured": false
+    },
+    {
+      "postId": 11,
+      "postTitle": "A platform for all the nepali readers and writers",
+      "postSlug": "this-is-a-test-post",
+      "postContent": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
+      "featuredImage": "../images/leopard.jpg",
+      "isPublished": true,
+      "postCategory": "story",
+      "createdAt": "2024-07-09",
+      "author": 1,
+      "featured": false
+    },
+    {
+      "postId": 12,
+      "postTitle": "Merorachana - your way of sharing your creation",
+      "postSlug": "another-test-post-for-you",
+      "postContent": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
+      "featuredImage": "../images/bird.jpg",
+      "isPublished": true,
+      "postCategory": "uncategorized",
+      "createdAt": "2024-07-09",
+      "author": 2,
+      "featured": false
     }
   ],
   "authors": [

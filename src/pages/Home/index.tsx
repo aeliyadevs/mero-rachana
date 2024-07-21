@@ -1,7 +1,8 @@
 import {
   getFeaturedPost,
   getLatestBookReviews,
-  GetLatestPosts,
+  getLatestPosts,
+  getPostsByCategory,
 } from "../../utils/GetData";
 import HeadingTwo from "../../components/ul/HeadingTwo";
 import AuthorCard from "../../components/AuthorCard";
@@ -14,7 +15,10 @@ import BookReviewCard from "../../components/BookReviewCard";
 
 const Home = () => {
   const featuredPosts = getFeaturedPost();
-  const latestPosts = GetLatestPosts(3);
+  const latestPosts = getLatestPosts(3);
+  const stories = getPostsByCategory("story");
+  const poems = getPostsByCategory("poem");
+  const thoughts = getPostsByCategory("thought");
   const latestReviews = getLatestBookReviews(4);
   var settings = {
     dots: false,
@@ -114,24 +118,24 @@ const Home = () => {
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Latest poems" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          {latestPosts.map((post, index) => (
-            <CardAlt key={index} id={post.postId} />
+          {poems.map((poem, index) => (
+            <CardAlt key={index} id={poem.postId} />
           ))}
         </div>
       </section>
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Latest thoughts" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          {latestPosts.map((post, index) => (
-            <CardAlt key={index} id={post.postId} />
+          {thoughts.map((thought, index) => (
+            <CardAlt key={index} id={thought.postId} />
           ))}
         </div>
       </section>
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Latest stories" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          {latestPosts.map((post, index) => (
-            <CardAlt key={index} id={post.postId} />
+          {stories.map((story, index) => (
+            <CardAlt key={index} id={story.postId} />
           ))}
         </div>
       </section>

@@ -10,11 +10,16 @@ export const GetPostComments = (postId: number) => {
   return postComments;
 };
 
-export const GetLatestPosts = (count: number) => {
+export const getLatestPosts = (count: number) => {
   return posts.slice(-count);
 };
+
 export const getPostById = (postId: number) => {
   return posts.find((post) => post.postId === postId);
+};
+
+export const getPostsByCategory = (category: string) => {
+  return posts.filter((post) => post.postCategory === category);
 };
 
 export const getAuthorById = (id: number) => {
