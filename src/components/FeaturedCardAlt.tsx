@@ -22,11 +22,11 @@ const FeaturedCardAlt: React.FC<ComponentProps> = ({ id }) => {
           src={thePost.featuredImage}
           alt=""
         />
-      </div>
-      <div className="w-full h-full p-8 relative bg-gradient-to-b from-transparent to-black text-white flex flex-col justify-end">
-        <div className="w-max bg-sky-600 mb-2 px-4 py-1 absolute top-16 -left-11 -rotate-90">
+        <div className="w-max text-white bg-sky-600 mb-2 px-8 py-1 fixed top-3">
           <i className="fa-regular fa-star"></i> Featured
         </div>
+      </div>
+      <div className="w-full h-full p-8 relative bg-gradient-to-b from-transparent to-black text-white flex flex-col justify-end translate-y-2 hover:translate-y-0 duration-500">
         <Link to={"/posts/" + thePost.postId}>
           <h3 className="text-4xl font-bold text-white mb-4">
             {thePost.postTitle}

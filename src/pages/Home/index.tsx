@@ -6,6 +6,7 @@ import CardAlt from "../../components/CardAlt";
 import FeaturedCardAlt from "../../components/FeaturedCardAlt";
 import PrimaryButton from "../../components/ul/PrimaryButton";
 import Slider from "react-slick";
+import BookReviewCard from "../../components/BookReviewCard";
 
 const Home = () => {
   const featuredPosts = getFeaturedPost();
@@ -134,13 +135,7 @@ const Home = () => {
         <div className="">
           <Slider {...reviewSliderOptions}>
             {bookReviews.map((book, index) => (
-              <div key={index} className="rounded-md overflow-hidden">
-                <img
-                  src={book.bookCover}
-                  alt={book.bookName}
-                  className="h-[380px] mx-auto sm:h-[450px] object-contain"
-                />
-              </div>
+              <BookReviewCard key={index} book={book} />
             ))}
           </Slider>
         </div>
