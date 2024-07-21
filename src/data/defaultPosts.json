@@ -121,7 +121,7 @@
       "publishedYear": 2019,
       "bookCover": "../images/book-reviews/maha-ko-ma.png",
       "review": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
-      "rating": 1
+      "rating": 3
     },
     {
       "id": 2,
@@ -130,7 +130,7 @@
       "publishedYear": 2019,
       "bookCover": "../images/book-reviews/munamadan.png",
       "review": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illum repellendus sapiente nam tempore? Aperiam quidem id esse quaerat. Reiciendis voluptatibus, laborum doloribus alias quidem aperiam itaque nihil, dolore hic quisquam facilis voluptas exerci tationem optio.",
-      "rating": 2
+      "rating": 4
     },
     {
       "id": 3,

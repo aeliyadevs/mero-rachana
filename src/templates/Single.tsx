@@ -17,7 +17,7 @@ const Single = () => {
   }
 
   return (
-    <article className="w-6/12 mx-auto mt-10 mb-20 flex flex-col">
+    <article className="w-6/12 mx-auto my-16 flex flex-col">
       <img
         className="rounded-md h-[500px] object-cover mb-6"
         src={post.featuredImage}

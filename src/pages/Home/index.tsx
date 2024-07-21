@@ -131,7 +131,7 @@ const Home = () => {
         </div>
       </section>
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
-        <HeadingTwo heading="Book Reviews" />
+        <HeadingTwo heading="Latest Book Reviews" />
         <div className="">
           <Slider {...reviewSliderOptions}>
             {bookReviews.map((book, index) => (

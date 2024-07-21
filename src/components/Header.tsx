@@ -23,6 +23,7 @@ const Header = () => {
           <ul className="flex gap-8">
             <Link to="/">Home</Link>
             <Link to="/posts">Posts</Link>
+            <Link to="/book-reviews">Book Reviews</Link>
             <Link to="/contact">Contact</Link>
           </ul>
         </nav>
@@ -59,6 +60,13 @@ const Header = () => {
                   className="flex gap-4 items-center py-3 border-b-[1px] border-b-slate-500/50"
                 >
                   <i className="fa-solid fa-arrow-right-long text-sm"></i> Posts
+                </Link>
+                <Link
+                  to="/book-reviews"
+                  className="flex gap-4 items-center py-3 border-b-[1px] border-b-slate-500/50"
+                >
+                  <i className="fa-solid fa-arrow-right-long text-sm"></i> Book
+                  Reviews
                 </Link>
                 <Link
                   to="/categories"
