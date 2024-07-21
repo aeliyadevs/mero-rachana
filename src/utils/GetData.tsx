@@ -10,6 +10,9 @@ export const GetPostComments = (postId: number) => {
   return postComments;
 };
 
+export const GetLatestPosts = (count: number) => {
+  return posts.slice(-count);
+};
 export const getPostById = (postId: number) => {
   return posts.find((post) => post.postId === postId);
 };
@@ -22,6 +25,9 @@ export const getFeaturedPost = () => {
   return posts.filter((post) => post.featured === true);
 };
 
+export const getLatestBookReviews = (count: number) => {
+  return bookReviews.slice(-count);
+};
 export const getBookReviewById = (id: number) => {
   return bookReviews.find((review) => review.id === id);
 };

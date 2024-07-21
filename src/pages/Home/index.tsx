@@ -1,7 +1,11 @@
-import { getFeaturedPost } from "../../utils/GetData";
+import {
+  getFeaturedPost,
+  getLatestBookReviews,
+  GetLatestPosts,
+} from "../../utils/GetData";
 import HeadingTwo from "../../components/ul/HeadingTwo";
 import AuthorCard from "../../components/AuthorCard";
-import { authors, bookReviews } from "../../data/defaultPosts.json";
+import { authors } from "../../data/defaultPosts.json";
 import CardAlt from "../../components/CardAlt";
 import FeaturedCardAlt from "../../components/FeaturedCardAlt";
 import PrimaryButton from "../../components/ul/PrimaryButton";
@@ -10,6 +14,8 @@ import BookReviewCard from "../../components/BookReviewCard";
 
 const Home = () => {
   const featuredPosts = getFeaturedPost();
+  const latestPosts = GetLatestPosts(3);
+  const latestReviews = getLatestBookReviews(4);
   var settings = {
     dots: false,
     infinite: true,
@@ -92,10 +98,9 @@ const Home = () => {
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Popular this month" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          <CardAlt id={1} />
-          <CardAlt id={2} />
-          <CardAlt id={3} />
-          {/* <CardAlt id={4} /> */}
+          {latestPosts.map((post, index) => (
+            <CardAlt key={index} id={post.postId} />
+          ))}
         </div>
       </section>
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
@@ -109,34 +114,35 @@ const Home = () => {
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Latest poems" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          <CardAlt id={1} />
-          <CardAlt id={2} />
-          <CardAlt id={3} />
+          {latestPosts.map((post, index) => (
+            <CardAlt key={index} id={post.postId} />
+          ))}
         </div>
       </section>
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Latest thoughts" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          <CardAlt id={1} />
-          <CardAlt id={2} />
-          <CardAlt id={3} />
+          {latestPosts.map((post, index) => (
+            <CardAlt key={index} id={post.postId} />
+          ))}
         </div>
       </section>
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Latest stories" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          <CardAlt id={1} />
-          <CardAlt id={2} />
-          <CardAlt id={3} />
+          {latestPosts.map((post, index) => (
+            <CardAlt key={index} id={post.postId} />
+          ))}
         </div>
       </section>
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Latest Book Reviews" />
         <div className="">
           <Slider {...reviewSliderOptions}>
-            {bookReviews.map((book, index) => (
-              <BookReviewCard key={index} book={book} />
-            ))}
+            {latestReviews &&
+              latestReviews.map((review, index) => (
+                <BookReviewCard key={index} book={review} />
+              ))}
           </Slider>
         </div>
       </section>
