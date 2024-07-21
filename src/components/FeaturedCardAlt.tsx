@@ -15,15 +15,15 @@ const FeaturedCardAlt: React.FC<ComponentProps> = ({ id }) => {
     return <>Missing post</>;
   }
   return (
-    <div className="rounded-lg shadow-lg shadow-slate-200 relative overflow-hidden">
-      <div className="absolute h-[450px]">
+    <div className="h-[450px] sm:h-[600px] relative overflow-hidden">
+      <div className="w-full h-full absolute">
         <img
           className="w-full h-full object-cover"
           src={thePost.featuredImage}
           alt=""
         />
       </div>
-      <div className="w-full h-[450px] p-8 relative bg-gradient-to-b from-transparent to-black text-white flex flex-col justify-end">
+      <div className="w-full h-full p-8 relative bg-gradient-to-b from-transparent to-black text-white flex flex-col justify-end">
         <div className="w-max bg-sky-600 mb-2 px-4 py-1 absolute top-16 -left-11 -rotate-90">
           <i className="fa-regular fa-star"></i> Featured
         </div>

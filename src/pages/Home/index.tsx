@@ -1,14 +1,33 @@
 import { getFeaturedPost } from "../../utils/GetData";
 import HeadingTwo from "../../components/ul/HeadingTwo";
 import AuthorCard from "../../components/AuthorCard";
-
 import { authors } from "../../data/defaultPosts.json";
 import CardAlt from "../../components/CardAlt";
 import FeaturedCardAlt from "../../components/FeaturedCardAlt";
 import PrimaryButton from "../../components/ul/PrimaryButton";
+import Slider from "react-slick";
 
 const Home = () => {
   const featuredPosts = getFeaturedPost();
+  var settings = {
+    dots: false,
+    infinite: true,
+    autoplay: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          bots: true,
+        },
+      },
+    ],
+  };
   return (
     <>
       {/* <section className="w-9/12 mx-auto my-12 rounded-md flex gap-6">
@@ -37,12 +56,14 @@ const Home = () => {
           </Link>
         </div>
       </section> */}
-      <section className="sm:w-11/12 lg:w-9/12 mx-auto my-6 sm:my-16 grid md:grid-cols-2 gap-6 px-3">
-        {featuredPosts.map((featuredPost, index) => (
-          <FeaturedCardAlt key={index} id={featuredPost.postId} />
-        ))}
+      <section className="sm:w-11/12 lg:w-9/12 m-4 sm:mx-auto rounded-lg overflow-hidden">
+        <Slider {...settings}>
+          {featuredPosts.map((featuredPost, index) => (
+            <FeaturedCardAlt key={index} id={featuredPost.postId} />
+          ))}
+        </Slider>
       </section>
-      <section className="sm:w-11/12 lg:w-9/12 mx-auto my-16 px-3">
+      <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Popular this month" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
           <CardAlt id={1} />
@@ -51,15 +72,15 @@ const Home = () => {
           {/* <CardAlt id={4} /> */}
         </div>
       </section>
-      <section className="sm:w-11/12 lg:w-9/12 mx-auto my-16 px-3">
+      <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Top Writers" />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {authors.map((author, index) => (
             <AuthorCard key={index} author={author} />
           ))}
         </div>
       </section>
-      <section className="sm:w-11/12 lg:w-9/12 mx-auto my-16 px-3">
+      <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Latest poems" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
           <CardAlt id={1} />
@@ -67,7 +88,7 @@ const Home = () => {
           <CardAlt id={3} />
         </div>
       </section>
-      <section className="sm:w-11/12 lg:w-9/12 mx-auto my-16 px-3">
+      <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Latest thoughts" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
           <CardAlt id={1} />
@@ -75,7 +96,7 @@ const Home = () => {
           <CardAlt id={3} />
         </div>
       </section>
-      <section className="sm:w-11/12 lg:w-9/12 mx-auto my-16 px-3">
+      <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Latest stories" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
           <CardAlt id={1} />
@@ -83,31 +104,31 @@ const Home = () => {
           <CardAlt id={3} />
         </div>
       </section>
-      <section className="sm:w-11/12 lg:w-9/12 mx-auto my-16 px-3">
+      <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Book Reviews" />
         <div className="grid grid-cols-2 xl:grid-cols-4 gap-6">
-          <div className="bg-gray-200">
+          <div className="rounded-md overflow-hidden">
             <img
               src="https://venngage-wordpress.s3.amazonaws.com/uploads/2019/12/Digital-Marketing-Meet-Up-Event-Poster-DesignTemplate.jpg"
               alt=""
               className="w-full"
             />
           </div>
-          <div className="bg-gray-200">
+          <div className="rounded-md overflow-hidden">
             <img
               src="https://venngage-wordpress.s3.amazonaws.com/uploads/2019/12/Digital-Marketing-Meet-Up-Event-Poster-DesignTemplate.jpg"
               alt=""
               className="w-full"
             />
           </div>
-          <div className="bg-gray-200">
+          <div className="rounded-md overflow-hidden">
             <img
               src="https://venngage-wordpress.s3.amazonaws.com/uploads/2019/12/Digital-Marketing-Meet-Up-Event-Poster-DesignTemplate.jpg"
               alt=""
               className="w-full"
             />
           </div>
-          <div className="bg-gray-200">
+          <div className="rounded-md overflow-hidden">
             <img
               src="https://venngage-wordpress.s3.amazonaws.com/uploads/2019/12/Digital-Marketing-Meet-Up-Event-Poster-DesignTemplate.jpg"
               alt=""
@@ -117,7 +138,7 @@ const Home = () => {
         </div>
       </section>
       <section className="bg-sky-500 w-full">
-        <div className="sm:w-11/12 lg:w-9/12 mx-auto p-6 lg:p-12 text-white text-center flex flex-col items-center">
+        <div className="sm:w-11/12 lg:w-7/12 mx-4 sm:mx-auto p-6 lg:p-12 text-white text-center flex flex-col items-center">
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
             Discover A World Of Stories
           </h2>

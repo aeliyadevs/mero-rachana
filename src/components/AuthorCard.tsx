@@ -17,13 +17,13 @@ const AuthorCard: React.FC<ComponentProps> = ({ author }) => {
           <img
             src={author.profileImage}
             alt=""
-            className="w-full h-40 object-cover"
+            className="w-full h-24 sm:h-40 object-cover"
           />
-          <div className="flex flex-col items-center -mt-16">
+          <div className="flex flex-col items-center -mt-10 sm:-mt-16">
             <img
               src={author.profileImage}
               alt={author.name}
-              className="w-28 h-28 object-cover rounded-full border-4 border-sky-400"
+              className="w-20 sm:w-28 h-20 sm:h-28 object-cover rounded-full border-4 border-sky-400"
             />
             <h3 className="font-bold text-lg">{author.name}</h3>
             <p>{author.category}</p>
