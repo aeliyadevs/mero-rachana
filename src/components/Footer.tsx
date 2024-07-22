@@ -2,16 +2,17 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-gray-900 text-white">
+    <footer className="w-full bg-white text-slate-900">
       <div className="w-full sm:w-11/12 lg:w-9/12 px-3 mx-auto mb-4 pt-12">
         <p className="text-4xl sm:text-5xl text-primary mb-2 font-bold">
-          Mero<span className="font-light text-white">Rachana</span>
+          {/* Mero<span className="font-light text-white">Rachana</span> */}
+          <img src="logo.png" alt="Mero-rachana logo" className="w-64" />
         </p>
         <p className="pb-4">A common platform for Nepali writers and readers</p>
       </div>
       <div className="w-full sm:w-11/12 lg:w-9/12 px-3 mx-auto grid grid-cols-2 lg:grid-cols-4 gap-10 pb-12">
         <div className="contact-info w-2/4">
-          <h2 className="text-nowrap mb-3 text-2xl underline underline-offset-8">
+          <h2 className="text-nowrap text-blue-900 font-semibold mb-3 text-2xl underline underline-offset-8">
             Contact Info
           </h2>
           <ul>
@@ -21,7 +22,7 @@ const Footer = () => {
           </ul>
         </div>
         <nav className="w-2/4">
-          <h2 className="text-nowrap mb-3 text-2xl underline underline-offset-8">
+          <h2 className="text-nowrap text-blue-900 font-semibold mb-3 text-2xl underline underline-offset-8">
             Quick Links
           </h2>
           <ul>
@@ -32,7 +33,7 @@ const Footer = () => {
           </ul>
         </nav>
         <nav className="w-2/4">
-          <h2 className="text-nowrap mb-3 text-2xl underline underline-offset-8">
+          <h2 className="text-nowrap text-blue-900 font-semibold mb-3 text-2xl underline underline-offset-8">
             Categories
           </h2>
           <ul>
@@ -43,7 +44,7 @@ const Footer = () => {
           </ul>
         </nav>
         <nav className="w-2/4">
-          <h2 className="text-nowrap mb-3 text-2xl underline underline-offset-8">
+          <h2 className="text-nowrap text-blue-900 font-semibold mb-3 text-2xl underline underline-offset-8">
             Quick Links
           </h2>
           <ul>
@@ -54,7 +55,7 @@ const Footer = () => {
           </ul>
         </nav>
       </div>
-      <div className="w-full bg-gray-800 py-3">
+      <div className="w-full bg-blue-900 text-white py-3">
         <div className="w-full sm:w-11/12 lg:w-9/12 px-3 mx-auto">
           Copyright © 2024 MeroRachana. Designed & Developed by{" "}
           <Link
