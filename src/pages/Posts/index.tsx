@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import CardAlt from "../../components/CardAlt";
-import HeadingTwo from "../../components/ul/HeadingTwo";
+import HeadingTwo from "../../components/ui/HeadingTwo";
 import { posts } from "../../data/defaultPosts.json";
 import { getPostsByCategory } from "../../utils/GetData";
 
@@ -8,9 +8,9 @@ interface Posts {
   postId: number;
 }
 const Posts = () => {
-  let [category, setCategory] = useState<string>("");
+  let [category, setCategory] = useState<number>(0);
   const [postsToShow, setPostsToShow] = useState<Array<Posts>>([]);
-  const getPosts = (cat: string) => {
+  const getPosts = (cat: number) => {
     setPostsToShow(getPostsByCategory(cat));
   };
 
@@ -27,10 +27,10 @@ const Posts = () => {
       <HeadingTwo heading={"All Posts"} />
       <div className="flex gap-3 flex-wrap mb-3">
         <button
-          onClick={() => setCategory("")}
+          onClick={() => setCategory(0)}
           className={
             "rounded-full border-[1px] border-sky-500 px-6 py-1 " +
-            (category === ""
+            (category === 0
               ? "bg-sky-500 text-white"
               : "bg-transparent text-sky-500")
           }
@@ -38,10 +38,10 @@ const Posts = () => {
           All
         </button>
         <button
-          onClick={() => setCategory("poem")}
+          onClick={() => setCategory(1)}
           className={
             "rounded-full border-[1px] border-sky-500 px-6 py-1 " +
-            (category === "poem"
+            (category === 1
               ? "bg-sky-500 text-white"
               : "bg-transparent text-sky-500")
           }
@@ -49,21 +49,10 @@ const Posts = () => {
           Poems
         </button>
         <button
-          onClick={() => setCategory("thought")}
+          onClick={() => setCategory(2)}
           className={
             "rounded-full border-[1px] border-sky-500 px-6 py-1 " +
-            (category === "thought"
-              ? "bg-sky-500 text-white"
-              : "bg-transparent text-sky-500")
-          }
-        >
-          Thoughts
-        </button>
-        <button
-          onClick={() => setCategory("story")}
-          className={
-            "rounded-full border-[1px] border-sky-500 px-6 py-1 " +
-            (category === "story"
+            (category === 2
               ? "bg-sky-500 text-white"
               : "bg-transparent text-sky-500")
           }
@@ -71,10 +60,21 @@ const Posts = () => {
           Stories
         </button>
         <button
-          onClick={() => setCategory("uncategorized")}
+          onClick={() => setCategory(3)}
           className={
             "rounded-full border-[1px] border-sky-500 px-6 py-1 " +
-            (category === "uncategorized"
+            (category === 3
+              ? "bg-sky-500 text-white"
+              : "bg-transparent text-sky-500")
+          }
+        >
+          Thoughts
+        </button>
+        <button
+          onClick={() => setCategory(4)}
+          className={
+            "rounded-full border-[1px] border-sky-500 px-6 py-1 " +
+            (category === 4
               ? "bg-sky-500 text-white"
               : "bg-transparent text-sky-500")
           }

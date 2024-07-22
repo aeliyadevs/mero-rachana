@@ -22,7 +22,7 @@ const FeaturedCardAlt: React.FC<ComponentProps> = ({ id }) => {
           src={thePost.featuredImage}
           alt=""
         />
-        <div className="w-max text-white bg-sky-600 mb-2 px-8 py-1 fixed top-3">
+        <div className="w-max text-white bg-sky-600 mb-2 px-8 py-1 rounded-br-md fixed top-0">
           <i className="fa-regular fa-star"></i> Featured
         </div>
       </div>

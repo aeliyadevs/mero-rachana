@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-import HeadingThree from "./ul/HeadingThree";
-import { getAuthorById, getPostById } from "../utils/GetData";
+import HeadingThree from "./ui/HeadingThree";
+import { getAuthorById, getCategoryName, getPostById } from "../utils/GetData";
 
 interface ComponentProps {
   id: number;
 }
 const CardAlt: React.FC<ComponentProps> = ({ id }) => {
   const thePost = getPostById(id);
-  let theAuthor = undefined;
+  let theAuthor = {} || undefined;
   if (thePost) {
     theAuthor = getAuthorById(thePost.author);
   }
@@ -16,12 +16,15 @@ const CardAlt: React.FC<ComponentProps> = ({ id }) => {
     return <>Missing post</>;
   }
   return (
-    <div className="rounded-md overflow-hidden border-b-2 border-b-sky-400 shadow-lg shadow-slate-200">
+    <div className="rounded-md overflow-hidden relative border-b-2 border-b-sky-400 shadow-lg shadow-slate-200">
       <img
         className="w-full h-60 object-cover"
         src={thePost.featuredImage}
         alt=""
       />
+      <p className="capitalize bg-sky-500 text-white absolute rounded-br-md top-0 px-4 py-1">
+        {getCategoryName(thePost.category)}
+      </p>
       <div className="flex gap-6 w-full bg-sky-500 text-white px-4 py-2">
         <p>
           <i className="fa-regular fa-heart"></i> 999k{" "}

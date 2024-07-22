@@ -4,21 +4,21 @@ import {
   getLatestPosts,
   getPostsByCategory,
 } from "../../utils/GetData";
-import HeadingTwo from "../../components/ul/HeadingTwo";
+import HeadingTwo from "../../components/ui/HeadingTwo";
 import AuthorCard from "../../components/AuthorCard";
 import { authors } from "../../data/defaultPosts.json";
 import CardAlt from "../../components/CardAlt";
 import FeaturedCardAlt from "../../components/FeaturedCardAlt";
-import PrimaryButton from "../../components/ul/PrimaryButton";
+import PrimaryButton from "../../components/ui/PrimaryButton";
 import Slider from "react-slick";
 import BookReviewCard from "../../components/BookReviewCard";
 
 const Home = () => {
   const featuredPosts = getFeaturedPost();
   const latestPosts = getLatestPosts(3);
-  const stories = getPostsByCategory("story");
-  const poems = getPostsByCategory("poem");
-  const thoughts = getPostsByCategory("thought");
+  const poems = getPostsByCategory(1);
+  const stories = getPostsByCategory(2);
+  const thoughts = getPostsByCategory(3);
   const latestReviews = getLatestBookReviews(4);
   var settings = {
     dots: false,

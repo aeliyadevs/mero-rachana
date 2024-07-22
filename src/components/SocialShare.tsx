@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import ShareIcon from "./ul/ShareIcon";
+import ShareIcon from "./ui/ShareIcon";
 
 const SocialShare = () => {
   const link = "http://localhost:5173" + useLocation().pathname;

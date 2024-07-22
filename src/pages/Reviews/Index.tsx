@@ -1,5 +1,5 @@
 import BookReviewCard from "../../components/BookReviewCard";
-import HeadingOne from "../../components/ul/HeadingOne";
+import HeadingOne from "../../components/ui/HeadingOne";
 import { bookReviews } from "../../data/defaultPosts.json";
 
 const Reviews = () => {

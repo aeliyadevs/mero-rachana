@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import HeadingThree from "./ul/HeadingThree";
+import HeadingThree from "./ui/HeadingThree";
 import { getAuthorById, getPostById } from "../utils/GetData";
 
 interface ComponentProps {

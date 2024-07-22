@@ -1,4 +1,4 @@
-import HeadingThree from "./ul/HeadingThree";
+import HeadingThree from "./ui/HeadingThree";
 import { GetPostComments } from "../utils/GetData";
 
 interface ComponentProps {

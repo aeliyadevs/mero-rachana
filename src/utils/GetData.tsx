@@ -1,5 +1,6 @@
 import {
   posts,
+  categories,
   authors,
   comments,
   bookReviews,
@@ -18,8 +19,13 @@ export const getPostById = (postId: number) => {
   return posts.find((post) => post.postId === postId);
 };
 
-export const getPostsByCategory = (category: string) => {
-  return posts.filter((post) => post.postCategory === category);
+export const getPostsByCategory = (category: number) => {
+  return posts.filter((post) => post.category === category);
+};
+
+export const getCategoryName = (id: number) => {
+  const category = categories.find((category) => category.id === id);
+  return category?.name;
 };
 
 export const getAuthorById = (id: number) => {
@@ -33,6 +39,7 @@ export const getFeaturedPost = () => {
 export const getLatestBookReviews = (count: number) => {
   return bookReviews.slice(-count);
 };
+
 export const getBookReviewById = (id: number) => {
   return bookReviews.find((review) => review.id === id);
 };

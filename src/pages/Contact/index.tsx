@@ -1,4 +1,4 @@
-import HeadingOne from "../../components/ul/HeadingOne";
+import HeadingOne from "../../components/ui/HeadingOne";
 import Input from "../../components/form/Input";
 import Textarea from "../../components/form/Textarea";
 import Submit from "../../components/form/Submit";

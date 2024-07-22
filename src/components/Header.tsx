@@ -23,18 +23,48 @@ const Header = () => {
           <div className="logo">
             <h1 className="text-4xl font-bold text-primary">
               {/* Mero<span className="font-light text-white">Rachana</span> */}
-              <img src="logo.png" alt="mero rachana logo" className="w-40" />
+              <img src="logo.png" alt="mero rachana logo" className="w-44" />
             </h1>
           </div>
         </Link>
         <nav className="hidden lg:flex items-center">
           <ul className="flex gap-8">
-            <Link to="/">Home</Link>
-            <Link to="/posts">Poems</Link>
-            <Link to="/posts">Stories</Link>
-            <Link to="/posts">Thoughts</Link>
-            <Link to="/book-reviews">Book Reviews</Link>
-            <Link to="/contact">Contact</Link>
+            <Link
+              to="/"
+              className="hover:text-red-700 hover:translate-y-1 duration-300"
+            >
+              Home
+            </Link>
+            <Link
+              to="/posts"
+              className="hover:text-red-700 hover:translate-y-1 duration-300"
+            >
+              Poems
+            </Link>
+            <Link
+              to="/posts"
+              className="hover:text-red-700 hover:translate-y-1 duration-300"
+            >
+              Stories
+            </Link>
+            <Link
+              to="/posts"
+              className="hover:text-red-700 hover:translate-y-1 duration-300"
+            >
+              Thoughts
+            </Link>
+            <Link
+              to="/book-reviews"
+              className="hover:text-red-700 hover:translate-y-1 duration-300"
+            >
+              Book Reviews
+            </Link>
+            <Link
+              to="/contact"
+              className="hover:text-red-700 hover:translate-y-1 duration-300"
+            >
+              Contact
+            </Link>
           </ul>
         </nav>
         <div className="lg:hidden">

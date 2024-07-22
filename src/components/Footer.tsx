@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-white text-slate-900">
+    <footer className="w-full text-slate-900">
       <div className="w-full sm:w-11/12 lg:w-9/12 px-3 mx-auto mb-4 pt-12">
         <p className="text-4xl sm:text-5xl text-primary mb-2 font-bold">
           {/* Mero<span className="font-light text-white">Rachana</span> */}

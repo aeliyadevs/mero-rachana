@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { getAuthorById } from "../../utils/GetData";
 import FeaturedCard from "../../components/FeaturedCard";
-import HeadingTwo from "../../components/ul/HeadingTwo";
+import HeadingTwo from "../../components/ui/HeadingTwo";
 import { posts } from "../../data/defaultPosts.json";
 import CardAlt from "../../components/CardAlt";
 

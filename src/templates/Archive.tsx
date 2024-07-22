@@ -1,5 +1,5 @@
 import CardAlt from "../components/CardAlt";
-import HeadingTwo from "../components/ul/HeadingTwo";
+import HeadingTwo from "../components/ui/HeadingTwo";
 import { posts } from "../data/defaultPosts.json";
 
 interface ComponentProps {

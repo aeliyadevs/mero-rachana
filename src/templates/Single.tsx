@@ -2,8 +2,8 @@ import { useParams } from "react-router-dom";
 import Author from "../components/Author";
 import Meta from "../components/Meta";
 import SocialShare from "../components/SocialShare";
-import HeadingOne from "../components/ul/HeadingOne";
-import HeadingTwo from "../components/ul/HeadingTwo";
+import HeadingOne from "../components/ui/HeadingOne";
+import HeadingTwo from "../components/ui/HeadingTwo";
 import Comment from "../components/Comment";
 import { getPostById } from "../utils/GetData";
 
