@@ -109,7 +109,7 @@ const Home = () => {
           </Link>
         </div>
       </section> */}
-      <section className="sm:w-11/12 lg:w-9/12 m-4 sm:mx-auto">
+      {/* <section className="sm:w-11/12 lg:w-9/12 m-4 sm:mx-auto">
         {posts.map((post, index) => (
           <div key={index}>
             <h2>{post.title.rendered}</h2>
@@ -120,7 +120,7 @@ const Home = () => {
             <div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
           </div>
         ))}
-      </section>
+      </section> */}
       <section className="sm:w-11/12 lg:w-9/12 m-4 sm:mx-auto">
         <Slider {...settings}>
           {featuredPosts.map((featuredPost, index) => (
@@ -131,16 +131,24 @@ const Home = () => {
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Popular this month" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          {latestPosts.map((post, index) => (
-            <CardAlt key={index} id={post.postId} />
+          {posts.map((post, index) => (
+            <CardAlt key={index} id={post.id} post={post} />
           ))}
         </div>
       </section>
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Popular this month" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          {latestPosts.map((post, index) => (
-            <CardAlt key={index} id={post.postId} />
+          {posts.map((post, index) => (
+            <CardAlt key={index} post={post} />
+          ))}
+        </div>
+      </section>
+      <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
+        <HeadingTwo heading="Popular this month" />
+        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+          {posts.map((post, index) => (
+            <CardAlt key={index} post={post} />
           ))}
         </div>
       </section>
@@ -155,24 +163,24 @@ const Home = () => {
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Latest poems" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          {poems.map((poem, index) => (
-            <CardAlt key={index} id={poem.postId} />
+          {posts.map((post, index) => (
+            <CardAlt key={index} post={post} />
           ))}
         </div>
       </section>
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Latest thoughts" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          {thoughts.map((thought, index) => (
-            <CardAlt key={index} id={thought.postId} />
+          {posts.map((post, index) => (
+            <CardAlt key={index} post={post} />
           ))}
         </div>
       </section>
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Latest stories" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          {stories.map((story, index) => (
-            <CardAlt key={index} id={story.postId} />
+          {posts.map((post, index) => (
+            <CardAlt key={index} post={post} />
           ))}
         </div>
       </section>

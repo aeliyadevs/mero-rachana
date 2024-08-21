@@ -3,14 +3,14 @@ import HeadingThree from "./ui/HeadingThree";
 import { getAuthorById, getCategoryName, getPostById } from "../utils/GetData";
 
 interface ComponentProps {
-  id: number;
+  post: object;
 }
-const CardAlt: React.FC<ComponentProps> = ({ id }) => {
-  const thePost = getPostById(id);
-  let theAuthor = {} || undefined;
-  if (thePost) {
-    theAuthor = getAuthorById(thePost.author);
-  }
+const CardAlt: React.FC<ComponentProps> = ({ post }) => {
+  const thePost = post;
+  // let theAuthor = {} || undefined;
+  // if (thePost) {
+  //   theAuthor = getAuthorById(thePost.author);
+  // }
 
   if (!thePost) {
     return <>Missing post</>;
@@ -19,11 +19,11 @@ const CardAlt: React.FC<ComponentProps> = ({ id }) => {
     <div className="rounded-md overflow-hidden relative border-b-2 border-b-sky-400 shadow-lg shadow-slate-200">
       <img
         className="w-full h-60 object-cover"
-        src={thePost.featuredImage}
+        src={thePost._embedded["wp:featuredmedia"][0].source_url}
         alt=""
       />
       <p className="capitalize bg-sky-500 text-white absolute rounded-br-md top-0 px-4 py-1">
-        {getCategoryName(thePost.category)}
+        {/* {getCategoryName(thePost.category)} */}
       </p>
       <div className="flex gap-6 w-full bg-sky-500 text-white px-4 py-2">
         <p>
@@ -40,13 +40,12 @@ const CardAlt: React.FC<ComponentProps> = ({ id }) => {
         </p>
       </div>
       <div className="p-4 pb-6">
-        <Link to={"/posts/" + thePost.postId}>
-          <HeadingThree heading={thePost.postTitle} />
+        <Link to={"/posts/" + thePost.id}>
+          <HeadingThree heading={thePost.title.rendered} />
         </Link>
-        <p className="mb-3 hidden lg:block">
-          {thePost.postContent.substring(0, 100) + " ....."}
-        </p>
-        <Link to={"/posts/" + thePost.postId} className="text-sm text-blue-400">
+        {/* <p className="mb-3 hidden lg:block">{thePost.excerpt.rendered}</p> */}
+        <div dangerouslySetInnerHTML={{ __html: thePost.excerpt.rendered }} />
+        <Link to={"/posts/" + thePost.id} className="text-sm text-blue-400">
           View Details <i className="fa-solid fa-arrow-right-long ml-2"></i>
         </Link>
       </div>
