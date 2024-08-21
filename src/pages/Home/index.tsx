@@ -12,6 +12,8 @@ import FeaturedCardAlt from "../../components/FeaturedCardAlt";
 import PrimaryButton from "../../components/ui/PrimaryButton";
 import Slider from "react-slick";
 import BookReviewCard from "../../components/BookReviewCard";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Home = () => {
   const featuredPosts = getFeaturedPost();
@@ -64,6 +66,21 @@ const Home = () => {
       },
     ],
   };
+
+  // Fetch from API
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://merorachana-cms/wp-json/wp/v2/posts?_embed")
+      .then((res) => {
+        setPosts(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <>
       {/* <section className="w-9/12 mx-auto my-12 rounded-md flex gap-6">
@@ -93,11 +110,31 @@ const Home = () => {
         </div>
       </section> */}
       <section className="sm:w-11/12 lg:w-9/12 m-4 sm:mx-auto">
+        {posts.map((post, index) => (
+          <div key={index}>
+            <h2>{post.title.rendered}</h2>
+            <img
+              src={post._embedded["wp:featuredmedia"][0].source_url}
+              alt="featured image"
+            />
+            <div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
+          </div>
+        ))}
+      </section>
+      <section className="sm:w-11/12 lg:w-9/12 m-4 sm:mx-auto">
         <Slider {...settings}>
           {featuredPosts.map((featuredPost, index) => (
             <FeaturedCardAlt key={index} id={featuredPost.postId} />
           ))}
         </Slider>
+      </section>
+      <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
+        <HeadingTwo heading="Popular this month" />
+        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+          {latestPosts.map((post, index) => (
+            <CardAlt key={index} id={post.postId} />
+          ))}
+        </div>
       </section>
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Popular this month" />
