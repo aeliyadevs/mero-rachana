@@ -2,8 +2,22 @@ import { Link } from "react-router-dom";
 import HeadingThree from "./ui/HeadingThree";
 import { getAuthorById, getCategoryName, getPostById } from "../utils/GetData";
 
+interface Media {
+  source_url: string;
+}
 interface ComponentProps {
-  post: object;
+  post: {
+    id: number;
+    title: {
+      rendered: string;
+    };
+    excerpt: {
+      rendered: string;
+    };
+    _embedded: {
+      "wp:featuredmedia": Media[];
+    };
+  };
 }
 const CardAlt: React.FC<ComponentProps> = ({ post }) => {
   const thePost = post;
