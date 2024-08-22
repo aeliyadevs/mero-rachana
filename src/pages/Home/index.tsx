@@ -14,7 +14,7 @@ import Slider from "react-slick";
 import BookReviewCard from "../../components/BookReviewCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Category, Post } from "../../components/types";
+import { BookReview, Category, Post } from "../../components/types";
 
 const Home = () => {
   const featuredPosts = getFeaturedPost();
@@ -71,6 +71,8 @@ const Home = () => {
   // Fetch from API
   const [posts, setPosts] = useState<Post[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
+  const [bookReviews, setBookReviews] = useState<BookReview[]>([]);
+
   useEffect(() => {
     axios
       .get("http://merorachana-cms/wp-json/wp/v2/posts?_embed")
@@ -84,6 +86,7 @@ const Home = () => {
               title: post.title.rendered,
               slug: post.slug,
               excerpt: post.excerpt.rendered,
+              content: post.content.rendered,
               featuredImage: post._embedded["wp:featuredmedia"][0].source_url,
               category: post.categories,
               author: post.author,
@@ -113,11 +116,31 @@ const Home = () => {
             },
           ];
         });
-        console.log(data);
+        // console.log(data);
         setCategories(data);
       })
       .catch((err) => {
         console.log(err);
+      });
+    axios
+      .get("http://merorachana-cms/wp-json/wp/v2/book-reviews?_embed")
+      .then((res) => {
+        let reviews: BookReview[] = [];
+        res.data.map((review: any) => {
+          reviews = [
+            ...reviews,
+            {
+              id: review.id,
+              title: review.title.rendered,
+              slug: review.slug,
+              content: review.content.rendered,
+              featuredImage: review._embedded["wp:featuredmedia"][0].source_url,
+              author: review.acf.author,
+              publishedYear: review.acf.published_year,
+            },
+          ];
+        });
+        setBookReviews(reviews);
       });
   }, []);
 
@@ -234,9 +257,9 @@ const Home = () => {
         <HeadingTwo heading="Latest Book Reviews" />
         <div className="">
           <Slider {...reviewSliderOptions}>
-            {latestReviews &&
-              latestReviews.map((review, index) => (
-                <BookReviewCard key={index} book={review} />
+            {bookReviews &&
+              bookReviews.map((review, index) => (
+                <BookReviewCard key={index} review={review} />
               ))}
           </Slider>
         </div>
