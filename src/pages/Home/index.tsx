@@ -14,13 +14,14 @@ import Slider from "react-slick";
 import BookReviewCard from "../../components/BookReviewCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Category, Post } from "../../components/types";
 
 const Home = () => {
   const featuredPosts = getFeaturedPost();
-  const latestPosts = getLatestPosts(3);
-  const poems = getPostsByCategory(1);
-  const stories = getPostsByCategory(2);
-  const thoughts = getPostsByCategory(3);
+  // const latestPosts = getLatestPosts(3);
+  // const poems = getPostsByCategory(1);
+  // const stories = getPostsByCategory(2);
+  // const thoughts = getPostsByCategory(3);
   const latestReviews = getLatestBookReviews(4);
   var settings = {
     dots: false,
@@ -68,13 +69,52 @@ const Home = () => {
   };
 
   // Fetch from API
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   useEffect(() => {
     axios
       .get("http://merorachana-cms/wp-json/wp/v2/posts?_embed")
       .then((res) => {
-        setPosts(res.data);
-        console.log(res.data);
+        let data: Post[] = [];
+        res.data.map((post: any) => {
+          data = [
+            ...data,
+            {
+              id: post.id,
+              title: post.title.rendered,
+              slug: post.slug,
+              excerpt: post.excerpt.rendered,
+              featuredImage: post._embedded["wp:featuredmedia"][0].source_url,
+              category: post.categories,
+              author: post.author,
+            },
+          ];
+        });
+        setPosts(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    axios
+      .get("http://merorachana-cms/wp-json/wp/v2/categories")
+      .then((res) => {
+        let data: Category[] = [];
+        res.data.map((category: any) => {
+          data = [
+            ...data,
+            {
+              id: category.id,
+              name: category.name,
+              slug: category.slug,
+              description: category.description,
+              parent: category.parent,
+              count: category.count,
+            },
+          ];
+        });
+        console.log(data);
+        setCategories(data);
       })
       .catch((err) => {
         console.log(err);
@@ -132,7 +172,13 @@ const Home = () => {
         <HeadingTwo heading="Popular this month" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
           {posts.map((post, index) => (
-            <CardAlt key={index} id={post.id} post={post} />
+            <CardAlt
+              key={index}
+              post={post}
+              categoryName={
+                categories.find((c) => c.id === post.category[0])?.name
+              }
+            />
           ))}
         </div>
       </section>
