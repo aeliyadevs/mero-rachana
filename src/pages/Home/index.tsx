@@ -15,6 +15,7 @@ import BookReviewCard from "../../components/BookReviewCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { BookReview, Category, Post } from "../../components/types";
+import useAxios from "../../hooks/useAxios";
 
 const Home = () => {
   const featuredPosts = getFeaturedPost();
@@ -73,9 +74,16 @@ const Home = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [bookReviews, setBookReviews] = useState<BookReview[]>([]);
 
+  // use custom hook to fetch data - useAxios
+  const { response, error, loading, fetchData } = useAxios();
+
+  const fetchCategories = () => {
+    fetchData({ url: "/categories", method: "GET" });
+  };
+
   useEffect(() => {
     axios
-      .get("http://merorachana-cms/wp-json/wp/v2/posts?_embed")
+      .get("http://merorachana-cms/wp-json/wp/v2/posts?_embed&per_page=3")
       .then((res) => {
         let data: Post[] = [];
         res.data.map((post: any) => {
@@ -98,30 +106,33 @@ const Home = () => {
       .catch((err) => {
         console.log(err);
       });
+    console.log(fetchCategories());
 
-    axios
-      .get("http://merorachana-cms/wp-json/wp/v2/categories")
-      .then((res) => {
-        let data: Category[] = [];
-        res.data.map((category: any) => {
-          data = [
-            ...data,
-            {
-              id: category.id,
-              name: category.name,
-              slug: category.slug,
-              description: category.description,
-              parent: category.parent,
-              count: category.count,
-            },
-          ];
-        });
-        // console.log(data);
-        setCategories(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // axios
+    //   .get("http://merorachana-cms/wp-json/wp/v2/categories")
+    //   .then((res) => {
+    //     let data: Category[] = [];
+    //     res.data.map((category: any) => {
+    //       data = [
+    //         ...data,
+    //         {
+    //           id: category.id,
+    //           name: category.name,
+    //           slug: category.slug,
+    //           description: category.description,
+    //           parent: category.parent,
+    //           count: category.count,
+    //         },
+    //       ];
+    //     });
+    //     // console.log(data);
+    //     setCategories(data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    console.log(response);
+
     axios
       .get("http://merorachana-cms/wp-json/wp/v2/book-reviews?_embed")
       .then((res) => {
@@ -146,6 +157,9 @@ const Home = () => {
 
   return (
     <>
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>}
+      <div>{JSON.stringify(response)}</div>
       {/* <section className="w-9/12 mx-auto my-12 rounded-md flex gap-6">
         <img
           src={featuredPost?.featuredImage}
@@ -209,7 +223,13 @@ const Home = () => {
         <HeadingTwo heading="Popular this month" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
           {posts.map((post, index) => (
-            <CardAlt key={index} post={post} />
+            <CardAlt
+              key={index}
+              post={post}
+              categoryName={
+                categories.find((c) => c.id === post.category[0])?.name
+              }
+            />
           ))}
         </div>
       </section>
@@ -217,7 +237,13 @@ const Home = () => {
         <HeadingTwo heading="Popular this month" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
           {posts.map((post, index) => (
-            <CardAlt key={index} post={post} />
+            <CardAlt
+              key={index}
+              post={post}
+              categoryName={
+                categories.find((c) => c.id === post.category[0])?.name
+              }
+            />
           ))}
         </div>
       </section>
@@ -233,7 +259,13 @@ const Home = () => {
         <HeadingTwo heading="Latest poems" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
           {posts.map((post, index) => (
-            <CardAlt key={index} post={post} />
+            <CardAlt
+              key={index}
+              post={post}
+              categoryName={
+                categories.find((c) => c.id === post.category[0])?.name
+              }
+            />
           ))}
         </div>
       </section>
@@ -241,7 +273,13 @@ const Home = () => {
         <HeadingTwo heading="Latest thoughts" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
           {posts.map((post, index) => (
-            <CardAlt key={index} post={post} />
+            <CardAlt
+              key={index}
+              post={post}
+              categoryName={
+                categories.find((c) => c.id === post.category[0])?.name
+              }
+            />
           ))}
         </div>
       </section>
@@ -249,7 +287,13 @@ const Home = () => {
         <HeadingTwo heading="Latest stories" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
           {posts.map((post, index) => (
-            <CardAlt key={index} post={post} />
+            <CardAlt
+              key={index}
+              post={post}
+              categoryName={
+                categories.find((c) => c.id === post.category[0])?.name
+              }
+            />
           ))}
         </div>
       </section>
