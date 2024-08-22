@@ -1,9 +1,38 @@
 import { useParams } from "react-router-dom";
 import { getBookReviewById } from "../../utils/GetData";
+import useAxios from "../../hooks/useAxios";
+import { useEffect, useState } from "react";
+import { BookReview } from "../../components/types";
 
 const Review = () => {
   const { id } = useParams();
-  const bookReview = getBookReviewById(parseInt(id ? id : "0"));
+  const [review, setReview] = useState<BookReview | null>(null);
+  // const bookReview = getBookReviewById(parseInt(id ? id : "0"));
+
+  const { error, loading, fetchData } = useAxios();
+
+  const fetchReview = async () => {
+    try {
+      await fetchData(
+        { url: `/book-reviews/${id}`, method: "GET", params: { _embed: true } },
+        (data: any) => {
+          console.log(data);
+          setReview({
+            id: data.id,
+            title: data.title.rendered,
+            slug: data.slug,
+            content: data.content.rendered,
+            featuredImage: data._embedded["wp:featuredmedia"][0].source_url,
+            author: data.acf.author,
+            publishedYear: data.acf.published_year,
+          });
+        }
+      );
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const renderStars = (count: number) => {
     const stars = [];
     // set rated stars
@@ -16,32 +45,41 @@ const Review = () => {
     }
     return stars;
   };
-  if (!bookReview) {
+
+  useEffect(() => {
+    fetchReview();
+  }, []);
+
+  if (!review) {
     return <>Review not found.</>;
   }
   return (
     <div className="w-6/12 mx-auto my-16 grid grid-cols-3 gap-6">
       <div className="rounded-md overflow-hidden">
-        <img src={bookReview.bookCover} alt={bookReview.bookName} />
+        <img src={review.featuredImage} alt={review.title} />
       </div>
       <div className="col-span-2 py-6">
-        <h1 className="text-5xl font-bold mb-3">{bookReview.bookName}</h1>
+        <h1 className="text-5xl font-bold mb-3">{review.title}</h1>
         <p>
-          Book by <strong>{bookReview.author}</strong>
+          Book by <strong>{review.author}</strong>
         </p>
         <p>
-          Published Year - <strong>{bookReview.publishedYear}</strong>
+          Published Year - <strong>{review.publishedYear}</strong>
         </p>
         <div className="rating text-xl text-sky-500">
-          {bookReview.rating ? (
-            renderStars(bookReview.rating)
+          {review.rating ? (
+            renderStars(review.rating)
           ) : (
             <span className="text-gray-400 text-base">N/A</span>
           )}
         </div>
-        <blockquote className="mt-4 border-l-4 border-sky-200 pl-4">
-          {bookReview.review}
-        </blockquote>
+        {/* <blockquote className="mt-4 border-l-4 border-sky-200 pl-4">
+          {review.content}
+        </blockquote> */}
+        <div
+          dangerouslySetInnerHTML={{ __html: review.content }}
+          className="mt-4 border-l-4 border-sky-200 pl-4"
+        />
       </div>
     </div>
   );

@@ -1,9 +1,4 @@
-import {
-  getFeaturedPost,
-  getLatestBookReviews,
-  getLatestPosts,
-  getPostsByCategory,
-} from "../../utils/GetData";
+import { getFeaturedPost } from "../../utils/GetData";
 import HeadingTwo from "../../components/ui/HeadingTwo";
 import AuthorCard from "../../components/AuthorCard";
 import { authors } from "../../data/defaultPosts.json";
@@ -13,17 +8,11 @@ import PrimaryButton from "../../components/ui/PrimaryButton";
 import Slider from "react-slick";
 import BookReviewCard from "../../components/BookReviewCard";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { BookReview, Category, Post } from "../../components/types";
 import useAxios from "../../hooks/useAxios";
 
 const Home = () => {
   const featuredPosts = getFeaturedPost();
-  // const latestPosts = getLatestPosts(3);
-  // const poems = getPostsByCategory(1);
-  // const stories = getPostsByCategory(2);
-  // const thoughts = getPostsByCategory(3);
-  const latestReviews = getLatestBookReviews(4);
   var settings = {
     dots: false,
     infinite: true,
@@ -75,129 +64,81 @@ const Home = () => {
   const [bookReviews, setBookReviews] = useState<BookReview[]>([]);
 
   // use custom hook to fetch data - useAxios
-  const { response, error, loading, fetchData } = useAxios();
+  const { error, loading, fetchData } = useAxios();
 
-  const fetchCategories = () => {
-    fetchData({ url: "/categories", method: "GET" });
+  const fetchCategories = async () => {
+    try {
+      await fetchData({ url: "/categories", method: "GET" }, (data: any) => {
+        const mappedCategories = data.map((cat: any) => ({
+          id: cat.id,
+          name: cat.name,
+          slug: cat.slug,
+          description: cat.description,
+          parent: cat.parent,
+          count: cat.count,
+        }));
+        setCategories(mappedCategories);
+      });
+    } catch (err) {
+      console.error("Error: ", err);
+    }
+  };
+
+  const fetchPosts = async () => {
+    try {
+      await fetchData(
+        { url: "/posts", method: "GET", params: { _embed: true, per_page: 3 } },
+        (data: any) => {
+          const mappedPosts = data.map((post: any) => ({
+            id: post.id,
+            title: post.title.rendered,
+            slug: post.slug,
+            excerpt: post.excerpt.rendered,
+            content: post.content.rendered,
+            featuredImage: post._embedded["wp:featuredmedia"][0].source_url,
+            category: post.categories,
+            author: post.author,
+          }));
+          setPosts(mappedPosts);
+        }
+      );
+    } catch (err) {
+      console.error("Error: ", err);
+    }
+  };
+
+  const fetchBookReviews = async () => {
+    try {
+      await fetchData(
+        { url: "/book-reviews", method: "GET", params: { _embed: true } },
+        (data: any) => {
+          const mappedReviews = data.map((review: any) => ({
+            id: review.id,
+            title: review.title.rendered,
+            slug: review.slug,
+            content: review.content.rendered,
+            featuredImage: review._embedded["wp:featuredmedia"][0].source_url,
+            author: review.acf.author,
+            publishedYear: review.acf.published_year,
+          }));
+          setBookReviews(mappedReviews);
+        }
+      );
+    } catch (err) {
+      console.error("Error: ", err);
+    }
   };
 
   useEffect(() => {
-    axios
-      .get("http://merorachana-cms/wp-json/wp/v2/posts?_embed&per_page=3")
-      .then((res) => {
-        let data: Post[] = [];
-        res.data.map((post: any) => {
-          data = [
-            ...data,
-            {
-              id: post.id,
-              title: post.title.rendered,
-              slug: post.slug,
-              excerpt: post.excerpt.rendered,
-              content: post.content.rendered,
-              featuredImage: post._embedded["wp:featuredmedia"][0].source_url,
-              category: post.categories,
-              author: post.author,
-            },
-          ];
-        });
-        setPosts(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    console.log(fetchCategories());
-
-    // axios
-    //   .get("http://merorachana-cms/wp-json/wp/v2/categories")
-    //   .then((res) => {
-    //     let data: Category[] = [];
-    //     res.data.map((category: any) => {
-    //       data = [
-    //         ...data,
-    //         {
-    //           id: category.id,
-    //           name: category.name,
-    //           slug: category.slug,
-    //           description: category.description,
-    //           parent: category.parent,
-    //           count: category.count,
-    //         },
-    //       ];
-    //     });
-    //     // console.log(data);
-    //     setCategories(data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-    console.log(response);
-
-    axios
-      .get("http://merorachana-cms/wp-json/wp/v2/book-reviews?_embed")
-      .then((res) => {
-        let reviews: BookReview[] = [];
-        res.data.map((review: any) => {
-          reviews = [
-            ...reviews,
-            {
-              id: review.id,
-              title: review.title.rendered,
-              slug: review.slug,
-              content: review.content.rendered,
-              featuredImage: review._embedded["wp:featuredmedia"][0].source_url,
-              author: review.acf.author,
-              publishedYear: review.acf.published_year,
-            },
-          ];
-        });
-        setBookReviews(reviews);
-      });
+    fetchCategories();
+    fetchPosts();
+    fetchBookReviews();
   }, []);
 
   return (
     <>
       {loading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
-      <div>{JSON.stringify(response)}</div>
-      {/* <section className="w-9/12 mx-auto my-12 rounded-md flex gap-6">
-        <img
-          src={featuredPost?.featuredImage}
-          alt=""
-          className="w-5/12 object-cover rounded-md"
-        />
-        <div className="flex flex-col justify-center">
-          <span className="text-green-500">Featured article</span>
-          <Link to={"/posts/" + featuredPost?.postId}>
-            <h2 className="text-5xl font-semibold mt-2 mb-4 hover:text-primary duration-300">
-              {featuredPost?.postTitle}
-            </h2>
-          </Link>
-          <p className="font-semibold text-black/50 mb-2">
-            Aeliyadevs / {featuredPost?.postCategory} /{" "}
-            {featuredPost?.createdAt}
-          </p>
-          <p className="mb-4">{featuredPost?.postContent}</p>
-          <Link
-            to={"/posts/" + featuredPost?.postId}
-            className="text-sm text-blue-400"
-          >
-            View Details <i className="fa-solid fa-arrow-right-long ml-2"></i>
-          </Link>
-        </div>
-      </section> */}
-      {/* <section className="sm:w-11/12 lg:w-9/12 m-4 sm:mx-auto">
-        {posts.map((post, index) => (
-          <div key={index}>
-            <h2>{post.title.rendered}</h2>
-            <img
-              src={post._embedded["wp:featuredmedia"][0].source_url}
-              alt="featured image"
-            />
-            <div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
-          </div>
-        ))}
-      </section> */}
       <section className="sm:w-11/12 lg:w-9/12 m-4 sm:mx-auto">
         <Slider {...settings}>
           {featuredPosts.map((featuredPost, index) => (

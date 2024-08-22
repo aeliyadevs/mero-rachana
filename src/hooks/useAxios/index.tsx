@@ -28,18 +28,19 @@ const useAxios = () => {
     }
   );
 
-  let controller = new AbortController();
+  // let controller = new AbortController();
 
-  useEffect(() => {
-    return () => controller?.abort();
-  }, []);
+  // useEffect(() => {
+  //   return () => controller?.abort();
+  // }, []);
 
-  const fetchData = async ({ url, method, data = {}, params = {} }) => {
+  const fetchData = async (
+    { url, method, data = {}, params = {} },
+    onSuccess
+  ) => {
     setLoading(true);
-    console.log(url);
-    console.log(method);
-    controller.abort();
-    controller = new AbortController();
+    // controller.abort();
+    // controller = new AbortController();
 
     try {
       const result = await axiosInstance({
@@ -47,14 +48,15 @@ const useAxios = () => {
         method,
         data,
         params,
-        signal: controller.signal,
+        // signal: controller.signal,
       });
       setResponse(result.data);
-    } catch (err) {
+      if (onSuccess) onSuccess(result.data);
+    } catch (err: any) {
       if (axios.isCancel(err)) {
-        console.error("Request canceled :", err);
+        console.error("Request canceled :", err.message);
       } else {
-        setError(err.response ? err.response.data : err);
+        setError(err.response ? err.response.data : err.message);
       }
     } finally {
       setLoading(false);
