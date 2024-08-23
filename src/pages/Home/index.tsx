@@ -8,8 +8,9 @@ import PrimaryButton from "../../components/ui/PrimaryButton";
 import Slider from "react-slick";
 import BookReviewCard from "../../components/BookReviewCard";
 import { useEffect, useState } from "react";
-import { BookReview, Category, Post } from "../../components/types";
+import { BookReview, Category, Post } from "../../types";
 import useAxios from "../../hooks/useAxios";
+import Loading from "../../components/ui/Loading";
 
 const Home = () => {
   const featuredPosts = getFeaturedPost();
@@ -137,134 +138,139 @@ const Home = () => {
 
   return (
     <>
-      {loading && <p>Loading...</p>}
-      {error && <p>Error: {error}</p>}
-      <section className="sm:w-11/12 lg:w-9/12 m-4 sm:mx-auto">
-        <Slider {...settings}>
-          {featuredPosts.map((featuredPost, index) => (
-            <FeaturedCardAlt key={index} id={featuredPost.postId} />
-          ))}
-        </Slider>
-      </section>
-      <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
-        <HeadingTwo heading="Popular this month" />
-        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          {posts.map((post, index) => (
-            <CardAlt
-              key={index}
-              post={post}
-              categoryName={
-                categories.find((c) => c.id === post.category[0])?.name
-              }
-            />
-          ))}
-        </div>
-      </section>
-      <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
-        <HeadingTwo heading="Popular this month" />
-        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          {posts.map((post, index) => (
-            <CardAlt
-              key={index}
-              post={post}
-              categoryName={
-                categories.find((c) => c.id === post.category[0])?.name
-              }
-            />
-          ))}
-        </div>
-      </section>
-      <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
-        <HeadingTwo heading="Popular this month" />
-        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          {posts.map((post, index) => (
-            <CardAlt
-              key={index}
-              post={post}
-              categoryName={
-                categories.find((c) => c.id === post.category[0])?.name
-              }
-            />
-          ))}
-        </div>
-      </section>
-      <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
-        <HeadingTwo heading="Top Writers" />
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {authors.map((author, index) => (
-            <AuthorCard key={index} author={author} />
-          ))}
-        </div>
-      </section>
-      <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
-        <HeadingTwo heading="Latest poems" />
-        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          {posts.map((post, index) => (
-            <CardAlt
-              key={index}
-              post={post}
-              categoryName={
-                categories.find((c) => c.id === post.category[0])?.name
-              }
-            />
-          ))}
-        </div>
-      </section>
-      <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
-        <HeadingTwo heading="Latest thoughts" />
-        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          {posts.map((post, index) => (
-            <CardAlt
-              key={index}
-              post={post}
-              categoryName={
-                categories.find((c) => c.id === post.category[0])?.name
-              }
-            />
-          ))}
-        </div>
-      </section>
-      <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
-        <HeadingTwo heading="Latest stories" />
-        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          {posts.map((post, index) => (
-            <CardAlt
-              key={index}
-              post={post}
-              categoryName={
-                categories.find((c) => c.id === post.category[0])?.name
-              }
-            />
-          ))}
-        </div>
-      </section>
-      <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
-        <HeadingTwo heading="Latest Book Reviews" />
-        <div className="">
-          <Slider {...reviewSliderOptions}>
-            {bookReviews &&
-              bookReviews.map((review, index) => (
-                <BookReviewCard key={index} review={review} />
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          <section className="sm:w-11/12 lg:w-9/12 m-4 sm:mx-auto">
+            <Slider {...settings}>
+              {featuredPosts.map((featuredPost, index) => (
+                <FeaturedCardAlt key={index} id={featuredPost.postId} />
               ))}
-          </Slider>
-        </div>
-      </section>
-      <section className="bg-sky-500 w-full">
-        <div className="sm:w-11/12 lg:w-7/12 mx-4 sm:mx-auto p-6 lg:p-12 text-white text-center flex flex-col items-center">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            Discover A World Of Stories
-          </h2>
-          <p className="mb-6">
-            Start your literary journey today. Join thousands of readers who are
-            passionate about storytelling and creativity. Together, let's
-            celebrate the power of words. Click below to get started!
-          </p>
-          <div className="flex flex-col sm:flex-row gap-2">
-            <PrimaryButton value="Join Now" />
-            <PrimaryButton value="Learn More" />
-          </div>
-        </div>
-      </section>
+            </Slider>
+          </section>
+          <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
+            <HeadingTwo heading="Popular this month" />
+            <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+              {posts.map((post, index) => (
+                <CardAlt
+                  key={index}
+                  post={post}
+                  categoryName={
+                    categories.find((c) => c.id === post.category[0])?.name
+                  }
+                />
+              ))}
+            </div>
+          </section>
+          <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
+            <HeadingTwo heading="Popular this month" />
+            <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+              {posts.map((post, index) => (
+                <CardAlt
+                  key={index}
+                  post={post}
+                  categoryName={
+                    categories.find((c) => c.id === post.category[0])?.name
+                  }
+                />
+              ))}
+            </div>
+          </section>
+          <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
+            <HeadingTwo heading="Popular this month" />
+            <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+              {posts.map((post, index) => (
+                <CardAlt
+                  key={index}
+                  post={post}
+                  categoryName={
+                    categories.find((c) => c.id === post.category[0])?.name
+                  }
+                />
+              ))}
+            </div>
+          </section>
+          <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
+            <HeadingTwo heading="Top Writers" />
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              {authors.map((author, index) => (
+                <AuthorCard key={index} author={author} />
+              ))}
+            </div>
+          </section>
+          <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
+            <HeadingTwo heading="Latest poems" />
+            <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+              {posts.map((post, index) => (
+                <CardAlt
+                  key={index}
+                  post={post}
+                  categoryName={
+                    categories.find((c) => c.id === post.category[0])?.name
+                  }
+                />
+              ))}
+            </div>
+          </section>
+          <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
+            <HeadingTwo heading="Latest thoughts" />
+            <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+              {posts.map((post, index) => (
+                <CardAlt
+                  key={index}
+                  post={post}
+                  categoryName={
+                    categories.find((c) => c.id === post.category[0])?.name
+                  }
+                />
+              ))}
+            </div>
+          </section>
+          <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
+            <HeadingTwo heading="Latest stories" />
+            <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+              {posts.map((post, index) => (
+                <CardAlt
+                  key={index}
+                  post={post}
+                  categoryName={
+                    categories.find((c) => c.id === post.category[0])?.name
+                  }
+                />
+              ))}
+            </div>
+          </section>
+          <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
+            <HeadingTwo heading="Latest Book Reviews" />
+            <div className="">
+              <Slider {...reviewSliderOptions}>
+                {bookReviews &&
+                  bookReviews.map((review, index) => (
+                    <BookReviewCard key={index} review={review} />
+                  ))}
+              </Slider>
+            </div>
+          </section>
+          <section className="bg-sky-500 w-full">
+            <div className="sm:w-11/12 lg:w-7/12 mx-4 sm:mx-auto p-6 lg:p-12 text-white text-center flex flex-col items-center">
+              <h2 className="text-4xl md:text-6xl font-bold mb-6">
+                Discover A World Of Stories
+              </h2>
+              <p className="mb-6">
+                Start your literary journey today. Join thousands of readers who
+                are passionate about storytelling and creativity. Together,
+                let's celebrate the power of words. Click below to get started!
+              </p>
+              <div className="flex flex-col sm:flex-row gap-2">
+                <PrimaryButton value="Join Now" />
+                <PrimaryButton value="Learn More" />
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+      {error && <p>Error: {error}</p>}
     </>
   );
 };

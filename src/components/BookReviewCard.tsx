@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { BookReview } from "./types";
+import { BookReview } from "../types";
 
 interface ComponentProps {
   review: BookReview;

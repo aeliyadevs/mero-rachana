@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import HeadingThree from "./ui/HeadingThree";
 import { getAuthorById, getCategoryName, getPostById } from "../utils/GetData";
-import { Post } from "./types";
+import { Post } from "../types";
 
 interface ComponentProps {
   post: Post;

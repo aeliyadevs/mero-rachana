@@ -35,8 +35,18 @@ const useAxios = () => {
   // }, []);
 
   const fetchData = async (
-    { url, method, data = {}, params = {} },
-    onSuccess
+    {
+      url,
+      method,
+      data = {},
+      params = {},
+    }: {
+      url: string;
+      method: "GET" | "POST" | "PUT" | "DELETE";
+      data?: object;
+      params?: object;
+    },
+    onSuccess: any
   ) => {
     setLoading(true);
     // controller.abort();
