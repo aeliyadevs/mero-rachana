@@ -8,12 +8,11 @@ import PrimaryButton from "../../components/ui/PrimaryButton";
 import Slider from "react-slick";
 import BookReviewCard from "../../components/BookReviewCard";
 import { useEffect, useState } from "react";
-import { BookReview, Category, Post } from "../../types";
+import { BookReview, Post } from "../../types";
 import useAxios from "../../hooks/useAxios";
 import Loading from "../../components/ui/Loading";
 
 const Home = () => {
-  const featuredPosts = getFeaturedPost();
   var settings = {
     dots: false,
     infinite: true,
@@ -151,22 +150,6 @@ const Home = () => {
             </div>
           </section>
           <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
-            <HeadingTwo heading="Popular this month" />
-            <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-              {posts.map((post, index) => (
-                <CardAlt key={index} post={post} />
-              ))}
-            </div>
-          </section>
-          <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
-            <HeadingTwo heading="Popular this month" />
-            <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-              {posts.map((post, index) => (
-                <CardAlt key={index} post={post} />
-              ))}
-            </div>
-          </section>
-          <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
             <HeadingTwo heading="Top Writers" />
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {authors.map((author, index) => (
@@ -177,9 +160,11 @@ const Home = () => {
           <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
             <HeadingTwo heading="Latest poems" />
             <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-              {posts.map((post, index) => (
-                <CardAlt key={index} post={post} />
-              ))}
+              {posts
+                .filter((p) => p.category === "poem")
+                .map((post, index) => (
+                  <CardAlt key={index} post={post} />
+                ))}
             </div>
           </section>
           <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
@@ -193,9 +178,11 @@ const Home = () => {
           <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
             <HeadingTwo heading="Latest stories" />
             <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-              {posts.map((post, index) => (
-                <CardAlt key={index} post={post} />
-              ))}
+              {posts
+                .filter((p) => p.category === "story")
+                .map((post, index) => (
+                  <CardAlt key={index} post={post} />
+                ))}
             </div>
           </section>
           <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">

@@ -1,31 +1,21 @@
 import { Link } from "react-router-dom";
 import HeadingThree from "./ui/HeadingThree";
-import { getAuthorById, getCategoryName, getPostById } from "../utils/GetData";
 import { Post } from "../types";
 
 interface ComponentProps {
   post: Post;
 }
 const CardAlt: React.FC<ComponentProps> = ({ post }) => {
-  const thePost = post;
-  // let theAuthor = {} || undefined;
-  // if (thePost) {
-  //   theAuthor = getAuthorById(thePost.author);
-  // }
-
-  if (!thePost) {
-    return <>Missing post</>;
-  }
   return (
     <div className="rounded-md overflow-hidden relative border-b-2 border-b-sky-400 shadow-lg shadow-slate-200">
       <img
         className="w-full h-60 object-cover"
-        src={thePost.featuredImage}
+        src={post.featuredImage}
         alt=""
       />
       <p className="capitalize bg-sky-500 text-white absolute rounded-br-md top-0 px-4 py-1">
-        {/* {getCategoryName(thePost.category)} */}
-        {thePost.category}
+        {/* {getCategoryName(post.category)} */}
+        {post.category}
       </p>
       <div className="flex gap-6 w-full bg-sky-500 text-white px-4 py-2">
         <p>
@@ -42,13 +32,13 @@ const CardAlt: React.FC<ComponentProps> = ({ post }) => {
         </p>
       </div>
       <div className="p-4 pb-6">
-        <Link to={"/posts/" + thePost.id}>
-          <HeadingThree heading={thePost.title} />
+        <Link to={"/posts/" + post.id}>
+          <HeadingThree heading={post.title} />
         </Link>
-        {/* <p>Author {thePost.author}</p> */}
-        {/* <p className="mb-3 hidden lg:block">{thePost.excerpt.rendered}</p> */}
-        <p className="pb-3">{thePost.content.substring(0, 100) + "...."}</p>
-        <Link to={"/posts/" + thePost.id} className="text-sm text-blue-400">
+        {/* <p>Author {post.author}</p> */}
+        {/* <p className="mb-3 hidden lg:block">{post.excerpt.rendered}</p> */}
+        <p className="pb-3">{post.content.substring(0, 100) + "...."}</p>
+        <Link to={"/posts/" + post.id} className="text-sm text-blue-400">
           View Details <i className="fa-solid fa-arrow-right-long ml-2"></i>
         </Link>
       </div>

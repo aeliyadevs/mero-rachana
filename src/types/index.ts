@@ -5,7 +5,7 @@ export interface Post {
   excerpt: string;
   content: string;
   featuredImage: string;
-  category: Array<number>;
+  category: string;
   author: number;
   isFeatured: boolean;
 }
