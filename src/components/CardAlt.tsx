@@ -5,9 +5,8 @@ import { Post } from "../types";
 
 interface ComponentProps {
   post: Post;
-  categoryName: string | undefined;
 }
-const CardAlt: React.FC<ComponentProps> = ({ post, categoryName }) => {
+const CardAlt: React.FC<ComponentProps> = ({ post }) => {
   const thePost = post;
   // let theAuthor = {} || undefined;
   // if (thePost) {
@@ -26,7 +25,7 @@ const CardAlt: React.FC<ComponentProps> = ({ post, categoryName }) => {
       />
       <p className="capitalize bg-sky-500 text-white absolute rounded-br-md top-0 px-4 py-1">
         {/* {getCategoryName(thePost.category)} */}
-        {categoryName}
+        {thePost.category}
       </p>
       <div className="flex gap-6 w-full bg-sky-500 text-white px-4 py-2">
         <p>
@@ -48,7 +47,7 @@ const CardAlt: React.FC<ComponentProps> = ({ post, categoryName }) => {
         </Link>
         {/* <p>Author {thePost.author}</p> */}
         {/* <p className="mb-3 hidden lg:block">{thePost.excerpt.rendered}</p> */}
-        <div dangerouslySetInnerHTML={{ __html: thePost.excerpt }} />
+        <p className="pb-3">{thePost.content.substring(0, 100) + "...."}</p>
         <Link to={"/posts/" + thePost.id} className="text-sm text-blue-400">
           View Details <i className="fa-solid fa-arrow-right-long ml-2"></i>
         </Link>

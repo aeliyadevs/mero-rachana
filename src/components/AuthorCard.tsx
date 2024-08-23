@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 interface ComponentProps {
   author: {
     id: number;
-    name: string;
+    userName: string;
     profileImage: string;
     category: string;
   };
@@ -22,10 +22,10 @@ const AuthorCard: React.FC<ComponentProps> = ({ author }) => {
           <div className="flex flex-col items-center -mt-10 sm:-mt-16">
             <img
               src={author.profileImage}
-              alt={author.name}
+              alt={author.userName}
               className="w-20 sm:w-28 h-20 sm:h-28 object-cover rounded-full border-4 border-sky-400"
             />
-            <h3 className="font-bold text-lg">{author.name}</h3>
+            <h3 className="font-bold text-lg">{author.userName}</h3>
             <p>{author.category}</p>
             <div className="flex justify-center gap-6 w-full border-t-[1px] px-4 py-2 mt-4">
               <p>

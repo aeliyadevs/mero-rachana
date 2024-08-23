@@ -7,7 +7,7 @@ const useAxios = () => {
   const [loading, setLoading] = useState(false);
 
   const axiosInstance = axios.create({
-    baseURL: "http://merorachana-cms/wp-json/wp/v2",
+    baseURL: "https://localhost:7198/api",
   });
 
   axiosInstance.interceptors.request.use(

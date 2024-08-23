@@ -1,7 +1,7 @@
 import { getFeaturedPost } from "../../utils/GetData";
 import HeadingTwo from "../../components/ui/HeadingTwo";
 import AuthorCard from "../../components/AuthorCard";
-import { authors } from "../../data/defaultPosts.json";
+// import { authors } from "../../data/defaultPosts.json";
 import CardAlt from "../../components/CardAlt";
 import FeaturedCardAlt from "../../components/FeaturedCardAlt";
 import PrimaryButton from "../../components/ui/PrimaryButton";
@@ -61,50 +61,40 @@ const Home = () => {
 
   // Fetch from API
   const [posts, setPosts] = useState<Post[]>([]);
-  const [categories, setCategories] = useState<Category[]>([]);
+  const [authors, setAuthors] = useState([]);
   const [bookReviews, setBookReviews] = useState<BookReview[]>([]);
 
   // use custom hook to fetch data - useAxios
   const { error, loading, fetchData } = useAxios();
 
-  const fetchCategories = async () => {
+  const fetchPosts = async () => {
     try {
-      await fetchData({ url: "/categories", method: "GET" }, (data: any) => {
-        const mappedCategories = data.map((cat: any) => ({
-          id: cat.id,
-          name: cat.name,
-          slug: cat.slug,
-          description: cat.description,
-          parent: cat.parent,
-          count: cat.count,
+      await fetchData({ url: "/posts", method: "GET" }, (data: any) => {
+        console.log(data);
+        const mappedPosts = data.map((post: any) => ({
+          id: post.postId,
+          title: post.postTitle,
+          slug: post.postTitleSlug,
+          content: post.postContent,
+          featuredImage: post.featuredImage,
+          category: post.category.name,
+          author: post.createdBy.userName,
+          isFeatured: post.isFeatured,
         }));
-        setCategories(mappedCategories);
+        setPosts(mappedPosts);
       });
     } catch (err) {
       console.error("Error: ", err);
     }
   };
 
-  const fetchPosts = async () => {
+  const fetchAuthors = async () => {
     try {
-      await fetchData(
-        { url: "/posts", method: "GET", params: { _embed: true, per_page: 3 } },
-        (data: any) => {
-          const mappedPosts = data.map((post: any) => ({
-            id: post.id,
-            title: post.title.rendered,
-            slug: post.slug,
-            excerpt: post.excerpt.rendered,
-            content: post.content.rendered,
-            featuredImage: post._embedded["wp:featuredmedia"][0].source_url,
-            category: post.categories,
-            author: post.author,
-          }));
-          setPosts(mappedPosts);
-        }
-      );
-    } catch (err) {
-      console.error("Error: ", err);
+      await fetchData({ url: "/users", method: "GET" }, (data: any) => {
+        setAuthors(data);
+      });
+    } catch (err: any) {
+      console.log(err.message);
     }
   };
 
@@ -131,9 +121,9 @@ const Home = () => {
   };
 
   useEffect(() => {
-    fetchCategories();
     fetchPosts();
-    fetchBookReviews();
+    fetchAuthors();
+    // fetchBookReviews();
   }, []);
 
   return (
@@ -142,24 +132,21 @@ const Home = () => {
         <Loading />
       ) : (
         <>
+          {error && <div className="w-9/12 mx-auto pt-4">Error: {error}</div>}
           <section className="sm:w-11/12 lg:w-9/12 m-4 sm:mx-auto">
             <Slider {...settings}>
-              {featuredPosts.map((featuredPost, index) => (
-                <FeaturedCardAlt key={index} id={featuredPost.postId} />
-              ))}
+              {posts
+                .filter((p) => p.isFeatured === true)
+                .map((post, index) => (
+                  <FeaturedCardAlt key={index} post={post} />
+                ))}
             </Slider>
           </section>
           <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
             <HeadingTwo heading="Popular this month" />
             <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
               {posts.map((post, index) => (
-                <CardAlt
-                  key={index}
-                  post={post}
-                  categoryName={
-                    categories.find((c) => c.id === post.category[0])?.name
-                  }
-                />
+                <CardAlt key={index} post={post} />
               ))}
             </div>
           </section>
@@ -167,13 +154,7 @@ const Home = () => {
             <HeadingTwo heading="Popular this month" />
             <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
               {posts.map((post, index) => (
-                <CardAlt
-                  key={index}
-                  post={post}
-                  categoryName={
-                    categories.find((c) => c.id === post.category[0])?.name
-                  }
-                />
+                <CardAlt key={index} post={post} />
               ))}
             </div>
           </section>
@@ -181,13 +162,7 @@ const Home = () => {
             <HeadingTwo heading="Popular this month" />
             <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
               {posts.map((post, index) => (
-                <CardAlt
-                  key={index}
-                  post={post}
-                  categoryName={
-                    categories.find((c) => c.id === post.category[0])?.name
-                  }
-                />
+                <CardAlt key={index} post={post} />
               ))}
             </div>
           </section>
@@ -203,13 +178,7 @@ const Home = () => {
             <HeadingTwo heading="Latest poems" />
             <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
               {posts.map((post, index) => (
-                <CardAlt
-                  key={index}
-                  post={post}
-                  categoryName={
-                    categories.find((c) => c.id === post.category[0])?.name
-                  }
-                />
+                <CardAlt key={index} post={post} />
               ))}
             </div>
           </section>
@@ -217,13 +186,7 @@ const Home = () => {
             <HeadingTwo heading="Latest thoughts" />
             <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
               {posts.map((post, index) => (
-                <CardAlt
-                  key={index}
-                  post={post}
-                  categoryName={
-                    categories.find((c) => c.id === post.category[0])?.name
-                  }
-                />
+                <CardAlt key={index} post={post} />
               ))}
             </div>
           </section>
@@ -231,13 +194,7 @@ const Home = () => {
             <HeadingTwo heading="Latest stories" />
             <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
               {posts.map((post, index) => (
-                <CardAlt
-                  key={index}
-                  post={post}
-                  categoryName={
-                    categories.find((c) => c.id === post.category[0])?.name
-                  }
-                />
+                <CardAlt key={index} post={post} />
               ))}
             </div>
           </section>
@@ -270,7 +227,6 @@ const Home = () => {
           </section>
         </>
       )}
-      {error && <p>Error: {error}</p>}
     </>
   );
 };

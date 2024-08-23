@@ -7,6 +7,7 @@ export interface Post {
   featuredImage: string;
   category: Array<number>;
   author: number;
+  isFeatured: boolean;
 }
 export interface Category {
   id: number;
