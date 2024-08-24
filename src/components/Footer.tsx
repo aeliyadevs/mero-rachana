@@ -6,7 +6,11 @@ const Footer = () => {
       <div className="w-full sm:w-11/12 lg:w-9/12 px-3 mx-auto mb-4 pt-12">
         <p className="text-4xl sm:text-5xl text-primary mb-2 font-bold">
           {/* Mero<span className="font-light text-white">Rachana</span> */}
-          <img src="/logo.png" alt="Mero-rachana logo" className="w-64" />
+          <img
+            src="/images/logo.png"
+            alt="Mero-rachana logo"
+            className="w-64"
+          />
         </p>
         <p className="pb-4">A common platform for Nepali writers and readers</p>
       </div>

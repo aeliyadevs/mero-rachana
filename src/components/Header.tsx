@@ -23,7 +23,11 @@ const Header = () => {
           <div className="logo">
             <h1 className="text-4xl font-bold text-primary">
               {/* Mero<span className="font-light text-white">Rachana</span> */}
-              <img src="/logo.png" alt="mero rachana logo" className="w-44" />
+              <img
+                src="/images/logo.png"
+                alt="mero rachana logo"
+                className="w-44"
+              />
             </h1>
           </div>
         </Link>

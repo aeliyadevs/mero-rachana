@@ -1,3 +1,11 @@
+export interface author {
+  id: number;
+  userName: string;
+  profileImage: string;
+  coverImage: string;
+  gender: string;
+  userTypeId: number;
+}
 export interface Post {
   id: number;
   title: string;
