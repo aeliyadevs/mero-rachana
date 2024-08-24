@@ -1,12 +1,8 @@
 import { Link } from "react-router-dom";
+import { author } from "../types";
 
 interface ComponentProps {
-  author: {
-    id: number;
-    userName: string;
-    profileImage: string;
-    category: string;
-  };
+  author: author;
 }
 
 const AuthorCard: React.FC<ComponentProps> = ({ author }) => {
@@ -15,18 +11,24 @@ const AuthorCard: React.FC<ComponentProps> = ({ author }) => {
       <Link to={"authors/" + author.id}>
         <div className="flex flex-col justify-center rounded-md overflow-hidden shadow-md border-b-2 border-b-sky-400 shadow-gray-200">
           <img
-            src={author.profileImage}
+            src={author.coverImage && author.coverImage}
             alt=""
-            className="w-full h-24 sm:h-40 object-cover"
+            className="w-full h-24 sm:h-40 object-cover bg-slate-900"
           />
           <div className="flex flex-col items-center -mt-10 sm:-mt-16">
             <img
-              src={author.profileImage}
+              src={
+                author.profileImage
+                  ? author.profileImage
+                  : author.gender === "M"
+                  ? "/images/profile-man.jpg"
+                  : "/images/profile-woman.jpg"
+              }
               alt={author.userName}
-              className="w-20 sm:w-28 h-20 sm:h-28 object-cover rounded-full border-4 border-sky-400"
+              className="w-20 sm:w-28 h-20 sm:h-28 object-cover rounded-full"
             />
             <h3 className="font-bold text-lg">{author.userName}</h3>
-            <p>{author.category}</p>
+            <p>{author.userName}</p>
             <div className="flex justify-center gap-6 w-full border-t-[1px] px-4 py-2 mt-4">
               <p>
                 <strong>3k</strong> followers
