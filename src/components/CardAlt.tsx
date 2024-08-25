@@ -15,7 +15,7 @@ const CardAlt: React.FC<ComponentProps> = ({ post }) => {
       />
       <p className="capitalize bg-sky-500 text-white absolute rounded-br-md top-0 px-4 py-1">
         {/* {getCategoryName(post.category)} */}
-        {post.category}
+        {post.category.name}
       </p>
       <div className="flex gap-6 w-full bg-sky-500 text-white px-4 py-2">
         <p>
@@ -32,19 +32,19 @@ const CardAlt: React.FC<ComponentProps> = ({ post }) => {
         </p>
       </div>
       <div className="p-4 pb-6">
-        <Link to={"/posts/" + post.id}>
-          <HeadingThree heading={post.title} />
+        <Link to={"/posts/" + post.postId}>
+          <HeadingThree heading={post.postTitle} />
         </Link>
         {/* <p>Author {post.author}</p> */}
         {/* <p className="mb-3 hidden lg:block">{post.excerpt.rendered}</p> */}
         {/* <p className="pb-3">{post.content.substring(0, 100) + "...."}</p> */}
         <div
           dangerouslySetInnerHTML={{
-            __html: post.content.substring(0, 100) + "....",
+            __html: post.postContent.substring(0, 100) + "....",
           }}
           className="mb-3"
         />
-        <Link to={"/posts/" + post.id} className="text-sm text-blue-400">
+        <Link to={"/posts/" + post.postId} className="text-sm text-blue-400">
           View Details <i className="fa-solid fa-arrow-right-long ml-2"></i>
         </Link>
       </div>

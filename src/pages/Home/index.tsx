@@ -69,17 +69,18 @@ const Home = () => {
   const fetchPosts = async () => {
     try {
       await fetchData({ url: "/posts", method: "GET" }, (data: any) => {
-        const mappedPosts = data.map((post: any) => ({
-          id: post.postId,
-          title: post.postTitle,
-          slug: post.postTitleSlug,
-          content: post.postContent,
-          featuredImage: post.featuredImage,
-          category: post.category.name,
-          author: post.createdBy.userName,
-          isFeatured: post.isFeatured,
-        }));
-        setPosts(mappedPosts);
+        // const mappedPosts = data.map((post: any) => ({
+        //   id: post.postId,
+        //   title: post.postTitle,
+        //   slug: post.postTitleSlug,
+        //   content: post.postContent,
+        //   featuredImage: post.featuredImage,
+        //   category: post.category.name,
+        //   author: post.createdBy.userName,
+        //   isFeatured: post.isFeatured,
+        // }));
+        // setPosts(mappedPosts);
+        setPosts(data);
       });
     } catch (err) {
       console.error("Error: ", err);
@@ -182,7 +183,7 @@ const Home = () => {
             </>
           ) : (
             posts
-              .filter((p) => p.category === "poem")
+              .filter((p) => p.category.name === "poem")
               .map((post, index) => <CardAlt key={index} post={post} />)
           )}
         </div>
@@ -212,7 +213,7 @@ const Home = () => {
             </>
           ) : (
             posts
-              .filter((p) => p.category === "story")
+              .filter((p) => p.category.name === "story")
               .map((post, index) => <CardAlt key={index} post={post} />)
           )}
         </div>

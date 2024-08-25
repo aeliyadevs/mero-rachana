@@ -6,30 +6,27 @@ import HeadingTwo from "../../components/ui/HeadingTwo";
 import { Post } from "../../types";
 import useAxios from "../../hooks/useAxios";
 
-interface Posts {
-  postId: number;
-}
-
 const Posts = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
-  const { error, loading, fetchData } = useAxios();
+  const { error, fetchData } = useAxios();
 
   const fetchPosts = async () => {
     try {
       await fetchData({ url: "/posts", method: "GET" }, (data: any) => {
         console.log(data);
-        const mappedPosts = data.map((post: any) => ({
-          id: post.postId,
-          title: post.postTitle,
-          slug: post.postTitleSlug,
-          content: post.postContent,
-          featuredImage: post.featuredImage,
-          category: post.category.name,
-          author: post.createdBy.userName,
-          isFeatured: post.isFeatured,
-        }));
-        setPosts(mappedPosts);
+        // const mappedPosts = data.map((post: any) => ({
+        //   id: post.postId,
+        //   title: post.postTitle,
+        //   slug: post.postTitleSlug,
+        //   content: post.postContent,
+        //   featuredImage: post.featuredImage,
+        //   category: post.category.name,
+        //   author: post.createdBy.userName,
+        //   isFeatured: post.isFeatured,
+        // }));
+        // setPosts(mappedPosts);
+        setPosts(data);
       });
     } catch (err) {
       console.error("Error: ", err);
@@ -93,7 +90,7 @@ const Posts = () => {
       <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
         {posts
           .filter((p) =>
-            selectedCategory ? p.category === selectedCategory : true
+            selectedCategory ? p.category.name === selectedCategory : true
           )
           .map((post, index) => (
             <CardAlt key={index} post={post} />

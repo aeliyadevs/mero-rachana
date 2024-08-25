@@ -11,45 +11,46 @@ import { Post } from "../types";
 const Single = () => {
   const { id } = useParams();
 
-  // const post = getPostById(parseInt(id ? id : "0"));
-
   // fetch data from api
-  const [post, setPost] = useState<Post>({} as Post);
+  const [post, setPost] = useState<Post>();
   const { error, loading, fetchData } = useAxios();
 
   const fetchPost = async () => {
-    try {
-      await fetchData({ url: "/posts/" + id, method: "GET" }, (data: any) => {
-        console.log(data);
-        setPost({
-          ...post,
-          id: data.postId,
-          title: data.postTitle,
-          slug: data.postTitleSlug,
-          content: data.postContent,
-          featuredImage: data.featuredImage,
-          category: data.category.name,
-          author: data.createdBy,
-          isFeatured: data.isFeatured,
+    if (id) {
+      try {
+        await fetchData({ url: "/posts/" + id, method: "GET" }, (data: any) => {
+          console.log(data);
+          const mappedPost: Post = {
+            postId: data.postId,
+            postTitle: data.postTitle,
+            postTitleSlug: data.postTitleSlug,
+            postExcerpt: data.postTitleSlug,
+            postContent: data.postContent,
+            featuredImage: data.featuredImage,
+            category: data.category,
+            author: data.createdBy,
+            isFeatured: data.isFeatured,
+          };
+          setPost(mappedPost);
         });
-      });
-    } catch (err) {
-      console.log("Error: ", err);
+      } catch (err) {
+        console.log("Error: ", err);
+      }
     }
   };
 
   useEffect(() => {
     fetchPost();
-  }, []);
+  }, [id]);
 
   return (
     <>
-      {loading ? (
+      {!post ? (
         <>Content Loading</>
       ) : (
         <>
           {error ? <>{error}</> : <></>}
-          <article className="w-6/12 mx-auto my-16 flex flex-col">
+          <article className="w-7/12 mx-auto my-16 flex flex-col">
             <img
               className="rounded-md h-[500px] object-cover mb-6"
               src={post.featuredImage}
@@ -59,10 +60,10 @@ const Single = () => {
               <Author author={post.author} />
               <Meta />
             </div>
-            <HeadingOne heading={post.title} center={false} />
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            <HeadingOne heading={post.postTitle} center={false} />
+            <div dangerouslySetInnerHTML={{ __html: post.postContent }} />
             <SocialShare />
-            <Comment postId={post.id} />
+            <Comment postId={post.postId} />
           </article>
         </>
       )}

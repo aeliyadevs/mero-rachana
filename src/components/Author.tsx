@@ -6,14 +6,6 @@ interface ComponentProps {
   author: author;
 }
 const Author: React.FC<ComponentProps> = ({ author }) => {
-  // const findAuthorById = (id: number | undefined) => {
-  //   return authors.find((author) => author.id === id);
-  // };
-  // const author = findAuthorById(authorId);
-
-  if (!author) {
-    return <></>;
-  }
   return (
     <div className="flex gap-3">
       <img

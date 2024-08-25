@@ -7,23 +7,20 @@ export interface Author {
   userTypeId: number;
 }
 export interface Post {
-  id: number;
-  title: string;
-  slug: string;
-  excerpt: string;
-  content: string;
+  postId: number;
+  postTitle: string;
+  postTitleSlug: string;
+  postExcerpt: string;
+  postContent: string;
   featuredImage: string;
-  category: string;
+  category: Category;
   author: Author;
   isFeatured: boolean;
 }
 export interface Category {
   id: number;
   name: string;
-  slug: string;
   description: string;
-  parent: number;
-  count: number;
 }
 export interface BookReview {
   id: number;

@@ -18,15 +18,16 @@ const FeaturedCardAlt: React.FC<ComponentProps> = ({ post }) => {
         </div>
       </div>
       <div className="w-full h-full p-8 relative bg-gradient-to-b from-transparent to-black text-white flex flex-col justify-end translate-y-2 hover:translate-y-0 duration-500">
-        <Link to={"/posts/" + post.id}>
+        <Link to={"/posts/" + post.postId}>
           <h3 className="text-4xl font-bold text-white mb-4">
-            {post.title.substring(0, 30)} {post.title.length > 30 ? "..." : ""}
+            {post.postTitle.substring(0, 30)}{" "}
+            {post.postTitle.length > 30 ? "..." : ""}
           </h3>
         </Link>
         <p className="mb-3 hidden lg:block">
-          {post.content.substring(0, 160) + " ....."}
+          {post.postContent.substring(0, 160) + " ....."}
         </p>
-        <Link to={"/posts/" + post.id} className="text-sm text-blue-400">
+        <Link to={"/posts/" + post.postId} className="text-sm text-blue-400">
           View Details <i className="fa-solid fa-arrow-right-long ml-2"></i>
         </Link>
       </div>
