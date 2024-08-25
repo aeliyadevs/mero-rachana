@@ -15,7 +15,7 @@ const AuthorCard: React.FC<ComponentProps> = ({ author }) => {
             alt=""
             className="w-full h-24 sm:h-40 object-cover bg-slate-900"
           />
-          <div className="flex flex-col items-center -mt-10 sm:-mt-16">
+          <div className="flex flex-col items-center -mt-10 sm:-mt-14">
             <img
               src={
                 author.profileImage
@@ -25,7 +25,7 @@ const AuthorCard: React.FC<ComponentProps> = ({ author }) => {
                   : "/images/profile-woman.jpg"
               }
               alt={author.userName}
-              className="w-20 sm:w-28 h-20 sm:h-28 object-cover rounded-full"
+              className="w-20 sm:w-28 h-20 sm:h-28 object-cover rounded-full border-2 border-white"
             />
             <h3 className="font-bold text-lg">{author.userName}</h3>
             <p>{author.userName}</p>

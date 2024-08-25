@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { BookReview, Post } from "../../types";
 import useAxios from "../../hooks/useAxios";
 import CardAltSkeleton from "../../components/CardAltSkeleton";
+import AuthorCardSkeleton from "../../components/AuthorCardSkeleton";
 
 const Home = () => {
   var settings = {
@@ -152,20 +153,25 @@ const Home = () => {
               <CardAltSkeleton />
             </>
           ) : (
-            <>
-              {posts.map((post, index) => (
-                <CardAlt key={index} post={post} />
-              ))}
-            </>
+            posts.map((post, index) => <CardAlt key={index} post={post} />)
           )}
         </div>
       </section>
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Top Writers" />
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {authors.map((author, index) => (
-            <AuthorCard key={index} author={author} />
-          ))}
+          {loading ? (
+            <>
+              <AuthorCardSkeleton />
+              <AuthorCardSkeleton />
+              <AuthorCardSkeleton />
+              <AuthorCardSkeleton />
+            </>
+          ) : (
+            authors.map((author, index) => (
+              <AuthorCard key={index} author={author} />
+            ))
+          )}
         </div>
       </section>
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
@@ -175,15 +181,12 @@ const Home = () => {
             <>
               <CardAltSkeleton />
               <CardAltSkeleton />
+              <CardAltSkeleton />
             </>
           ) : (
-            <>
-              {posts
-                .filter((p) => p.category === "poem")
-                .map((post, index) => (
-                  <CardAlt key={index} post={post} />
-                ))}
-            </>
+            posts
+              .filter((p) => p.category === "poem")
+              .map((post, index) => <CardAlt key={index} post={post} />)
           )}
         </div>
       </section>
@@ -197,11 +200,7 @@ const Home = () => {
               <CardAltSkeleton />
             </>
           ) : (
-            <>
-              {posts.map((post, index) => (
-                <CardAlt key={index} post={post} />
-              ))}
-            </>
+            posts.map((post, index) => <CardAlt key={index} post={post} />)
           )}
         </div>
       </section>
@@ -215,13 +214,9 @@ const Home = () => {
               <CardAltSkeleton />
             </>
           ) : (
-            <>
-              {posts
-                .filter((p) => p.category === "story")
-                .map((post, index) => (
-                  <CardAlt key={index} post={post} />
-                ))}
-            </>
+            posts
+              .filter((p) => p.category === "story")
+              .map((post, index) => <CardAlt key={index} post={post} />)
           )}
         </div>
       </section>
