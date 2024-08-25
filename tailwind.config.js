@@ -10,6 +10,15 @@ export default {
       colors: {
         primary: "#0ea5e9",
       },
+      animation: {
+        fade: "fade 1s ease-in-out infinite",
+      },
+      keyframes: {
+        fade: {
+          "0%, 100%": { background: "#f2f2f2" },
+          "50%": { background: "#e6e6e6" },
+        },
+      },
     },
   },
   plugins: [],
