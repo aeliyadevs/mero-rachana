@@ -1,4 +1,4 @@
-export interface author {
+export interface Author {
   id: number;
   userName: string;
   profileImage: string;
@@ -14,7 +14,7 @@ export interface Post {
   content: string;
   featuredImage: string;
   category: string;
-  author: number;
+  author: Author;
   isFeatured: boolean;
 }
 export interface Category {

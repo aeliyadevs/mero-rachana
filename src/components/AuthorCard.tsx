@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { author } from "../types";
+import { Author } from "../types";
 
 interface ComponentProps {
-  author: author;
+  author: Author;
 }
 
 const AuthorCard: React.FC<ComponentProps> = ({ author }) => {

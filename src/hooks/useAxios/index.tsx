@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const useAxios = () => {
-  const [response, setResponse] = useState(null);
+  const [response, setResponse] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -61,7 +61,9 @@ const useAxios = () => {
         // signal: controller.signal,
       });
       setResponse(result.data);
-      if (onSuccess) onSuccess(result.data);
+      if (onSuccess) {
+        onSuccess(result.data);
+      }
     } catch (err: any) {
       if (axios.isCancel(err)) {
         console.error("Request canceled :", err.message);

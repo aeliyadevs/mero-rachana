@@ -1,6 +1,5 @@
 import HeadingTwo from "../../components/ui/HeadingTwo";
 import AuthorCard from "../../components/AuthorCard";
-// import { authors } from "../../data/defaultPosts.json";
 import CardAlt from "../../components/CardAlt";
 import FeaturedCardAlt from "../../components/FeaturedCardAlt";
 import PrimaryButton from "../../components/ui/PrimaryButton";
@@ -70,7 +69,6 @@ const Home = () => {
   const fetchPosts = async () => {
     try {
       await fetchData({ url: "/posts", method: "GET" }, (data: any) => {
-        console.log(data);
         const mappedPosts = data.map((post: any) => ({
           id: post.postId,
           title: post.postTitle,
@@ -91,7 +89,6 @@ const Home = () => {
   const fetchAuthors = async () => {
     try {
       await fetchData({ url: "/users", method: "GET" }, (data: any) => {
-        console.log(data);
         setAuthors(data);
       });
     } catch (err: any) {

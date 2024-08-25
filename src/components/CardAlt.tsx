@@ -37,7 +37,13 @@ const CardAlt: React.FC<ComponentProps> = ({ post }) => {
         </Link>
         {/* <p>Author {post.author}</p> */}
         {/* <p className="mb-3 hidden lg:block">{post.excerpt.rendered}</p> */}
-        <p className="pb-3">{post.content.substring(0, 100) + "...."}</p>
+        {/* <p className="pb-3">{post.content.substring(0, 100) + "...."}</p> */}
+        <div
+          dangerouslySetInnerHTML={{
+            __html: post.content.substring(0, 100) + "....",
+          }}
+          className="mb-3"
+        />
         <Link to={"/posts/" + post.id} className="text-sm text-blue-400">
           View Details <i className="fa-solid fa-arrow-right-long ml-2"></i>
         </Link>
