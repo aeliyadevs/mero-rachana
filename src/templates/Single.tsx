@@ -7,6 +7,7 @@ import Comment from "../components/Comment";
 import useAxios from "../hooks/useAxios";
 import { useEffect, useState } from "react";
 import { Post } from "../types";
+import { DateFormatter } from "../utils/DateFormatter";
 
 const Single = () => {
   const { id } = useParams();
@@ -18,8 +19,7 @@ const Single = () => {
   const fetchPost = async () => {
     if (id) {
       try {
-        await fetchData({ url: "/posts/" + id, method: "GET" }, (data: any) => {
-          console.log(data);
+        await fetchData({ url: `/posts/${id}`, method: "GET" }, (data: any) => {
           const mappedPost: Post = {
             postId: data.postId,
             postTitle: data.postTitle,
@@ -29,6 +29,7 @@ const Single = () => {
             featuredImage: data.featuredImage,
             category: data.category,
             author: data.createdBy,
+            createdAt: data.createdAt,
             isFeatured: data.isFeatured,
           };
           setPost(mappedPost);
@@ -46,7 +47,10 @@ const Single = () => {
   return (
     <>
       {!post ? (
-        <>Content Loading</>
+        <>
+          Content Loading
+          {console.log(loading)}
+        </>
       ) : (
         <>
           {error ? <>{error}</> : <></>}
@@ -61,6 +65,11 @@ const Single = () => {
               <Meta />
             </div>
             <HeadingOne heading={post.postTitle} center={false} />
+            <p className="pb-4">
+              <strong>Published at: </strong>
+              {DateFormatter(post.createdAt)}
+            </p>
+
             <div dangerouslySetInnerHTML={{ __html: post.postContent }} />
             <SocialShare />
             <Comment postId={post.postId} />

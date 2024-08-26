@@ -15,6 +15,7 @@ export interface Post {
   featuredImage: string;
   category: Category;
   author: Author;
+  createdAt: string;
   isFeatured: boolean;
 }
 export interface Category {

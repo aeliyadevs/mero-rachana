@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import HeadingThree from "./ui/HeadingThree";
 import { Post } from "../types";
+import { DateFormatter } from "../utils/DateFormatter";
 
 interface ComponentProps {
   post: Post;
@@ -13,10 +14,6 @@ const CardAlt: React.FC<ComponentProps> = ({ post }) => {
         src={post.featuredImage}
         alt=""
       />
-      <p className="capitalize bg-sky-500 text-white absolute rounded-br-md top-0 px-4 py-1">
-        {/* {getCategoryName(post.category)} */}
-        {post.category.name}
-      </p>
       <div className="flex gap-6 w-full bg-sky-500 text-white px-4 py-2">
         <p>
           <i className="fa-regular fa-heart"></i> 999k{" "}
@@ -32,6 +29,17 @@ const CardAlt: React.FC<ComponentProps> = ({ post }) => {
         </p>
       </div>
       <div className="p-4 pb-6">
+        <div className="capitalize text-sky-500 rounded-br-md mb-2 flex gap-5">
+          {/* {getCategoryName(post.category)} */}
+          <p className="flex items-center gap-2 font-bold">
+            {/* <i className="fa-regular fa-calendar"></i> */}
+            {post.category.name}
+          </p>
+          <p className="flex items-center gap-2">
+            <i className="fa-regular fa-calendar"></i>
+            {DateFormatter(post.createdAt)}
+          </p>
+        </div>
         <Link to={"/posts/" + post.postId}>
           <HeadingThree heading={post.postTitle} />
         </Link>

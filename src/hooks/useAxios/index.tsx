@@ -46,7 +46,7 @@ const useAxios = () => {
       data?: object;
       params?: object;
     },
-    onSuccess: any
+    onSuccess: (data: any) => void
   ) => {
     setLoading(true);
     // controller.abort();
