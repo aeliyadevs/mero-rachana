@@ -6,7 +6,7 @@ import { posts } from "../../data/defaultPosts.json";
 import CardAlt from "../../components/CardAlt";
 import useAxios from "../../hooks/useAxios";
 import { useEffect, useState } from "react";
-import { Author } from "../../types";
+import { Author, Post } from "../../types";
 
 const Profile = () => {
   const { id } = useParams();
@@ -15,6 +15,7 @@ const Profile = () => {
   //   (post) => post.author === parseInt(id ? id : "0")
   // );
   const [author, setAuthor] = useState<Author>();
+  const [authorPosts, setAuthorPosts] = useState<Post[]>();
   const { response, error, loading, fetchData } = useAxios();
 
   const fetchAuthor = async () => {
@@ -26,8 +27,22 @@ const Profile = () => {
     }
   };
 
+  const fetchAuthorPosts = async () => {
+    if (id) {
+      await fetchData(
+        { url: "/posts", method: "GET", params: { authorId: id } },
+        (data: any) => {
+          setAuthorPosts(data);
+        }
+      );
+    }
+  };
+
   useEffect(() => {
     fetchAuthor();
+    // if (author) {
+    fetchAuthorPosts();
+    // }
   }, []);
 
   return (
@@ -35,7 +50,7 @@ const Profile = () => {
       {!author ? (
         <>Loading Author</>
       ) : (
-        <div className="w-6/12 mx-auto my-16">
+        <div className="w-6/12 mx-auto mt-10">
           <div className="w-full">
             <img
               src={author.coverImage && author.coverImage}
@@ -43,7 +58,7 @@ const Profile = () => {
               className="w-full h-80 object-cover rounded-md bg-slate-900"
             />
           </div>
-          <div className="flex gap-6 py-4">
+          <div className="flex items-end -mt-32 p-6">
             <img
               src={
                 author.profileImage
@@ -53,20 +68,17 @@ const Profile = () => {
                   : "/images/profile-woman.jpg"
               }
               alt=""
-              className="w-52 h-60 object-cover rounded-2xl shadow-lg shadow-gray-400"
+              className="w-60 h-60 object-cover rounded-lg shadow-lg shadow-gray-400"
             />
-            <div className="py-4">
-              <h3 className="font-bold text-2xl">
+            <div className="px-4">
+              <h3 className="font-bold text-3xl">
                 {author.firstName} {author.middleName} {author.lastName}
               </h3>
-              <p>{author.userName}</p>
+              <p className="font-bold">@{author.userName}</p>
               <p>
                 <strong>3k</strong> followers | <strong>300</strong> posts
               </p>
-              <p className="pl-4 my-3 border-l-4 border-sky-200">
-                {author.bio ? author.bio : "Bio is missing"}
-              </p>
-              <div className="flex gap-4 pt-2">
+              <div className="flex gap-2 pt-2">
                 <div className="w-8 h-8 rounded-full bg-sky-400 text-white flex justify-center items-center">
                   <i className="fa-brands fa-facebook-f"></i>
                 </div>
@@ -79,14 +91,23 @@ const Profile = () => {
               </div>
             </div>
           </div>
-          {/* <div className="my-10">
-        <HeadingTwo heading={author?.name + "'s post"} />
-        <div className="grid grid-cols-2 gap-6">
-          {postsByAuthorId.map((post) => (
-            <CardAlt key={post.postId} post={post} />
-          ))}
-        </div>
-      </div> */}
+          <div className="px-6">
+            <p className="pl-4 my-3 border-l-4 border-sky-200">
+              {author.bio ? author.bio : "Bio is missing"}
+            </p>
+          </div>
+          <div className="px-6 my-10">
+            <HeadingTwo heading={author.firstName + "'s post"} />
+            <div className="grid grid-cols-2 gap-6">
+              {authorPosts?.length ? (
+                authorPosts.map((post) => (
+                  <CardAlt key={post.postId} post={post} />
+                ))
+              ) : (
+                <>No posts created yet</>
+              )}
+            </div>
+          </div>
         </div>
       )}
     </>
