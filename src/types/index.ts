@@ -1,8 +1,12 @@
 export interface Author {
   id: number;
+  firstName: string;
+  middleName: string;
+  lastName: string;
   userName: string;
   profileImage: string;
   coverImage: string;
+  bio: string;
   gender: string;
   userTypeId: number;
 }

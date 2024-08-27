@@ -29,12 +29,13 @@ const CardAlt: React.FC<ComponentProps> = ({ post }) => {
         </p>
       </div>
       <div className="p-4 pb-6">
-        <div className="capitalize text-sky-500 rounded-br-md mb-2 flex gap-5">
+        <div className="capitalize text-sky-500 rounded-br-md mb-2 flex gap-3">
           {/* {getCategoryName(post.category)} */}
-          <p className="flex items-center gap-2 font-bold">
+          <p className="font-bold">
             {/* <i className="fa-regular fa-calendar"></i> */}
             {post.category.name}
           </p>
+          {"/"}
           <p className="flex items-center gap-2">
             <i className="fa-regular fa-calendar"></i>
             {DateFormatter(post.createdAt)}

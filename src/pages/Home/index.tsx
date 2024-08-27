@@ -133,7 +133,7 @@ const Home = () => {
       ) : (
         <> */}
       {error && <div className="w-9/12 mx-auto pt-4">Error: {error}</div>}
-      {/* <section className="sm:w-11/12 lg:w-9/12 m-4 sm:mx-auto">
+      <section className="sm:w-11/12 lg:w-9/12 m-4 sm:mx-auto">
         <Slider {...settings}>
           {posts
             .filter((p) => p.isFeatured === true)
@@ -141,7 +141,7 @@ const Home = () => {
               <FeaturedCardAlt key={index} post={post} />
             ))}
         </Slider>
-      </section> */}
+      </section>
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Popular this month" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">

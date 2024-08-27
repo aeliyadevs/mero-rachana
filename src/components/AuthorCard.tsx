@@ -27,7 +27,10 @@ const AuthorCard: React.FC<ComponentProps> = ({ author }) => {
               alt={author.userName}
               className="w-20 sm:w-28 h-20 sm:h-28 object-cover rounded-full border-2 border-white"
             />
-            <h3 className="font-bold text-lg">{author.userName}</h3>
+            <h3 className="font-bold text-lg">
+              {author.firstName} {author.middleName && author.middleName}{" "}
+              {author.lastName}
+            </h3>
             <p>{author.userName}</p>
             <div className="flex justify-center gap-6 w-full border-t-[1px] px-4 py-2 mt-4">
               <p>
