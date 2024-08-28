@@ -3,17 +3,17 @@ import WriterCard from "../../components/WriterCard";
 import WriterCardSkeleton from "../../components/WriterCardSkeleton";
 import HeadingTwo from "../../components/ui/HeadingTwo";
 import useAxios from "../../hooks/useAxios";
-import { Author } from "../../types";
+import { Writer } from "../../types";
 
 const Writers = () => {
-  const [authors, setAuthors] = useState<Author[]>([]);
+  const [writers, setWriters] = useState<Writer[]>([]);
   const { response, error, loading, fetchData } = useAxios();
   const fetchWriters = async () => {
     try {
       await fetchData(
         { url: "/users", method: "GET", params: { userTypeId: 3 } },
         (data: any) => {
-          setAuthors(data);
+          setWriters(data);
         }
       );
     } catch (err) {
@@ -38,8 +38,8 @@ const Writers = () => {
             <WriterCardSkeleton />
           </>
         ) : (
-          authors.map((author) => (
-            <WriterCard key={author.id} author={author} />
+          writers.map((writer) => (
+            <WriterCard key={writer.id} writer={writer} />
           ))
         )}
       </div>

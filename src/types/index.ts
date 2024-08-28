@@ -1,4 +1,4 @@
-export interface Author {
+export interface Writer {
   id: number;
   firstName: string;
   middleName: string;
@@ -18,7 +18,7 @@ export interface Post {
   postContent: string;
   featuredImage: string;
   category: Category;
-  author: Author;
+  author: Writer;
   createdAt: string;
   isFeatured: boolean;
 }

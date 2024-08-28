@@ -1,27 +1,20 @@
 import { useParams } from "react-router-dom";
-import { getAuthorById } from "../../utils/GetData";
-import FeaturedCard from "../../components/FeaturedCard";
 import HeadingTwo from "../../components/ui/HeadingTwo";
-import { posts } from "../../data/defaultPosts.json";
 import CardAlt from "../../components/CardAlt";
 import useAxios from "../../hooks/useAxios";
 import { useEffect, useState } from "react";
-import { Author, Post } from "../../types";
+import { Writer, Post } from "../../types";
 
 const Profile = () => {
   const { id } = useParams();
-  // const author = getAuthorById(parseInt(id ? id : "0"));
-  // const postsByAuthorId = posts.filter(
-  //   (post) => post.author === parseInt(id ? id : "0")
-  // );
-  const [author, setAuthor] = useState<Author>();
-  const [authorPosts, setAuthorPosts] = useState<Post[]>();
+  const [writer, setWriter] = useState<Writer>();
+  const [writerPosts, setWriterPosts] = useState<Post[]>();
   const { response, error, loading, fetchData } = useAxios();
 
   const fetchWriters = async () => {
     if (id) {
       await fetchData({ url: `/users/${id}`, method: "GET" }, (data: any) => {
-        setAuthor(data);
+        setWriter(data);
         console.log(data);
       });
     }
@@ -32,7 +25,7 @@ const Profile = () => {
       await fetchData(
         { url: "/posts", method: "GET", params: { writerId: id } },
         (data: any) => {
-          setAuthorPosts(data);
+          setWriterPosts(data);
         }
       );
     }
@@ -40,20 +33,20 @@ const Profile = () => {
 
   useEffect(() => {
     fetchWriters();
-    // if (author) {
+    // if (writer) {
     fetchWriterPosts();
     // }
   }, []);
 
   return (
     <>
-      {!author ? (
-        <>Loading Author</>
+      {!writer ? (
+        <>Loading writer info</>
       ) : (
         <div className="w-6/12 mx-auto mt-10">
           <div className="w-full">
             <img
-              src={author.coverImage && author.coverImage}
+              src={writer.coverImage && writer.coverImage}
               alt=""
               className="w-full h-80 object-cover rounded-md bg-slate-900"
             />
@@ -61,9 +54,9 @@ const Profile = () => {
           <div className="flex items-end -mt-32 p-6">
             <img
               src={
-                author.profileImage
-                  ? author.profileImage
-                  : author.gender === "M"
+                writer.profileImage
+                  ? writer.profileImage
+                  : writer.gender === "M"
                   ? "/images/profile-man.jpg"
                   : "/images/profile-woman.jpg"
               }
@@ -72,9 +65,9 @@ const Profile = () => {
             />
             <div className="px-4">
               <h3 className="font-bold text-3xl">
-                {author.firstName} {author.middleName} {author.lastName}
+                {writer.firstName} {writer.middleName} {writer.lastName}
               </h3>
-              <p className="font-bold">@{author.userName}</p>
+              <p className="font-bold">@{writer.userName}</p>
               <p>
                 <strong>3k</strong> followers | <strong>300</strong> posts
               </p>
@@ -93,14 +86,14 @@ const Profile = () => {
           </div>
           <div className="px-6">
             <p className="pl-4 my-3 border-l-4 border-sky-200">
-              {author.bio ? author.bio : "Bio is missing"}
+              {writer.bio ? writer.bio : "Bio is missing"}
             </p>
           </div>
           <div className="px-6 my-10">
-            <HeadingTwo heading={author.firstName + "'s post"} />
+            <HeadingTwo heading={writer.firstName + "'s post"} />
             <div className="grid grid-cols-2 gap-6">
-              {authorPosts?.length ? (
-                authorPosts.map((post) => (
+              {writerPosts?.length ? (
+                writerPosts.map((post) => (
                   <CardAlt key={post.postId} post={post} />
                 ))
               ) : (

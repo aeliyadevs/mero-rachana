@@ -1,15 +1,15 @@
 import HeadingTwo from "../../components/ui/HeadingTwo";
-import AuthorCard from "../../components/WriterCard";
+import WriterCard from "../../components/WriterCard";
 import CardAlt from "../../components/CardAlt";
 import FeaturedCardAlt from "../../components/FeaturedCardAlt";
 import PrimaryButton from "../../components/ui/PrimaryButton";
 import Slider from "react-slick";
 import BookReviewCard from "../../components/BookReviewCard";
 import { useEffect, useState } from "react";
-import { BookReview, Post } from "../../types";
+import { BookReview, Post, Writer } from "../../types";
 import useAxios from "../../hooks/useAxios";
 import CardAltSkeleton from "../../components/CardAltSkeleton";
-import AuthorCardSkeleton from "../../components/WriterCardSkeleton";
+import WriterCardSkeleton from "../../components/WriterCardSkeleton";
 
 const Home = () => {
   var settings = {
@@ -60,7 +60,7 @@ const Home = () => {
 
   // Fetch from API
   const [posts, setPosts] = useState<Post[]>([]);
-  const [authors, setAuthors] = useState([]);
+  const [writers, setWriters] = useState<Writer[]>([]);
   const [bookReviews, setBookReviews] = useState<BookReview[]>([]);
 
   // use custom hook to fetch data - useAxios
@@ -93,7 +93,7 @@ const Home = () => {
       await fetchData(
         { url: "/users", method: "GET", params: { userTypeId: 3 } },
         (data: any) => {
-          setAuthors(data);
+          setWriters(data);
         }
       );
     } catch (err: any) {
@@ -164,14 +164,14 @@ const Home = () => {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {loading ? (
             <>
-              <AuthorCardSkeleton />
-              <AuthorCardSkeleton />
-              <AuthorCardSkeleton />
-              <AuthorCardSkeleton />
+              <WriterCardSkeleton />
+              <WriterCardSkeleton />
+              <WriterCardSkeleton />
+              <WriterCardSkeleton />
             </>
           ) : (
-            authors.map((author, index) => (
-              <AuthorCard key={index} author={author} />
+            writers.map((writer, index) => (
+              <WriterCard key={index} writer={writer} />
             ))
           )}
         </div>
