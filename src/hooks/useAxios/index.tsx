@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useAxios = () => {
   const [response, setResponse] = useState([]);
@@ -28,12 +28,6 @@ const useAxios = () => {
     }
   );
 
-  // let controller = new AbortController();
-
-  // useEffect(() => {
-  //   return () => controller?.abort();
-  // }, []);
-
   const fetchData = async (
     {
       url,
@@ -49,8 +43,9 @@ const useAxios = () => {
     onSuccess: (data: any) => void
   ) => {
     setLoading(true);
-    // controller.abort();
-    // controller = new AbortController();
+
+    const controller = new AbortController();
+    const { signal } = controller;
 
     try {
       const result = await axiosInstance({
@@ -58,7 +53,7 @@ const useAxios = () => {
         method,
         data,
         params,
-        // signal: controller.signal,
+        signal,
       });
       setResponse(result.data);
       if (onSuccess) {
@@ -66,14 +61,21 @@ const useAxios = () => {
       }
     } catch (err: any) {
       if (axios.isCancel(err)) {
-        console.error("Request canceled :", err.message);
+        console.error("Request canceled:", err);
       } else {
-        setError(err.response ? err.response.data : err.message);
+        setError(err.response ? err.response.data : err);
       }
     } finally {
       setLoading(false);
     }
   };
+
+  // useEffect(() => {
+  //   return () => {
+  //     controller.abort();
+  //   };
+  // }, []);
+
   return { response, error, loading, fetchData };
 };
 export default useAxios;

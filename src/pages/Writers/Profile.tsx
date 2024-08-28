@@ -4,6 +4,7 @@ import CardAlt from "../../components/CardAlt";
 import useAxios from "../../hooks/useAxios";
 import { useEffect, useState } from "react";
 import { Writer, Post } from "../../types";
+import CardAltSkeleton from "../../components/CardAltSkeleton";
 
 const Profile = () => {
   const { id } = useParams();
@@ -40,8 +41,10 @@ const Profile = () => {
 
   return (
     <>
-      {!writer ? (
-        <>Loading writer info</>
+      {loading ? (
+        <CardAltSkeleton />
+      ) : !writer ? (
+        <>Writer(s) not found.</>
       ) : (
         <div className="w-6/12 mx-auto mt-10">
           <div className="w-full">

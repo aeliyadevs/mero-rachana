@@ -60,6 +60,9 @@ const Home = () => {
 
   // Fetch from API
   const [posts, setPosts] = useState<Post[]>([]);
+  const [poems, setPoems] = useState<Post[]>([]);
+  const [stories, setStories] = useState<Post[]>([]);
+  const [thoughts, setThoughts] = useState<Post[]>([]);
   const [writers, setWriters] = useState<Writer[]>([]);
   const [bookReviews, setBookReviews] = useState<BookReview[]>([]);
 
@@ -85,6 +88,45 @@ const Home = () => {
       });
     } catch (err) {
       console.error("Error: ", err);
+    }
+  };
+
+  const fetchStories = async () => {
+    try {
+      await fetchData(
+        { url: "/posts", method: "GET", params: { categoryId: 2 } },
+        (data: any) => {
+          setStories(data);
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const fetchPoems = async () => {
+    try {
+      await fetchData(
+        { url: "/posts", method: "GET", params: { categoryId: 1 } },
+        (data: any) => {
+          setPoems(data);
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const fetchThoughts = async () => {
+    try {
+      await fetchData(
+        { url: "/posts", method: "GET", params: { categoryId: 3 } },
+        (data: any) => {
+          setThoughts(data);
+        }
+      );
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -126,6 +168,9 @@ const Home = () => {
   useEffect(() => {
     fetchPosts();
     fetchWriters();
+    fetchPoems();
+    fetchStories();
+    fetchThoughts();
     // fetchBookReviews();
   }, []);
 
@@ -185,24 +230,12 @@ const Home = () => {
               <CardAltSkeleton />
               <CardAltSkeleton />
             </>
-          ) : (
-            posts
+          ) : poems.length ? (
+            poems
               .filter((p) => p.category.name === "poem")
               .map((post, index) => <CardAlt key={index} post={post} />)
-          )}
-        </div>
-      </section>
-      <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
-        <HeadingTwo heading="Latest thoughts" />
-        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          {loading ? (
-            <>
-              <CardAltSkeleton />
-              <CardAltSkeleton />
-              <CardAltSkeleton />
-            </>
           ) : (
-            posts.map((post, index) => <CardAlt key={index} post={post} />)
+            <>Post(s) not found.</>
           )}
         </div>
       </section>
@@ -215,22 +248,44 @@ const Home = () => {
               <CardAltSkeleton />
               <CardAltSkeleton />
             </>
-          ) : (
-            posts
+          ) : stories.length ? (
+            stories
               .filter((p) => p.category.name === "story")
               .map((post, index) => <CardAlt key={index} post={post} />)
+          ) : (
+            <>Post(s) not found.</>
+          )}
+        </div>
+      </section>
+      <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
+        <HeadingTwo heading="Latest thoughts" />
+        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+          {loading ? (
+            <>
+              <CardAltSkeleton />
+              <CardAltSkeleton />
+              <CardAltSkeleton />
+            </>
+          ) : thoughts.length ? (
+            thoughts.map((post, index) => <CardAlt key={index} post={post} />)
+          ) : (
+            <>Post(s) not found.</>
           )}
         </div>
       </section>
       <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
         <HeadingTwo heading="Latest Book Reviews" />
         <div className="">
-          <Slider {...reviewSliderOptions}>
-            {bookReviews &&
-              bookReviews.map((review, index) => (
-                <BookReviewCard key={index} review={review} />
-              ))}
-          </Slider>
+          {bookReviews.length ? (
+            <Slider {...reviewSliderOptions}>
+              {bookReviews &&
+                bookReviews.map((review, index) => (
+                  <BookReviewCard key={index} review={review} />
+                ))}
+            </Slider>
+          ) : (
+            <>Review(s) not found.</>
+          )}
         </div>
       </section>
       <section className="bg-sky-500 w-full">

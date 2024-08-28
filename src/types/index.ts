@@ -18,7 +18,7 @@ export interface Post {
   postContent: string;
   featuredImage: string;
   category: Category;
-  author: Writer;
+  createdBy: Writer;
   createdAt: string;
   isFeatured: boolean;
 }
