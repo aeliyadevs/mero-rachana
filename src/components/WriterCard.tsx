@@ -5,10 +5,10 @@ interface ComponentProps {
   author: Author;
 }
 
-const AuthorCard: React.FC<ComponentProps> = ({ author }) => {
+const WriterCard: React.FC<ComponentProps> = ({ author }) => {
   return (
     <>
-      <Link to={"authors/" + author.id}>
+      <Link to={"/writers/" + author.id}>
         <div className="flex flex-col justify-center rounded-md overflow-hidden shadow-md border-b-2 border-b-sky-400 shadow-gray-200">
           <img
             src={author.coverImage && author.coverImage}
@@ -77,4 +77,4 @@ const AuthorCard: React.FC<ComponentProps> = ({ author }) => {
     </>
   );
 };
-export default AuthorCard;
+export default WriterCard;

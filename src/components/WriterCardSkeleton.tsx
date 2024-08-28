@@ -1,4 +1,4 @@
-const AuthorCardSkeleton = () => {
+const WriterCardSkeleton = () => {
   return (
     <div className="rounded-md overflow-hidden">
       <div className="w-full h-24 sm:h-40 animate-fade"></div>
@@ -11,4 +11,4 @@ const AuthorCardSkeleton = () => {
     </div>
   );
 };
-export default AuthorCardSkeleton;
+export default WriterCardSkeleton;

@@ -18,7 +18,7 @@ const Profile = () => {
   const [authorPosts, setAuthorPosts] = useState<Post[]>();
   const { response, error, loading, fetchData } = useAxios();
 
-  const fetchAuthor = async () => {
+  const fetchWriters = async () => {
     if (id) {
       await fetchData({ url: `/users/${id}`, method: "GET" }, (data: any) => {
         setAuthor(data);
@@ -27,10 +27,10 @@ const Profile = () => {
     }
   };
 
-  const fetchAuthorPosts = async () => {
+  const fetchWriterPosts = async () => {
     if (id) {
       await fetchData(
-        { url: "/posts", method: "GET", params: { authorId: id } },
+        { url: "/posts", method: "GET", params: { writerId: id } },
         (data: any) => {
           setAuthorPosts(data);
         }
@@ -39,9 +39,9 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    fetchAuthor();
+    fetchWriters();
     // if (author) {
-    fetchAuthorPosts();
+    fetchWriterPosts();
     // }
   }, []);
 

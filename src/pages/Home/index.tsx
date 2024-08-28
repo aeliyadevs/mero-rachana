@@ -1,5 +1,5 @@
 import HeadingTwo from "../../components/ui/HeadingTwo";
-import AuthorCard from "../../components/AuthorCard";
+import AuthorCard from "../../components/WriterCard";
 import CardAlt from "../../components/CardAlt";
 import FeaturedCardAlt from "../../components/FeaturedCardAlt";
 import PrimaryButton from "../../components/ui/PrimaryButton";
@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { BookReview, Post } from "../../types";
 import useAxios from "../../hooks/useAxios";
 import CardAltSkeleton from "../../components/CardAltSkeleton";
-import AuthorCardSkeleton from "../../components/AuthorCardSkeleton";
+import AuthorCardSkeleton from "../../components/WriterCardSkeleton";
 
 const Home = () => {
   var settings = {
@@ -88,11 +88,14 @@ const Home = () => {
     }
   };
 
-  const fetchAuthors = async () => {
+  const fetchWriters = async () => {
     try {
-      await fetchData({ url: "/users", method: "GET" }, (data: any) => {
-        setAuthors(data);
-      });
+      await fetchData(
+        { url: "/users", method: "GET", params: { userTypeId: 3 } },
+        (data: any) => {
+          setAuthors(data);
+        }
+      );
     } catch (err: any) {
       console.log(err.message);
     }
@@ -122,7 +125,7 @@ const Home = () => {
 
   useEffect(() => {
     fetchPosts();
-    fetchAuthors();
+    fetchWriters();
     // fetchBookReviews();
   }, []);
 

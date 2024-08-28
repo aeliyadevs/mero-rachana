@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import Author from "../components/Author";
 import Meta from "../components/Meta";
 import SocialShare from "../components/SocialShare";
 import HeadingOne from "../components/ui/HeadingOne";
@@ -8,6 +7,7 @@ import useAxios from "../hooks/useAxios";
 import { useEffect, useState } from "react";
 import { Post } from "../types";
 import { DateFormatter } from "../utils/DateFormatter";
+import WriterCardMini from "../components/WriterCardMini";
 
 const Single = () => {
   const { id } = useParams();
@@ -61,12 +61,12 @@ const Single = () => {
               alt=""
             />
             <div className="flex justify-between items-center px-4 mb-10 border-l-4 border-sky-300">
-              <Author author={post.author} />
+              <WriterCardMini author={post.author} />
               <Meta />
             </div>
             <HeadingOne heading={post.postTitle} center={false} />
-            <p className="pb-4">
-              <strong>Published at: </strong>
+            <p className="pb-4 flex items-center gap-2">
+              <i className="fa-regular fa-calendar"></i>
               {DateFormatter(post.createdAt)}
             </p>
 

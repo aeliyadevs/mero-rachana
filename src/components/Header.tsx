@@ -64,6 +64,12 @@ const Header = () => {
               Book Reviews
             </Link>
             <Link
+              to="/writers"
+              className="hover:text-red-700 hover:translate-y-1 duration-300"
+            >
+              Writers
+            </Link>
+            <Link
               to="/contact"
               className="hover:text-red-700 hover:translate-y-1 duration-300"
             >
