@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import { Post } from "../types";
 import { DateFormatter } from "../utils/DateFormatter";
 import WriterCardMini from "../components/WriterCardMini";
-import CardAltSkeleton from "../components/CardAltSkeleton";
 import SingleSkeleton from "./SingleSkeleton";
 import NotFound from "../pages/NotFound";
 
@@ -66,7 +65,7 @@ const Single = () => {
         alt=""
       />
       <div className="flex justify-between items-center px-4 mb-10 border-l-4 border-sky-300">
-        <WriterCardMini author={post.createdBy} />
+        <WriterCardMini writer={post.createdBy} />
         <Meta />
       </div>
       <HeadingOne heading={post.postTitle} center={false} />

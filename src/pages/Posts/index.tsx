@@ -39,7 +39,6 @@ const Posts = () => {
 
   return (
     <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
-      {error ? <p>{error}</p> : <></>}
       <HeadingTwo heading={"All Posts"} />
       <div className="flex gap-3 flex-wrap mb-3">
         <button

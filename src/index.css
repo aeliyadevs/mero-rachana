@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+main {
+  flex-grow: 1;
+}
+
 .slick-list {
   margin: 0 -8px;
 }
