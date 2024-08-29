@@ -1,31 +1,29 @@
-// import { authors } from "../data/defaultPosts.json";
-
-import { Author as author } from "../types";
+import { Writer } from "../types";
 
 interface ComponentProps {
-  author: author;
+  writer: Writer;
 }
-const WriterCardMini: React.FC<ComponentProps> = ({ author }) => {
+const WriterCardMini: React.FC<ComponentProps> = ({ writer }) => {
   return (
     <div className="flex gap-3">
       <img
         className="w-12 h-12 rounded-full"
         src={
-          author.profileImage
-            ? author.profileImage
-            : author.gender == "M"
+          writer.profileImage
+            ? writer.profileImage
+            : writer.gender == "M"
             ? "/images/profile-man.jpg"
             : "/images/profile-woman.jpg"
         }
-        alt={author.userName}
+        alt={writer.userName}
       />
       <div>
         <p>
           <strong>
-            {author.firstName} {author.lastName}
+            {writer.firstName} {writer.lastName}
           </strong>
         </p>
-        <p>@{author.userName}</p>
+        <p>@{writer.userName}</p>
       </div>
     </div>
   );

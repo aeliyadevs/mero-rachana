@@ -28,7 +28,6 @@ const Writers = () => {
   return (
     <section className="sm:w-11/12 lg:w-9/12 mx-4 sm:mx-auto my-16">
       <HeadingTwo heading="Our Writers" />
-
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {loading ? (
           <>

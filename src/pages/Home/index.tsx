@@ -72,18 +72,6 @@ const Home = () => {
   const fetchPosts = async () => {
     try {
       await fetchData({ url: "/posts", method: "GET" }, (data: any) => {
-        // console.log(data);
-        // const mappedPosts = data.map((post: any) => ({
-        //   id: post.postId,
-        //   title: post.postTitle,
-        //   slug: post.postTitleSlug,
-        //   content: post.postContent,
-        //   featuredImage: post.featuredImage,
-        //   category: post.category.name,
-        //   author: post.createdBy.userName,
-        //   isFeatured: post.isFeatured,
-        // }));
-        // setPosts(mappedPosts);
         setPosts(data);
       });
     } catch (err) {
@@ -176,11 +164,6 @@ const Home = () => {
 
   return (
     <>
-      {/* {loading ? (
-        <Loading />
-      ) : (
-        <> */}
-      {error && <div className="w-9/12 mx-auto pt-4">Error: {error}</div>}
       <section className="sm:w-11/12 lg:w-9/12 m-4 sm:mx-auto">
         <Slider {...settings}>
           {posts
@@ -194,13 +177,11 @@ const Home = () => {
         <HeadingTwo heading="Popular this month" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
           {loading ? (
-            <>
-              <CardAltSkeleton />
-              <CardAltSkeleton />
-              <CardAltSkeleton />
-            </>
-          ) : (
+            <CardAlt loading={loading} />
+          ) : posts.length ? (
             posts.map((post, index) => <CardAlt key={index} post={post} />)
+          ) : (
+            <>Post(s) not found.</>
           )}
         </div>
       </section>
@@ -208,16 +189,13 @@ const Home = () => {
         <HeadingTwo heading="Top Writers" />
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {loading ? (
-            <>
-              <WriterCardSkeleton />
-              <WriterCardSkeleton />
-              <WriterCardSkeleton />
-              <WriterCardSkeleton />
-            </>
-          ) : (
+            <WriterCard loading={loading} />
+          ) : writers.length ? (
             writers.map((writer, index) => (
               <WriterCard key={index} writer={writer} />
             ))
+          ) : (
+            <>Writer(s) not found.</>
           )}
         </div>
       </section>
@@ -225,11 +203,7 @@ const Home = () => {
         <HeadingTwo heading="Latest poems" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
           {loading ? (
-            <>
-              <CardAltSkeleton />
-              <CardAltSkeleton />
-              <CardAltSkeleton />
-            </>
+            <CardAlt loading={loading} />
           ) : poems.length ? (
             poems
               .filter((p) => p.category.name === "poem")
@@ -243,11 +217,7 @@ const Home = () => {
         <HeadingTwo heading="Latest stories" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
           {loading ? (
-            <>
-              <CardAltSkeleton />
-              <CardAltSkeleton />
-              <CardAltSkeleton />
-            </>
+            <CardAlt loading={loading} />
           ) : stories.length ? (
             stories
               .filter((p) => p.category.name === "story")
@@ -261,11 +231,7 @@ const Home = () => {
         <HeadingTwo heading="Latest thoughts" />
         <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
           {loading ? (
-            <>
-              <CardAltSkeleton />
-              <CardAltSkeleton />
-              <CardAltSkeleton />
-            </>
+            <CardAlt loading={loading} />
           ) : thoughts.length ? (
             thoughts.map((post, index) => <CardAlt key={index} post={post} />)
           ) : (
@@ -305,8 +271,6 @@ const Home = () => {
         </div>
       </section>
     </>
-    //   )}
-    // </>
   );
 };
 export default Home;

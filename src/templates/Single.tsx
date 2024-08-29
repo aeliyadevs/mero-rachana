@@ -9,6 +9,8 @@ import { Post } from "../types";
 import { DateFormatter } from "../utils/DateFormatter";
 import WriterCardMini from "../components/WriterCardMini";
 import CardAltSkeleton from "../components/CardAltSkeleton";
+import SingleSkeleton from "./SingleSkeleton";
+import NotFound from "../pages/NotFound";
 
 const Single = () => {
   const { id } = useParams();
@@ -49,42 +51,34 @@ const Single = () => {
   }, [id]);
 
   if (loading) {
-    return <>Content loading</>;
+    return <SingleSkeleton />;
   }
 
   if (!post) {
-    return <>No post found.</>;
+    return <NotFound />;
   }
 
   return (
-    <>
-      {loading ? (
-        <CardAltSkeleton />
-      ) : !post ? (
-        <>No post found.</>
-      ) : (
-        <article className="w-7/12 mx-auto my-16 flex flex-col">
-          <img
-            className="rounded-md h-[500px] object-cover mb-6"
-            src={post.featuredImage}
-            alt=""
-          />
-          <div className="flex justify-between items-center px-4 mb-10 border-l-4 border-sky-300">
-            <WriterCardMini author={post.createdBy} />
-            <Meta />
-          </div>
-          <HeadingOne heading={post.postTitle} center={false} />
-          <p className="pb-4 flex items-center gap-2">
-            <i className="fa-regular fa-calendar"></i>
-            {DateFormatter(post.createdAt)}
-          </p>
+    <article className="w-7/12 mx-auto my-6 flex flex-col">
+      <img
+        className="rounded-md h-[500px] object-cover mb-6"
+        src={post.featuredImage}
+        alt=""
+      />
+      <div className="flex justify-between items-center px-4 mb-10 border-l-4 border-sky-300">
+        <WriterCardMini author={post.createdBy} />
+        <Meta />
+      </div>
+      <HeadingOne heading={post.postTitle} center={false} />
+      <p className="pb-4 flex items-center gap-2">
+        <i className="fa-regular fa-calendar"></i>
+        {DateFormatter(post.createdAt)}
+      </p>
 
-          <div dangerouslySetInnerHTML={{ __html: post.postContent }} />
-          <SocialShare />
-          <Comment postId={post.postId} />
-        </article>
-      )}
-    </>
+      <div dangerouslySetInnerHTML={{ __html: post.postContent }} />
+      <SocialShare />
+      <Comment postId={post.postId} />
+    </article>
   );
 };
 export default Single;
