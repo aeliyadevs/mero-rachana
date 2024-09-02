@@ -3,7 +3,7 @@ import ShareIcon from "./ui/ShareIcon";
 
 const SocialShare = () => {
   const link = "http://localhost:5173" + useLocation().pathname;
-  console.log(link);
+  // console.log(link);
   // const link = "https://aeliya.com.np/";
   const message = "Sharing the article";
   const hashtags = "javascipt,typescript,tailwind,web-development";

@@ -4,7 +4,7 @@ import SocialShare from "../components/SocialShare";
 import HeadingOne from "../components/ui/HeadingOne";
 import Comment from "../components/Comment";
 import useAxios from "../hooks/useAxios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Post } from "../types";
 import { DateFormatter } from "../utils/DateFormatter";
 import WriterCardMini from "../components/WriterCardMini";
@@ -13,7 +13,7 @@ import NotFound from "../pages/NotFound";
 
 const Single = () => {
   const { id } = useParams();
-
+  const viewIncrementExecutedRef = useRef(false);
   // fetch data from api
   const [post, setPost] = useState<Post | null>(null);
   const { response, error, loading, fetchData } = useAxios();
@@ -45,8 +45,29 @@ const Single = () => {
     }
   };
 
+  const incrementPostView = async (postId: number, userId: number) => {
+    try {
+      await fetchData(
+        {
+          url: `views`,
+          method: "POST",
+          params: { postId: postId, userId: userId },
+        },
+        (data: any) => {
+          // console.log(data);
+        }
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     fetchPost();
+    if (id != undefined && !viewIncrementExecutedRef.current) {
+      incrementPostView(parseInt(id), 3);
+      viewIncrementExecutedRef.current = true;
+    }
   }, [id]);
 
   if (loading) {
@@ -66,7 +87,7 @@ const Single = () => {
       />
       <div className="flex justify-between items-center px-4 mb-10 border-l-4 border-sky-300">
         <WriterCardMini writer={post.createdBy} />
-        <Meta />
+        <Meta postId={post.postId} />
       </div>
       <HeadingOne heading={post.postTitle} center={false} />
       <p className="pb-4 flex items-center gap-2">

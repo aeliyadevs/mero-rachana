@@ -9,7 +9,7 @@ import useAxios from "../../hooks/useAxios";
 const Posts = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
-  const { error, fetchData } = useAxios();
+  const { error, loading, fetchData } = useAxios();
 
   const fetchPosts = async () => {
     try {
@@ -87,13 +87,15 @@ const Posts = () => {
         </button>
       </div>
       <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
-        {posts
-          .filter((p) =>
-            selectedCategory ? p.category.name === selectedCategory : true
-          )
-          .map((post, index) => (
-            <CardAlt key={index} post={post} />
-          ))}
+        {loading ? (
+          <CardAlt loading={loading} />
+        ) : (
+          posts
+            .filter((p) =>
+              selectedCategory ? p.category.name === selectedCategory : true
+            )
+            .map((post, index) => <CardAlt key={index} post={post} />)
+        )}
       </div>
     </section>
   );
