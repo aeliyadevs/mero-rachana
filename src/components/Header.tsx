@@ -32,7 +32,7 @@ const Header = () => {
           </div>
         </Link>
         <nav className="hidden lg:flex items-center">
-          <ul className="flex gap-8">
+          <ul className="flex gap-8 items-center">
             <Link
               to="/"
               className="hover:text-red-700 hover:translate-y-1 duration-300"
@@ -74,6 +74,14 @@ const Header = () => {
               className="hover:text-red-700 hover:translate-y-1 duration-300"
             >
               Contact
+            </Link>
+            <Link
+              to="/login"
+              className="hover:text-red-700 hover:translate-y-1 duration-300"
+            >
+              <button className="bg-transparent text-red-600 font-semibold uppercase border-red-600 border-[1px] px-6 py-2 rounded-full">
+                Login
+              </button>
             </Link>
           </ul>
         </nav>

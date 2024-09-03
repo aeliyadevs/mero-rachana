@@ -10,6 +10,8 @@ import Reviews from "./pages/Reviews/Index";
 import Review from "./pages/Reviews/Review";
 import Posts from "./pages/Posts";
 import Writers from "./pages/Writers";
+import { Login, Register } from "./features/auth";
+import { Dashboard } from "./features/dashboard";
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +25,9 @@ function App() {
           <Route path="/book-reviews" element={<Reviews />} />
           <Route path="/book-reviews/:id" element={<Review />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
