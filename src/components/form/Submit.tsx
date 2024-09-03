@@ -9,7 +9,7 @@ const Submit: React.FC<ComponentProps> = ({ value, center }) => {
       <input
         type="submit"
         value={value}
-        className="w-48 p-4 bg-blue-600 text-white rounded-md"
+        className="w-36 p-3 bg-blue-600 text-white rounded-md"
       />
     </div>
   );
