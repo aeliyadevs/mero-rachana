@@ -75,14 +75,14 @@ const Header = () => {
             >
               Contact
             </Link>
-            <Link
+            {/* <Link
               to="/login"
               className="hover:text-red-700 hover:translate-y-1 duration-300"
             >
-              <button className="bg-transparent text-red-600 font-semibold uppercase border-red-600 border-[1px] px-6 py-2 rounded-full">
+              <button className="bg-transparent text-red-600 font-semibold border-red-600 border-[1px] px-6 py-2 rounded-full">
                 Login
               </button>
-            </Link>
+            </Link> */}
           </ul>
         </nav>
         <div className="lg:hidden">

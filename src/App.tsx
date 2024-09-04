@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
-import DefaultLayout from "./layouts/DefaultLayout";
 import NotFound from "./pages/NotFound";
 import Single from "./templates/Single";
 import Contact from "./pages/Contact";
@@ -12,6 +11,7 @@ import Posts from "./pages/Posts";
 import Writers from "./pages/Writers";
 import { Login, Register } from "./features/auth";
 import { Dashboard } from "./features/dashboard";
+import { AdminLayout, DefaultLayout } from "./layouts";
 function App() {
   return (
     <BrowserRouter>
@@ -27,8 +27,10 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<NotFound />} />
+        </Route>
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Dashboard />} />
         </Route>
       </Routes>
     </BrowserRouter>
