@@ -1,10 +1,15 @@
 import { Outlet } from "react-router-dom";
-import Sidebar from "../components/Sidebar";
+import { Sidebar, Topbar } from "../features/dashboard/global";
 
 const AdminLayout = () => {
   return (
     <>
-      <Sidebar />
+      <aside>
+        <Sidebar />
+      </aside>
+      <header>
+        <Topbar />
+      </header>
       <main>
         <Outlet />
       </main>
